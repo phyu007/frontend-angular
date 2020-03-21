@@ -1,0 +1,415 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200315.002725.240.0.001.json",
+    "dumpEventTime": "2020-03-15T00:27:25Z",
+    "dumpEventTimeStamp": "1584203245877",
+    "processId": 240,
+    "cwd": "C:\\Users\\Phyu\\Desktop\\Development of Frontend with Ionic\\Frontend",
+    "commandLine": [
+      "node",
+      "C:\\Users\\Phyu\\AppData\\Roaming\\npm\\\\node_modules\\@angular\\cli\\bin\\ng",
+      "serve",
+      "--proxy-config",
+      "proxy.conf.json"
+    ],
+    "nodejsVersion": "v12.13.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.13.1",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.13.1/node-v12.13.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.13.1/node-v12.13.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.13.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18362",
+    "osVersion": "Windows 10 Home",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1349812,
+        "nice": 0,
+        "sys": 1201484,
+        "idle": 15090765,
+        "irq": 71984
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 951343,
+        "nice": 0,
+        "sys": 701312,
+        "idle": 15989187,
+        "irq": 14187
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1723468,
+        "nice": 0,
+        "sys": 1216703,
+        "idle": 14701656,
+        "irq": 18265
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1109093,
+        "nice": 0,
+        "sys": 753031,
+        "idle": 15779718,
+        "irq": 14531
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1499109,
+        "nice": 0,
+        "sys": 1024093,
+        "idle": 15118640,
+        "irq": 17234
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1183046,
+        "nice": 0,
+        "sys": 802281,
+        "idle": 15656515,
+        "irq": 10468
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1683859,
+        "nice": 0,
+        "sys": 1092750,
+        "idle": 14865218,
+        "irq": 14703
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1376140,
+        "nice": 0,
+        "sys": 623484,
+        "idle": 15642187,
+        "irq": 10250
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "a4:83:e7:4e:a6:b3",
+        "address": "fe80::6895:1bc1:6c62:bba6",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 14
+      },
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "a4:83:e7:4e:a6:b3",
+        "address": "192.168.1.84",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "DESKTOP-CCDK3QN"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff69bff1729",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69bff5b4c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69bff4b08",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c0e369b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c8e82de",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c8d0321",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c79dbec",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c7a5cf1",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c79b353",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c799b24",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c7badf5",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69c526e19",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff69cd1404d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00000251a64a453a",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 491290624,
+    "totalCommittedMemory": 491290624,
+    "usedMemory": 379495760,
+    "availableMemory": 1818246096,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 1048576,
+        "capacity": 1047488,
+        "used": 1047488,
+        "available": 0
+      },
+      "old_space": {
+        "memorySize": 378908672,
+        "committedMemory": 378908672,
+        "capacity": 378365016,
+        "used": 276765472,
+        "available": 101599544
+      },
+      "code_space": {
+        "memorySize": 5931008,
+        "committedMemory": 5931008,
+        "capacity": 5636064,
+        "used": 3726496,
+        "available": 1909568
+      },
+      "map_space": {
+        "memorySize": 13635584,
+        "committedMemory": 13635584,
+        "capacity": 13600288,
+        "used": 6665040,
+        "available": 6935248
+      },
+      "large_object_space": {
+        "memorySize": 90882048,
+        "committedMemory": 90882048,
+        "capacity": 90708568,
+        "used": 90708568,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 550400,
+        "used": 550400,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 37.093,
+    "kernelCpuSeconds": 9.859,
+    "cpuConsumptionPercent": 1.41422,
+    "maxRss": 1084743680,
+    "pageFaults": {
+      "IORequired": 543224,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 11064,
+      "writes": 13
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=::": "::\\",
+    "=C:": "C:\\Users\\Phyu\\Desktop\\Development of Frontend with Ionic\\Frontend",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\Phyu\\AppData\\Roaming",
+    "asl.log": "Destination=file",
+    "BROWSERSLIST_IGNORE_OLD_DATA": "1",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132198125316725335",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-CCDK3QN",
+    "ComSpec": "C:\\Windows\\system32\\cmd.exe",
+    "dp0": "C:\\Users\\Phyu\\AppData\\Roaming\\npm\\",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "DXSDK_DIR": "C:\\Program Files (x86)\\Microsoft DirectX SDK (June 2010)\\",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+    "GRADLE_HOME": "C:\\Program Files\\Android\\Android Studio\\gradle-6.2.2",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\Phyu",
+    "JAVA_HOME": "C:\\Program Files\\Java\\jdk1.8.0_231",
+    "LOCALAPPDATA": "C:\\Users\\Phyu\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-CCDK3QN",
+    "NUMBER_OF_PROCESSORS": "8",
+    "OneDrive": "C:\\Users\\Phyu\\OneDrive - National University of Singapore",
+    "OneDriveCommercial": "C:\\Users\\Phyu\\OneDrive - National University of Singapore",
+    "OneDriveConsumer": "C:\\Users\\Phyu\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\150\\DTS\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\140\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\140\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\140\\DTS\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\140\\DTS\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\130\\Tools\\Binn\\;C:\\ProgramData\\chocolatey\\bin;c:\\WINDOWS\\System32\\WBem;C:\\Program Files\\Java\\jdk1.8.0_231\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\Phyu\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm 2019.2.1\\bin;C:\\Users\\Phyu\\AppData\\Local\\Programs\\Python\\Python37-32\\Scripts;C:\\Users\\Phyu\\Anaconda3\\Lib\\site-packages\\graphviz;C:\\Program Files\\graphviz-2.38\\release\\bin;C:\\Users\\Phyu\\Anaconda3\\Lib\\site-packages\\tensorflow_core\\python\\keras\\api\\_v2\\keras;C:\\Users\\Phyu\\AppData\\Roaming\\npm;C:\\Users\\Phyu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Phyu\\AppData\\Local\\GitHubDesktop\\bin;C:\\Program Files\\Android\\Android Studio\\gradle-6.2.2\\bin;",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 142 Stepping 10, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "8e0a",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\140\\Tools\\PowerShell\\Modules\\",
+    "PUBLIC": "C:\\Users\\Public",
+    "PyCharm": "C:\\Program Files\\JetBrains\\PyCharm 2019.2.1\\bin;",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\Windows",
+    "TEMP": "C:\\Users\\Phyu\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\Phyu\\AppData\\Local\\Temp",
+    "USERDOMAIN": "DESKTOP-CCDK3QN",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-CCDK3QN",
+    "USERNAME": "Phyu",
+    "USERPROFILE": "C:\\Users\\Phyu",
+    "WEBPACK_DEV_SERVER": "true",
+    "windir": "C:\\Windows",
+    "_prog": "node"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Windows\\SYSTEM32\\ntdll.dll",
+    "C:\\Windows\\System32\\KERNEL32.DLL",
+    "C:\\Windows\\System32\\KERNELBASE.dll",
+    "C:\\Windows\\System32\\WS2_32.dll",
+    "C:\\Windows\\System32\\RPCRT4.dll",
+    "C:\\Windows\\SYSTEM32\\dbghelp.dll",
+    "C:\\Windows\\System32\\ADVAPI32.dll",
+    "C:\\Windows\\System32\\ucrtbase.dll",
+    "C:\\Windows\\System32\\msvcrt.dll",
+    "C:\\Windows\\System32\\sechost.dll",
+    "C:\\Windows\\System32\\USER32.dll",
+    "C:\\Windows\\System32\\win32u.dll",
+    "C:\\Windows\\System32\\GDI32.dll",
+    "C:\\Windows\\System32\\gdi32full.dll",
+    "C:\\Windows\\System32\\msvcp_win.dll",
+    "C:\\Windows\\System32\\PSAPI.DLL",
+    "C:\\Windows\\System32\\CRYPT32.dll",
+    "C:\\Windows\\System32\\MSASN1.dll",
+    "C:\\Windows\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\Windows\\SYSTEM32\\USERENV.dll",
+    "C:\\Windows\\System32\\bcrypt.dll",
+    "C:\\Windows\\System32\\profapi.dll",
+    "C:\\Windows\\SYSTEM32\\WINMM.dll",
+    "C:\\Windows\\SYSTEM32\\winmmbase.dll",
+    "C:\\Windows\\System32\\cfgmgr32.dll",
+    "C:\\Windows\\System32\\bcryptPrimitives.dll",
+    "C:\\Windows\\System32\\IMM32.DLL",
+    "C:\\Windows\\System32\\powrprof.dll",
+    "C:\\Windows\\System32\\UMPDC.dll",
+    "C:\\Windows\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\Windows\\system32\\uxtheme.dll",
+    "C:\\Windows\\System32\\combase.dll",
+    "C:\\Windows\\system32\\mswsock.dll",
+    "C:\\Windows\\System32\\kernel.appcore.dll",
+    "C:\\Windows\\System32\\NSI.dll",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\Windows\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\system32\\napinsp.dll",
+    "C:\\Windows\\system32\\pnrpnsp.dll",
+    "C:\\Windows\\System32\\winrnr.dll",
+    "C:\\Windows\\system32\\NLAapi.dll",
+    "C:\\Windows\\system32\\wshbth.dll",
+    "C:\\Program Files\\Bonjour\\mdnsNSP.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\Windows\\System32\\fwpuclnt.dll"
+  ]
+}

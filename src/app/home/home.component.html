@@ -1,0 +1,164 @@
+<body ng-app="myApp" style="padding-top: 20px;">
+    <p>Upload File here...</p>
+    <div>
+
+        <input type="file" id="fileUpload" accept=".xlsx, .xls, .csv" />
+        <input type="button" id="upload" value="Upload" (click)="Upload()" />
+    </div>
+    <div id="dvExcel"></div>
+    <div ng-controller="myCtrl">
+        <label for="category" style="padding-top: 20px;">Category</label>
+        <select ngModel name="category" id="category" class="form-control" (change)="onChange($event)">
+            <option *ngFor="let c of cat">
+                {{c}}
+            </option>
+        </select>
+    </div>
+</body>
+
+
+<div class="tabs-animation">
+
+    <div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <div class="mb-3 card">
+                    <div class="card-header-tab card-header">
+                        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                            <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                            Montly Costs and Turns of Selected Categories
+                        </div>
+                    </div>
+                    <div style="float:left">
+                        <canvas baseChart id="canvas" class="chart"></canvas>
+                    </div>
+
+
+                    <div class="card-header-tab card-header">
+                        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                            <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                            Inventory Turns
+                        </div>
+                    </div>
+                    <div style="float:left">
+                        <canvas baseChart id="line2" class="chart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-12 col-lg-6">
+                <div class="mb-3 card">
+
+                    <div class="card-header-tab card-header">
+                        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                            <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                            Total COGS vs. Avg Onhand Cost for Past 6 Months
+                        </div>
+                    </div>
+                    <div style="float: right;">
+                        <canvas baseChart id="barChart" class="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-6">
+            <div class="mb-3 card">
+                <div>
+                    <div class="card-header-tab card-header">
+                        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                            <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                            Dashboard B:Excess Inventory Analysis
+                        </div>
+                    </div>
+                    <div style="width: 250px; height: 255px; float: left;">
+                        <canvas baseChart id="doughnutChart" class="chart"></canvas>
+                    </div>
+
+                    <div style="width: 250px; height: 255px; float: left;">
+                        <canvas baseChart id="doughnutChart2" class="chart"></canvas>
+                    </div>
+
+                    <div class="card-header-tab card-header">
+                        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                            <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                            Top 10 Excess Cost
+                        </div>
+                    </div>
+                    <div style="display: block; width: 500px; height: 355px; float:right">
+                        <canvas baseChart id="canvas2" class="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-sm-12 col-lg-6">
+            <div class="mb-3 card">
+
+                <div class="card-header-tab card-header">
+                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                        <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                        Excess cost by SKU
+                    </div>
+                </div>
+                <div style="float:left">
+                    <canvas baseChart id="stackedBarChart" class="chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-6">
+            <div class="mb-3 card">
+
+                <div class="card-header-tab card-header">
+                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                        <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                        Dashboard C: SKU Performance Analysis
+                    </div>
+                </div>
+
+                <div style="float: right;">
+                    <canvas baseChart id="line" class="chart"></canvas>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6">
+            <div class="mb-3 card">
+
+                <div class="card-header-tab card-header">
+                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                        <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                        Demand Trend
+                    </div>
+                </div>
+
+
+                <div>
+                    <canvas baseChart id="mixedChart" class="chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
