@@ -48,11 +48,13 @@ export class HomeComponent implements OnInit {
 
     const newVal = event.target.value;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post("http://10.3.14.214:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
+    this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
+    
+  //  this.http.post("http://10.3.14.214:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
       res => {
 
-        this.data = res.recordsets[0];
-       this.size = Object.keys(res.recordsets[0]).length
+       //this.data = res.recordsets[0];
+      //this.size = Object.keys(res.recordsets[0]).length
         console.log(this.size);
 
 
@@ -380,13 +382,13 @@ export class HomeComponent implements OnInit {
           },
           options: {
             responsive: true,
-            legend: { display: true },
+            legend: { display: false , position: 'bottom' },
             plugins: {
               datalabels:
               {
-                display: true,
+                display: false,
                 anchor: 'end',
-                align: 'top',
+                align: 'bottom',
               }
             }
           }
@@ -409,14 +411,15 @@ export class HomeComponent implements OnInit {
             ]
           },
           options: {
+
             responsive: true,
-            legend: { display: true },
+            legend: { display: false , position: 'bottom' },
             plugins: {
               datalabels:
               {
-                display: true,
+                display: false,
                 anchor: 'end',
-                align: 'top',
+                align: 'bottom',
               }
             }
           }
@@ -639,7 +642,10 @@ export class HomeComponent implements OnInit {
               var onHandQuantity = quantity[j];
               console.log(onHandQuantity);
               console.log(SKU_CodeonHand);
-              that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
+              
+              that.http.post("http://192.168.1.84:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
+
+              //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
                 console.log(res);
               })
             }
@@ -689,9 +695,10 @@ export class HomeComponent implements OnInit {
 
             cell = row.insertCell(-1);
             cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
+            that.http.post("http://192.168.1.84:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
 
-
-            that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+            
+          //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
               console.log(res);
             })
             // HomeComponent.prototype.http.post("/api/insertData", { SKU_Code }).subscribe(res => {

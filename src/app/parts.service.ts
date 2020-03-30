@@ -38,9 +38,10 @@ export class PartsService {
 
    getAllParts()
   {
+    const url = 'http://172.20.10.12:5000' || 'http://localhost:5000'
 
- 
-    const url = 'http://10.3.14.214:5000/' || 'http://localhost:5000/'
+ //   const url = 'http://192.168.1.84:5000/' || 'http://localhost:5000/'
+   // const url = 'http://10.3.14.214:5000/' || 'http://localhost:5000/'
   //  const url = 'http://localhost:5000/'
     fetch(url, {
       method: 'POST',
@@ -90,7 +91,10 @@ export class PartsService {
   getDemandForecast()
   {
 
-    const url = 'http://10.3.14.214:5000/demand' || 'http://localhost:5000/demand'
+    const url = 'http://172.20.10.12:5000/demand' || 'http://localhost:5000/demand'
+
+//    const url = 'http://192.168.1.84:5000/demand' || 'http://localhost:5000/demand'
+  //  const url = 'http://10.3.14.214:5000/demand' || 'http://localhost:5000/demand'
   //  const url = 'http://localhost:5000/demand'
     fetch(url, {
       method: 'POST',
@@ -136,8 +140,9 @@ export class PartsService {
   getCategory()
   {
 
-   
-    const url = 'http://10.3.14.214:5000/getCategory' || 'http://localhost:5000/getCategory'
+    const url = 'http://172.20.10.12:5000/getCategory' || 'http://localhost:5000/getCategory'
+//  const url = 'http://192.168.1.84:5000/getCategory' || 'http://localhost:5000/getCategory'
+  //  const url = 'http://10.3.14.214:5000/getCategory' || 'http://localhost:5000/getCategory'
      
    //const url = 'http://10.3.14.214:8100/getCategory'
     fetch(url, {
@@ -179,8 +184,10 @@ export class PartsService {
 
   getOnHandCost()
   {
-
-    const url = 'http://10.3.14.214:5000/onHandCost' || 'http://localhost:5000/onHandCost'
+    
+    const url = 'http://172.20.10.12:5000/onHandCost' || 'http://localhost:5000/onHandCost'
+//   const url = 'http://192.168.1.84:5000/onHandCost' || 'http://localhost:5000/onHandCost'
+  //  const url = 'http://10.3.14.214:5000/onHandCost' || 'http://localhost:5000/onHandCost'
     //const url = 'http://localhost:5000/onHandCost'
     fetch(url, {
       method: 'POST',

@@ -12,4 +12,11 @@ export class BsNavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  navbarOpen = false;
+
+  toggleNavbar()
+  {
+    this.navbarOpen = !this.navbarOpen;
+  }
+
 }
