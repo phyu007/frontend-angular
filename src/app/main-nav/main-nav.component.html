@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar> <span routerLink="/"><img src="https://www.a-star.edu.sg/images/librariesprovider27/default-album/astar_simtech_horizontal-logo_rgb.png" style="width:150px;"></span></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/overall">Overall Inventory Performance</a>
+      <a mat-list-item routerLink="/excess-inventory">Excess Inventory Analysis</a>
+      <a mat-list-item routerLink="/sku-performace">SKU Performace</a>
+      <a mat-list-item routerLink="/data-table">Performance Validation</a>
+      <a mat-list-item>
+        <mat-form-field>
+          <mat-list-item style="color: white;">Category</mat-list-item >
+          <select matNativeControl required ngModel name="category" id="category"
+              class="form-control" (change)="onChange($event)">
+              <option *ngFor="let c of cat">
+                  {{c}}
+              </option>
+          </select>
+      </mat-form-field>
+
+      </a>
+
+
+     
+     
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <fa-icon [icon]="faBars"></fa-icon>
+      </button>
+      <span>
+        <fa-icon [icon]="faUser"></fa-icon>
+        Welcome <br> Dr Lee Yo
+      </span>
+      <span class="spacer"></span>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+      <a mat-list-item><fa-icon [icon]="faBell"></fa-icon> </a>
+      <a mat-list-item><fa-icon [icon]="faCog"></fa-icon> </a>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

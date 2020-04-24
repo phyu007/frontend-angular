@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'bs-navbar',
@@ -6,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent implements OnInit {
+  faBell = faBell;
+  faCog = faCog;
+
+  showFiller = false;
 
   constructor() { }
 
@@ -18,5 +24,9 @@ export class BsNavbarComponent implements OnInit {
   {
     this.navbarOpen = !this.navbarOpen;
   }
+
+
+
+
 
 }

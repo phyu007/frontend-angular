@@ -1,0 +1,189 @@
+<!-- <div class="content content-fixed">
+  <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+    <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+      <div class="header">
+        <h1>Overall Inventory Performance Dashboard</h1>
+      </div>
+    </div>
+
+    <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
+   
+        <div class="list-inline-item">
+          <h5 class="tx-normal tx-rubik title1">COGS </h5>
+          <h5 class="tx-normal tx-rubik number">$209,344</h5>
+        </div>
+        <div class="list-inline-item">
+          <h5 class="tx-normal tx-rubik title2">ONHAND </h5>
+          <h5 class="tx-normal tx-rubik number">$384,755</h5>
+        </div>
+        <div class="list-inline-item">
+          <h5 class="tx-normal tx-rubik title3">OPEN ORDER </h5>
+          <h5 class="tx-normal tx-rubik number">$277,179</h5>
+        </div>
+        <div class="list-inline-item">
+          <h5 class="tx-normal tx-rubik title4">TURNS </h5>
+          <h5 class="tx-normal tx-rubik number">0.3</h5>
+        </div>
+    
+    </div>
+
+
+    <div class="chart">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <div flex fxLayout="row">
+      <div fxFlex="50" class="chart">
+        <canvas id="line2"></canvas>
+      </div>
+      <div fxFlex="33" class="chart">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+</div> -->
+
+
+<html>
+
+<body>
+  <div class="content content-fixed">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+      <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+        <div class="header">
+          <h1>Overall Inventory Performance Dashboard</h1>
+        </div>
+      </div>
+
+      <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
+
+        <div class="list-inline-item">
+          <h5 class="tx-normal tx-rubik title1">COGS </h5>
+          <h5 class="tx-normal tx-rubik number">$209,344</h5>
+        </div>
+        <div class="list-inline-item">
+          <h5 class="tx-normal tx-rubik title2">ONHAND </h5>
+          <h5 class="tx-normal tx-rubik number">$384,755</h5>
+        </div>
+        <div class="list-inline-item">
+          <h5 class="tx-normal tx-rubik title3">OPEN ORDER </h5>
+          <h5 class="tx-normal tx-rubik number">$277,179</h5>
+        </div>
+        <div class="list-inline-item">
+          <h5 class="tx-normal tx-rubik title4">TURNS </h5>
+          <h5 class="tx-normal tx-rubik number">0.3</h5>
+        </div>
+
+      </div>
+
+
+    </div><!-- container -->
+
+    <div>
+      <div class="row" style="margin-top: 40px;">
+
+        <div class="col-sm-12 col-lg-6">
+          <div class="mb-3 card ">
+
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                Performance History
+              </div>
+            </div>
+            <div class="chartWrapper">
+              <div class="chartAreaWrapper">
+            <div>
+              <canvas baseChart id="canvas" class="chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+
+
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6">
+          <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                Scrollable Test
+              </div>
+            </div>
+
+            <div class="chartWrapper">
+              <div class="chartAreaWrapper">
+                <canvas id="myChart"></canvas>
+              </div>
+              <canvas id="myChartAxis" height="300" width="0"></canvas>
+            </div>
+
+
+
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="row" style="margin-top: 20px;">
+
+        <div class="col-sm-12 col-lg-6">
+          <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                Inventory Turns
+              </div>
+            </div>
+
+
+            <div class="chartWrapper">
+              <div class="chartAreaWrapper">
+              <canvas baseChart id="line2" class="chart"></canvas>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6">
+          <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                Total COGS vs. Avg Onhand Cost For Past 6 Months
+              </div>
+            </div>
+
+            <div class="chartWrapper">
+              <div class="chartAreaWrapper">
+                <div class="chartAreaWrapperBarChart">
+                <canvas baseChart id="barChart" class="chart"></canvas>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -205,76 +205,75 @@
 
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+ <input type="file" id="fileUpload" />
+<input type="button" id="upload" value="Upload" (click)="Upload()"/>
+<hr />
+<div id="dvExcel"></div> 
 
-<style>
-    .cardList {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-    }
-    /* Column Gap */
-    .cardList > * {
-      box-sizing: border-box;
-    }
-    .cardList > *:not(:last-child) {
-      margin-right: 32px;
-    }
-    /* Item sizing */
-    .cardListItem {
-      flex: 0 1 calc(33.3% - 32px);
-    }
-    /* medium size viewport */
-    @media screen and (max-width: 959px) {
-      /* Column Gap */
-      .cardList > *:not(:last-child) {
-        margin-right: 32px;
-      }
-      /* Item sizing */
-      .cardListItem {
-        flex: 0 1 calc(50% - 32px);
-      }
-    }
-    /* small size viewport */
-    @media screen and (max-width: 599px) {
-      .cardList {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-      }
-      .cardList > *:not(:last-child) {
-        margin-right: unset;
-        margin-bottom: 32px;
-      }
-    }
-
-    .cardInner {
-    display: grid;
-    grid-template-areas: "header header" "side content" "footer footer";
-    grid-template-rows: auto auto auto;
-    grid-row-gap: 16px;
-    grid-column-gap: 16px;
-  }
-
-  .img {
-  width: 100%;
-  margin-bottom: 18%;
-}
-.card-picture {
-  width: 23%;
-  margin-bottom: 2%;
-}
-.container {
-  min-height: 100%;
-  width: 100%;
-}
-.search-form {
-  width: 90%;
-}
+<input type="file" name="file" (change)="selectFile($event)" />
+<button type="submit" (click)="onSubmit()">Upload</button> <br>
 
 
-  </style>
- <div 
+<!-- <div class="content content-fixed">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+      <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+        <div class="header">
+          <h1>Excess Inventory Analysis Dashboard</h1>
+        </div>
+      </div>
+  
+      <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
+        <div>
+          <div class="list-inline-item">
+            <h5 class="tx-normal tx-rubik title1">On HAND </h5>
+            <h5 class="tx-normal tx-rubik number">$380,272</h5>
+          </div>
+          <div class="list-inline-item">
+            <h5 class="tx-normal tx-rubik title2">OPEN ORDER </h5>
+            <h5 class="tx-normal tx-rubik number">$281,391</h5>
+          </div>
+          <div class="list-inline-item">
+            <h5 class="tx-normal tx-rubik title3">THRESHOLD COST</h5>
+            <h5 class="tx-normal tx-rubik number">$758,693</h5>
+          </div>
+          <div class="list-inline-item">
+            <h5 class="tx-normal tx-rubik title4">EXCESS INVENTORY</h5>
+            <h5 class="tx-normal tx-rubik number">0.3</h5>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div flex fxLayout="row" style="margin-top: 30px;">
+        <div fxFlex="50">
+        <canvas id="doughnutChart"></canvas>
+      </div>
+
+      <div fxFlex="50">
+        <canvas id="doughnutChart2"></canvas>
+      </div>
+      </div>
+      <div flex fxLayout="row" style="margin-top: 30px;">
+        <div fxFlex="50">
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <div fxFlex="120">
+        <canvas id="stackedBarChart"></canvas>
+      </div>
+      </div>
+
+    
+  
+  
+  
+  
+  
+  
+  
+    </div>
+  </div> -->
+<!-- <div 
  fxLayout="row wrap" 
  fxLayout.lt-sm="column" 
  fxLayoutGap="32px" 
@@ -306,22 +305,159 @@
    </div>
  </div> </app-card>
 </ng-container>
+</div> -->
+
+
+
+
+<div class="content content-fixed">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div class="header">
+                <h1>Excess Inventory Analysis Dashboard</h1>
+            </div>
+        </div>
+
+        <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
+            <div>
+                <div class="list-inline-item">
+                    <h5 class="tx-normal tx-rubik title1">On HAND </h5>
+                    <h5 class="tx-normal tx-rubik number">$380,272</h5>
+                </div>
+                <div class="list-inline-item">
+                    <h5 class="tx-normal tx-rubik title2">OPEN ORDER </h5>
+                    <h5 class="tx-normal tx-rubik number">$281,391</h5>
+                </div>
+                <div class="list-inline-item">
+                    <h5 class="tx-normal tx-rubik title3">THRESHOLD COST</h5>
+                    <h5 class="tx-normal tx-rubik number">$758,693</h5>
+                </div>
+                <div class="list-inline-item">
+                    <h5 class="tx-normal tx-rubik title4">EXCESS INVENTORY</h5>
+                    <h5 class="tx-normal tx-rubik number">0.3</h5>
+                </div>
+            </div>
+        </div>
+
+
+    </div><!-- container -->
+</div>
+<div class="row" style="margin-top: 40px;">
+
+    <div class="col-sm-12 col-lg-6">
+
+        <div class="mb-3 card">
+
+            <div>
+                <canvas baseChart id="doughnutChart"></canvas>
+            </div>
+
+            <div class="card-footer pd-20">
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">OnHand
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <div class="wd-10 ht-10 rounded-circle bg-primary mg-r-5"></div>
+                            <h5 class="tx-normal tx-rubik mg-b-0">331 <small class="tx-color-04">59.3%</small>
+                            </h5>
+                        </div>
+                    </div><!-- col -->
+                    <div class="col-6">
+                        <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 tx-nowrap mg-b-5">
+                            Open
+                            Order
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <div class="wd-10 ht-10 rounded-circle bg-pink mg-r-5"></div>
+                            <h5 class="tx-normal tx-rubik mg-b-0">227 <small class="tx-color-04">40.7%</small>
+                            </h5>
+                        </div>
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- card-footer -->
+        </div>
+
+    </div>
+
+    <div class="col-sm-12 col-lg-6">
+
+
+        <div class="mb-3 card">
+            <div>
+                <canvas baseChart id="doughnutChart2"></canvas>
+            </div>
+
+            <div class="card-footer pd-20">
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Excess Cost
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <div class="wd-10 ht-10 rounded-circle bg-excess mg-r-5"></div>
+                            <h5 class="tx-normal tx-rubik mg-b-0">331 <small class="tx-color-04">59.3%</small>
+                            </h5>
+                        </div>
+                    </div><!-- col -->
+                    <div class="col-6">
+                        <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 tx-nowrap mg-b-5">
+                           Threshold
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <div class="wd-10 ht-10 rounded-circle bg-thredshold mg-r-5"></div>
+                            <h5 class="tx-normal tx-rubik mg-b-0">227 <small class="tx-color-04">40.7%</small>
+                            </h5>
+                        </div>
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- card-footer -->
+        </div>
+
+    </div>
 </div>
 
+<div class="row" style="margin-top: 40px;">
 
-<mat-form-field class="search-form">
-    <input matInput placeholder="Search Picture" type="text">
-  </mat-form-field>
-  <button button="submit" mat-raised-button color="primary">Search</button>
-  <br>
+    <div class="col-sm-12 col-lg-6">
+        <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                    <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                    Excess Inventory Cost
+                </div>
+            </div>
+
+            <div>
+                <canvas baseChart id="canvas"></canvas>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-6">
+        <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                    <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                    Performance History
+                </div>
+            </div>
+
+            <div>
+                <canvas baseChart id="stackedBarChart"></canvas>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
   
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-    <mat-card class="card-picture" *ngFor="let picture of pictures">
-      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-        <span fxFlex="80%">{{picture.title}}</span>
-        <mat-icon fxFlex="10%">mode_edit</mat-icon>
-        <mat-icon fxFlex="10%">delete</mat-icon>
-      </mat-card-title>
-      <img mat-card-image [src]="picture.img">
-    </mat-card>
-  </div>
+
+</div>

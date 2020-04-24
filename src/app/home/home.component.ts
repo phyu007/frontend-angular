@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   public names = []; public description = []; public data;
   public onHandCost: number[]; public onHandData = [];
   public OpenOrderCost: number[];
-  public cat = []; public recordsets = [];
+  public cat = []; public recordsets = []; files;  title = 'fileUpload'
 
 
   getWidth(): any {
@@ -43,18 +43,41 @@ export class HomeComponent implements OnInit {
   }
 
 
+  selectFile(event){  //grab the event 
+    if(event.target.files.length > 0 ){  //if there are any file
+      const file = event.target.files[0]  //get that file
+      this.files= file ; // assign 
+    }
+  }
+
+  onSubmit(){
+    const formData = new FormData();
+    formData.append('file', this.files);
+
+    this.http.post<any>("http://192.168.1.127:5000/file" || "/api/file", formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    )
+  }
+
+  processFile()
+  {
+    console.log("Find the file. and Read it in python")
+  }
+
+
   public onChange(event): void {  // event will give you full breif of action
 
 
     const newVal = event.target.value;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
+    this.http.post("http://192.168.1.127:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
     
   //  this.http.post("http://10.3.14.214:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
       res => {
 
-       //this.data = res.recordsets[0];
-      //this.size = Object.keys(res.recordsets[0]).length
+    //   this.data = res.recordsets[0];
+    //  this.size = Object.keys(res.recordsets[0]).length
         console.log(this.size);
 
 
@@ -110,8 +133,16 @@ export class HomeComponent implements OnInit {
                   callback: function (value, index, values) {
                     return '$' + value;
                   }
+                },
+                gridLines:{lineWidth:0}
+              }],
+              xAxes : [
+                {
+                  gridLines: {
+                        lineWidth: 0
+                    }
                 }
-              }]
+              ]
             },
             responsive: true,
             legend: { display: true },
@@ -482,10 +513,12 @@ export class HomeComponent implements OnInit {
                 ticks: {
                   beginAtZero: true
                 },
-                stacked: true
+                stacked: true,
+                gridLines:{lineWidth:0}
               }],
               xAxes: [{
                 stacked: true,
+                    gridLines:{lineWidth:0}
               }]
             }
           }
@@ -528,7 +561,8 @@ export class HomeComponent implements OnInit {
 
   }
 
-  Upload() {
+  public Upload() {
+    console.log("this is inside upload")
 
     let SKU_Codes: string[] = []; var SKU_Name; var SKU_Description; var cat; var SKU_Code; var SKU_Cat; var SKU_cost; var excelRows; var onHandrows; var that = this;
     let SKU_Cats: string[] = [];
@@ -618,6 +652,8 @@ export class HomeComponent implements OnInit {
           row.appendChild(headerCell);
 
           // ===============onHand============================== / 
+
+          const months = ['1/12/2018','1/1/2019','1/2/2019','1/3/2019','1/4/2019','1/5/2019','1/6/2019']
           for (var i = 0; i < onHandrows.length; i++) {
 
             var j = 0;
@@ -640,10 +676,12 @@ export class HomeComponent implements OnInit {
 
               var onHandQuantity = quantity[j];
               var onHandQuantity = quantity[j];
+              var month = months[j];
               console.log(onHandQuantity);
+              console.log(month);
               console.log(SKU_CodeonHand);
               
-              that.http.post("http://192.168.1.84:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
+              that.http.post("http://192.168.1.127:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity,month }).subscribe(res => {
 
               //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
                 console.log(res);
@@ -695,7 +733,7 @@ export class HomeComponent implements OnInit {
 
             cell = row.insertCell(-1);
             cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
-            that.http.post("http://192.168.1.84:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+            that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
 
             
           //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
@@ -911,6 +949,195 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    
+    var chart = new Chart('canvas', {
+      // The type of chart we want to create
+      type: 'bar',
+
+
+      // The data for our dataset
+      data: {
+        labels: ["SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006"],   //this.SKUcodes
+        datasets: [{
+
+          label: 'COGSByCategory',
+          backgroundColor: 'rgb(99, 255, 222)',
+          borderColor: 'rgb(256, 99, 132)',
+          data: [112, 130, 150, 200, 208, 230, 245]
+
+        }
+        ]
+      },
+
+
+      options: {
+        responsive: true,
+        scales: {
+          yAxes: [
+            {
+              gridLines: {
+                    lineWidth: 0
+                }
+            }
+          ],
+          xAxes : [
+            {
+              gridLines: {
+                    lineWidth: 0
+                }
+            }
+          ]
+        },
+        legend: { display: false },
+        plugins: {
+          datalabels:
+          {
+            display: false,
+            anchor: 'end',
+            align: 'top',
+          }
+        }
+      }
+
+
+
+    });
+ 
+
+
+    var myChart = new Chart("stackedBarChart", {
+      type: 'horizontalBar',
+      data: {
+        labels: ["SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006"],   //this.SKUcodes
+        datasets: [{
+          label: "Within",
+          backgroundColor: 'rgb(160,219,179)',
+          data: [7000, 5565, 3806, 5925, 5721, 6635, 14080, 9027, 25553]
+        }, {
+          label: "Excess Cost",
+          backgroundColor: 'rgb(240,139,132)',
+          data: [17724, 2565, 1506, 3625, 3721, 4635, 7080, 4027, 12553]
+          //data: [17, 1, 18, 14, 3, 1, 5, 10, 1]
+        },
+        {
+          label: "ThresholdCost",
+          backgroundColor: 'rgb(160,219,179)',
+          data: [8000, 6000, 4000, 500, 572, 6646, 140, 9043, 255],
+          barThickness: 10
+        }]
+      },
+      options: {
+        tooltips: {
+          enabled: false
+        },
+        animation: {
+          duration: 0,
+          onComplete: function () {
+            if (this.data.datasets.length === 2) {
+              var ctx = this.chart.ctx;
+              ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
+              ctx.fillStyle = this.chart.config.options.defaultFontColor;
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'bottom';
+              var firstDataSet = this.data.datasets[0];
+              var secondDataSet = this.data.datasets[1];
+              if (firstDataSet.length === secondDataSet.length) {
+                for (var i = 0; i < firstDataSet.data.length; i++) {
+                  var firstModel = firstDataSet._meta[Object.keys(firstDataSet._meta)[0]].data[i]._model;
+                  var secondModel = secondDataSet._meta[Object.keys(secondDataSet._meta)[0]].data[i]._model;
+                  var total = firstDataSet.data[i] + secondDataSet.data[i];
+                  if (firstDataSet.data[i] >= secondDataSet.data[i]) {
+                    ctx.fillText((firstDataSet.data[i] * 100 / total).toFixed(2) + '%', firstModel.x, firstModel.y + 30);
+                  } else {
+                    ctx.fillText((secondDataSet.data[i] * 100 / total).toFixed(2) + '%', secondModel.x, secondModel.y + 30);
+                  }
+                }
+              }
+            }
+          }
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            stacked: true,
+            gridLines:{lineWidth:0}
+          }],
+          xAxes: [{
+            stacked: true,
+            gridLines:{lineWidth:0}
+          }]
+        }
+      }
+    });
+
+
+
+    var myPieChart = new Chart("doughnutChart", {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [10, 20],
+          backgroundColor: ['rgb(132,202,240)', 'rgb(255,255,0)']
+        }],
+
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+          'OnhandCost',
+          'OpenOrderCost',
+
+        ]
+      },
+      options: {
+        responsive: true,
+        cutoutPercentage:70,
+        legend: { display: false , position: 'bottom' },
+        plugins: {
+          datalabels:
+          {
+            display: true,
+            anchor: 'end',
+            align: 'bottom',
+          }
+        }
+      }
+    });
+
+
+    var myPieChart = new Chart("doughnutChart2", {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [10, 20],
+          backgroundColor: ['rgb(160,219,179)', 'rgb(240,139,132)']
+        }],
+
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+          'Threshold',
+          'ExcessCost',
+
+        ]
+      },
+      options: {
+
+        responsive: true,
+        cutoutPercentage:70,
+        legend: { display: false , position: 'bottom' },
+        plugins: {
+          datalabels:
+          {
+            display: false,
+            anchor: 'end',
+            align: 'bottom',
+          }
+        }
+      }
+    });
+
+   
+
 
     this.PartsService.getAPIData().subscribe((Response) => {
 
@@ -925,55 +1152,6 @@ export class HomeComponent implements OnInit {
       console.log('error during post is ', error)
     })
 
-    var chart = new Chart('canvas', {
-      // The type of chart we want to create
-      type: 'bar',
-
-
-      // The data for our dataset
-      data: {
-        labels: this.tonHandMonths,
-
-        datasets: [{
-
-          label: 'COGSByCategory',
-          backgroundColor: 'rgb(99, 255, 222)',
-          borderColor: 'rgb(256, 99, 132)',
-          data: [0, 10, 5, 2, 20, 30, 45]
-
-        },
-        {
-          label: 'OnhandCostByCategory',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: [0, 10, 5, 2, 20, 30, 45]
-        },
-        {
-          label: 'OpenOrderCostByCategory',
-          backgroundColor: 'rgb(51, 209, 255)',
-          borderColor: 'rgb(256, 99, 132)',
-          data: [0, 10, 5, 2, 20, 30, 45]
-        }
-        ]
-      },
-
-
-      options: {
-        responsive: true,
-        legend: { display: true },
-        plugins: {
-          datalabels:
-          {
-            display: true,
-            anchor: 'end',
-            align: 'top',
-          }
-        }
-      }
-
-
-
-    });
 
 
 

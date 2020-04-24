@@ -1,0 +1,65 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-nav-list a
+{
+  background-color:#0f3675;
+  color: white;
+
+
+}
+
+.mat-button
+{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+}
+
+a:hover {
+  background-color: green;
+}
+
+.mat-sidenav
+{
+  background-color: #0f3675;
+}
+
+.sidenav .mat-toolbar {
+  background: #0f3675;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-toolbar.mat-primary {
+  background:#0f3675;
+  color: #fff;
+}
+
+.spacer{
+  flex:1 1 auto;
+}
+
+.mat-toolbar a{
+  display: inline-block;
+  margin:0 10px;
+  color: white;
+  text-decoration: no;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 15px;
+  opacity:1;
+
+}
+
+
+
+

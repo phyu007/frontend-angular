@@ -1,52 +1,18 @@
-.dropdown-toggle
-{
-    cursor: pointer;
-}
-
-
-.navbar-expand-md .navbar-nav {
-    flex-direction: row;
-    margin-left: 30px;
-}
-
-
-.navbar-menu-wrapper {
-    padding: 0 30px;
-}
-
-.navbar-menu-wrapper {
-    width: auto;
-    padding: 0 25px;
-    position: relative;
-    top: auto;
-    left: auto;
-    bottom: auto;
-    background-color: transparent;
-    overflow: visible;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-ordinal-group: 3;
-    order: 2;
-    -webkit-transform: none;
-    transform: none;
-    z-index: auto;
-    -webkit-box-flex: 1;
-    flex: 1;
-    transition: all 0.4s;
-}
-
-
-.navbar-menu-wrapper
-{
-    height: 55px;
-    padding: 0 15px 0 400px;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
+.sidenav-container {
+    height: 100%;
+  }
   
-}
+  .sidenav {
+    width: 200px;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  

@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs";
 import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import { HttpClient } from '@angular/common/http';
+import { SKUEventArgs } from './main-nav/main-nav.component';
 
 
 
@@ -14,6 +15,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PartsService {
 
+ $isChosen = new EventEmitter();
+ sku : SKUEventArgs = {
+    category : ""
+ };
+
+ choose(category){
+   console.log("Part Service");
+   this.sku.category = category;
+   this.$isChosen.emit(this.sku);
+ }
+
+  sharedData:string;
+
+  setData(value) {      
+    this.sharedData = value;  
+  }  
+  
+  getData() {  
+    return this.sharedData;
+  } 
+
   constructor(private http: HttpClient) { }
 
  
@@ -22,6 +44,11 @@ export class PartsService {
   code=[]; name = []; description= []; data; fQuantity = []; fDdata = [] ; fSKUCode = []; onFData =[]; cat = [];
    tonHand : number[] = []; tonHandMonth = []; onHandData = [];
    openOrderCost: number[] =[];; cate = []; ans ; 
+
+   newVal ;
+
+
+   catData : any;
 
 
   getAPIData(){
@@ -38,9 +65,11 @@ export class PartsService {
 
    getAllParts()
   {
-    const url = 'http://172.20.10.12:5000' || 'http://localhost:5000'
+ //   const url = 'http://172.20.10.12:5000' || 'http://localhost:5000'
 
- //   const url = 'http://192.168.1.84:5000/' || 'http://localhost:5000/'
+   // const url = 'http://192.168.1.84:5000/' || 'http://localhost:5000/'
+    
+    const url = 'http://192.168.1.127:5000/' || 'http://localhost:5000/'
    // const url = 'http://10.3.14.214:5000/' || 'http://localhost:5000/'
   //  const url = 'http://localhost:5000/'
     fetch(url, {
@@ -91,9 +120,10 @@ export class PartsService {
   getDemandForecast()
   {
 
-    const url = 'http://172.20.10.12:5000/demand' || 'http://localhost:5000/demand'
+ //   const url = 'http://172.20.10.12:5000/demand' || 'http://localhost:5000/demand'
 
-//    const url = 'http://192.168.1.84:5000/demand' || 'http://localhost:5000/demand'
+  //  const url = 'http://192.168.1.84:5000/demand' || 'http://localhost:5000/demand'
+    const url = 'http://192.168.1.127:5000/demand' || 'http://localhost:5000/demand'
   //  const url = 'http://10.3.14.214:5000/demand' || 'http://localhost:5000/demand'
   //  const url = 'http://localhost:5000/demand'
     fetch(url, {
@@ -137,11 +167,47 @@ export class PartsService {
      
   }
 
+
+
+  getChosenCategory(category:any): Observable<any>
+  {
+
+     this.newVal = category;
+    console.log(this.newVal);
+
+   
+  // return this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  });
+
+  return this.http.post("http://192.168.1.127:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  });
+
+
+    
+  }
+
+
+  postChosenCategory()
+  {
+   // this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  }).subscribe(
+      this.http.post("http://192.168.1.127:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  }).subscribe(
+
+      res => {  
+        
+  
+        this.catData = res;
+        console.log(this.catData)});
+
+        console.log(this.catData);
+  }
+
+ 
+
   getCategory()
   {
 
-    const url = 'http://172.20.10.12:5000/getCategory' || 'http://localhost:5000/getCategory'
-//  const url = 'http://192.168.1.84:5000/getCategory' || 'http://localhost:5000/getCategory'
+ //   const url = 'http://172.20.10.12:5000/getCategory' || 'http://localhost:5000/getCategory'
+ // const url = 'http://192.168.1.84:5000/getCategory' || 'http://localhost:5000/getCategory'
+ const url = 'http://192.168.1.127:5000/getCategory' || 'http://localhost:5000/getCategory'
+
   //  const url = 'http://10.3.14.214:5000/getCategory' || 'http://localhost:5000/getCategory'
      
    //const url = 'http://10.3.14.214:8100/getCategory'
@@ -185,8 +251,10 @@ export class PartsService {
   getOnHandCost()
   {
     
-    const url = 'http://172.20.10.12:5000/onHandCost' || 'http://localhost:5000/onHandCost'
-//   const url = 'http://192.168.1.84:5000/onHandCost' || 'http://localhost:5000/onHandCost'
+ //   const url = 'http://172.20.10.12:5000/onHandCost' || 'http://localhost:5000/onHandCost'
+ //  const url = 'http://192.168.1.84:5000/onHandCost' || 'http://localhost:5000/onHandCost'
+   const url = 'http://192.168.1.127:5000/onHandCost' || 'http://localhost:5000/onHandCost'
+
   //  const url = 'http://10.3.14.214:5000/onHandCost' || 'http://localhost:5000/onHandCost'
     //const url = 'http://localhost:5000/onHandCost'
     fetch(url, {

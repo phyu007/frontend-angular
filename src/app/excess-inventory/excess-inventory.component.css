@@ -97,9 +97,59 @@
     padding-left: 15px;
 }
 
+.content
+{
+    width: 100%;
+}
 
 
+.chartWrapper {/* w w w. j a v  a2 s.co  m*/
+    position: relative;
+ }
+ .chartWrapper > canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events:none;
+ }
+ .chartAreaWrapper {
+    height: 350px;
+    overflow-y: scroll;
+ }
 
+ 
+ .chartAreaWrapperBarChart {
+    height: 1000px;
+ }
+
+
+ .chartAreaStackedBarWrapper {
+    height: 200px;
+    overflow-y: scroll;
+ }
+
+
+ .chartAreaCanvasWrapper {
+    width: 650px;
+    
+ }
+
+ .chartAreaWrappercanvasChart {
+    width: 2000px;
+    overflow-x: scroll;
+ }
+
+ 
+ #canvas
+ {
+ 
+    max-height: 1000px;
+    max-width: 1000px;
+    min-height: 100px;
+    min-width: 100px;
+    
+    
+ }
 
 .content-fixed {
     margin-top: 0px;
@@ -296,17 +346,7 @@ h5, .h5 {
 }
 
 
-#canvas
-{
 
-    max-height: 270px;
-    max-width: 650px;
-    min-height: 100px;
-    min-width: 100px; 
-    height: 100%;
-  
-   
-}
 
 .canvas-area
 {
@@ -317,12 +357,14 @@ h5, .h5 {
 
 #barChart
 {
-    max-height: 330px;
+    max-height: 1000px;
     max-width: 650px;
     min-height: 100px;
     min-width: 100px;
+ 
 
 }
+
 
 #line2
 {
@@ -332,12 +374,11 @@ h5, .h5 {
 
 #stackedBarChart
 {
-    max-height: 330px;
+    max-height: 1000px;
     max-width: 650px;
     min-height: 100px;
     min-width: 100px;
 }
-
 
 
 

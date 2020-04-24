@@ -1,4 +1,35 @@
-<div class="row">
+
+
+<div class="content content-fixed">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+      <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+        <div class="header">
+          <h1>SKU Performance Analysis Dashboard</h1>
+        </div>
+      </div>
+  
+      <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
+        <div>
+          <div class="list-inline-item">
+            <h5 class="tx-normal tx-rubik title1">SKU Code: </h5>
+            <h5 class="tx-normal tx-rubik number">SKU1003</h5>
+          </div>
+          <div class="list-inline-item">
+            <h5 class="tx-normal tx-rubik title2">SKU Name: </h5>
+            <h5 class="tx-normal tx-rubik number">Name-1003</h5>
+          </div>
+          <div class="list-inline-item">
+            <h5 class="tx-normal tx-rubik title3">Classification</h5>
+            <h5 class="tx-normal tx-rubik number">ASX</h5>
+          </div>
+          
+        </div>
+      </div>
+   
+  
+    </div><!-- container -->
+  </div>
+<div class="row" style="margin-top: 40px;">
 
     <div class="col-sm-12 col-lg-6">
         <div class="mb-3 card">
@@ -6,12 +37,12 @@
             <div class="card-header-tab card-header">
                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                     <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                    Dashboard C: SKU Performance Analysis
+                    Performance History
                 </div>
             </div>
 
-            <div style="width: 500px; height: 355px; float: right;">
-                <canvas baseChart id="line" class="chart"></canvas>
+            <div>
+                <canvas baseChart id="mixedChart2" class="chart"></canvas>
             </div>
 
 
@@ -36,4 +67,28 @@
         </div>
     </div>
 </div>
+
+<div class="row" style="margin-top: 40px;">
+
+    <div class="col-sm-12 col-lg-213">
+        <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                    <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                    Performance History
+                </div>
+            </div>
+
+            <div>
+                <canvas baseChart id="line"></canvas>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>
+
 
