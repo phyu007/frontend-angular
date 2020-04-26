@@ -1332,8 +1332,14 @@ p {
 
 
  .chartAreaWrapperBarChart {
-    height: 1000px;
-   // overflow-y: scroll;
+    width: 600px;
+    overflow-x: scroll;
+ }
+
+ .chartArreaWrapper2
+ {
+    width: 1200px;
+ 
  }
 
  #myChart{

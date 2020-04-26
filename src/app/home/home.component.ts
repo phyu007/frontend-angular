@@ -653,20 +653,42 @@ export class HomeComponent implements OnInit {
 
           // ===============onHand============================== / 
 
-          const months = ['1/12/2018','1/1/2019','1/2/2019','1/3/2019','1/4/2019','1/5/2019','1/6/2019']
+          const months = ['1/1/2018','2/1/2018','3/1/2018','4/1/2018','5/1/2018','6/1/2018','7/1/2018','8/1/2018','9/1/2018','10/1/2018','11/1/2018','12/1/2018','1/1/2019','2/1/2019','3/1/2019','4/1/2019','5/1/2019','6/1/2019','7/1/2019','8/1/2019','9/1/2019','10/1/2019','11/11/2019','12/1/2019']
           for (var i = 0; i < onHandrows.length; i++) {
 
             var j = 0;
             SKU_CodesonHand[i] = JSON.stringify(onHandrows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
 
             SKU_CodeonHand = SKU_CodesonHand[i]
-            quantity[j] = onHandrows[i].Dec_2018;
-            quantity[j + 1] = onHandrows[i].Jan_2019;
-            quantity[j + 2] = onHandrows[i].Feb_2019;
-            quantity[j + 3] = onHandrows[i].Mar_2019;
-            quantity[j + 4] = onHandrows[i].Apr_2019;
-            quantity[j + 5] = onHandrows[i].May_2019;
-            quantity[j + 6] = onHandrows[i].Jun_2019;
+            quantity[j]=onHandrows[i].Jan_18
+            quantity[j+1]=onHandrows[i].Feb_18
+            quantity[j+2]=onHandrows[i].Mar_18
+            quantity[j+3]=onHandrows[i].Apr_18
+            quantity[j+4]=onHandrows[i].May_18
+            quantity[j+5]=onHandrows[i].Jun_18
+            quantity[j+6]=onHandrows[i].Jul_18
+            quantity[j+7]=onHandrows[i].Aug_18
+            quantity[j+8]=onHandrows[i].Sep_18
+            quantity[j+9]=onHandrows[i].Oct_18
+            quantity[j+10]=onHandrows[i].Nov_18
+            quantity[j+11]=onHandrows[i].Dec_18
+            quantity[j+12]=onHandrows[i].Jan_19
+            quantity[j+13]=onHandrows[i].Feb_19
+            quantity[j+14]=onHandrows[i].Mar_19
+            quantity[j+15]=onHandrows[i].Apr_19
+            quantity[j+16]=onHandrows[i].May_19
+            quantity[j+17]=onHandrows[i].Jun_19
+            quantity[j+18]=onHandrows[i].Jul_19
+            quantity[j+19]=onHandrows[i].Aug_19
+            quantity[j+20]=onHandrows[i].Sep_19
+            quantity[j+21]=onHandrows[i].Oct_19
+            quantity[j+22]=onHandrows[i].Nov_19
+            quantity[j+23]=onHandrows[i].Dec_19
+
+
+            
+
+            
 
             console.log(SKU_CodesonHand);
             console.log(quantity);

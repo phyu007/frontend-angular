@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import { HttpClient } from '@angular/common/http';
 import { SKUEventArgs } from './main-nav/main-nav.component';
-
+import { SKUEventArgs2} from './excess-inventory/excess-inventory.component';
 
 
 
@@ -16,14 +16,30 @@ import { SKUEventArgs } from './main-nav/main-nav.component';
 export class PartsService {
 
  $isChosen = new EventEmitter();
+ $isTimeStamp = new EventEmitter();
  sku : SKUEventArgs = {
     category : ""
  };
+
+ time: SKUEventArgs2 = {
+   newVal : 24
+ }
+
+
+
 
  choose(category){
    console.log("Part Service");
    this.sku.category = category;
    this.$isChosen.emit(this.sku);
+   
+ }
+
+ timestamp(newVal)
+ {
+  console.log("Part Service for timestamp");
+  this.time.newVal = newVal;
+  this.$isTimeStamp.emit(this.time);
  }
 
   sharedData:string;
@@ -179,6 +195,24 @@ export class PartsService {
   // return this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  });
 
   return this.http.post("http://192.168.1.127:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  });
+
+
+    
+  }
+
+
+  
+  getTimeStamp(category:any,time:any): Observable<any>
+  {
+
+     this.newVal = category;
+     this.time = time;
+    console.log(this.time);
+
+   
+  // return this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  });
+
+  return this.http.post("http://192.168.1.127:5000/OnHandLoadedCostByTimeStamp" || "/api/OnHandLoadedCostByTimeStamp", {  newVal : this.newVal, time: this.time  });
 
 
     

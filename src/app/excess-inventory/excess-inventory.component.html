@@ -151,15 +151,15 @@
                                     <div class="d-sm-flex justify-content-between bd-b-0 pd-t-0 pd-b-0">
                                         <div class="mg-b-10 mg-sm-b-0">
                                             <!-- <p class="tx-12 tx-color-03 mg-b-0">Category Dropdown</p> -->
-                                            <!-- <mat-form-field>
-                                                <mat-label>Category</mat-label>
+                                            <mat-form-field>
+                                                <mat-label>Past</mat-label>
                                                 <select matNativeControl required ngModel name="category" id="category"
                                                     class="form-control" (change)="onChange($event)">
-                                                    <option *ngFor="let c of cat">
+                                                    <option *ngFor="let c of timeStamp">
                                                         {{c}}
                                                     </option>
                                                 </select>
-                                            </mat-form-field> -->
+                                            </mat-form-field>
                                         </div>
 
                                     </div>
@@ -169,9 +169,11 @@
 
                                 </div>
                                 <div class="chartWrapper">
+                                    <div class="canvasHead"> 
                                     <div class="chartAreaCanvasWrapper">
                                         <div class="chartAreaWrapperChart">
                                 <canvas id="canvas"></canvas>
+                            </div>
                             </div>
                         </div>
                     </div>

@@ -905,13 +905,16 @@ export class OverallComponent implements OnInit {
 
      
 
-   var ctx = document.getElementById("myChart")  as HTMLCanvasElement;
-
-    var myBarChart = new Chart(ctx, {
+ 
       
-        type: 'horizontalBar',
+
+      var ctx = document.getElementById("myChart")  as HTMLCanvasElement;;
+
+      var myBarChart = new Chart(ctx, {
+      
+        type: 'line',
         data: {
-          labels:  ["Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18"],
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
           datasets: [
             {
               label: 'TotalCOGS',
@@ -933,9 +936,9 @@ export class OverallComponent implements OnInit {
               var sourceCanvas = this.chart.ctx.canvas;
               var copyWidth = this.scale.xScalePaddingLeft - 5;
               var copyHeight = this.scale.endPoint + 5;
-              var targetCtx= document.getElementById("myChartAxis") as HTMLCanvasElement;;
-         //     targetCtx.canvas.width = copyWidth;
-         //     targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
+              var targetCtx= <HTMLCanvasElement>document.getElementById("myChartAxis");
+           //  targetCtx.canvas.width = copyWidth;
+            //  targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
       
             }
           }
@@ -944,6 +947,7 @@ export class OverallComponent implements OnInit {
       
       
       });
+      
 
           
         var myBarChart = new Chart("barChart", {
