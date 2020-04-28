@@ -561,15 +561,267 @@ export class HomeComponent implements OnInit {
 
   }
 
+  // public Upload() {
+  //   console.log("this is inside upload")
+
+  //   let SKU_Codes: string[] = []; var SKU_Name; var SKU_Description; var cat; var SKU_Code; var SKU_Cat; var SKU_cost; var excelRows; var onHandrows; var that = this;
+  //   let SKU_Cats: string[] = [];
+  //   let SKU_Costs: any[] = []; let quantity: any[] = [];
+
+  //   let SKU_CodesonHand: string[] = [];
+  //   var SKU_CodeonHand;
+
+  //   let onHandQuantitysDec: any[] = [];
+
+  //   let onHandQuantitysJan: any[] = [];
+
+  //   let onHandQuantitysFeb: any[] = [];
+
+  //   let onHandQuantitysMar: any[] = [];
+
+  //   let onHandQuantitysApr: any[] = [];
+
+  //   let onHandQuantitysMay: any[] = [];
+
+  //   let onHandQuantitysJun: any[] = [];
+  //   //Reference the FileUpload element.
+  //   var fileUpload = document.getElementById("fileUpload");
+
+  //   let BR = (<HTMLInputElement>document.getElementById("fileUpload")).files[0];
+
+  //   let inputValue = (document.getElementById("fileUpload") as HTMLInputElement).value;
+
+
+  //   //Validate whether File is valid Excel file.
+  //   var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+
+
+
+  //   // if (regex.test(inputValue.toLowerCase())) {
+  //   if (typeof (FileReader) != "undefined") {
+  //     var reader = new FileReader();
+
+  //     //For browsers other than IE 
+  //     if (reader.readAsBinaryString) {
+  //       reader.onload = function (e) {
+
+
+  //         //Read the excel file data.
+
+  //         var workbook = XLSX.read(e.target.result, {
+  //           type: 'binary'
+  //         });
+
+  //         //Fetch the name of First Sheet.
+  //         var firstSheet = workbook.SheetNames[0];
+
+  //         var onHandSheet = workbook.SheetNames[3]; //Inventory Level History
+
+
+
+  //         console.log("firstsheetname" + firstSheet);
+
+  //         console.log("test sheet name is" + onHandSheet);
+  //         //Read all rows from First Sheet into an JSON array.
+  //         //set row 6 as headers
+  //         excelRows = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheet], { range: 5 });
+
+  //         onHandrows = XLSX.utils.sheet_to_json(workbook.Sheets[onHandSheet], { range: 5 }); //onHand
+
+  //         console.log("inside excel export" + JSON.stringify(excelRows));
+
+  //         //Create a HTML table element
+
+  //         var table = document.createElement("table");
+  //         table.border = "1";
+
+  //         //Add the header row
+  //         var row = table.insertRow(-1);
+
+  //         //Add the header cells
+  //         var headerCell = document.createElement("TH");
+  //         headerCell.innerHTML = "SKU Code";
+  //         row.appendChild(headerCell);
+
+  //         headerCell = document.createElement("TH");
+  //         headerCell.innerHTML = "SKU Name";
+  //         row.appendChild(headerCell);
+
+  //         headerCell = document.createElement("TH");
+  //         headerCell.innerHTML = "SKU Description";
+  //         row.appendChild(headerCell);
+
+  //         // ===============onHand============================== / 
+
+  //         const months = ['1/1/2018','2/1/2018','3/1/2018','4/1/2018','5/1/2018','6/1/2018','7/1/2018','8/1/2018','9/1/2018','10/1/2018','11/1/2018','12/1/2018','1/1/2019','2/1/2019','3/1/2019','4/1/2019','5/1/2019','6/1/2019','7/1/2019','8/1/2019','9/1/2019','10/1/2019','11/11/2019','12/1/2019']
+  //         for (var i = 0; i < onHandrows.length; i++) {
+
+  //           var j = 0;
+  //           SKU_CodesonHand[i] = JSON.stringify(onHandrows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+
+  //           SKU_CodeonHand = SKU_CodesonHand[i]
+  //           quantity[j]=onHandrows[i].Jan_18
+  //           quantity[j+1]=onHandrows[i].Feb_18
+  //           quantity[j+2]=onHandrows[i].Mar_18
+  //           quantity[j+3]=onHandrows[i].Apr_18
+  //           quantity[j+4]=onHandrows[i].May_18
+  //           quantity[j+5]=onHandrows[i].Jun_18
+  //           quantity[j+6]=onHandrows[i].Jul_18
+  //           quantity[j+7]=onHandrows[i].Aug_18
+  //           quantity[j+8]=onHandrows[i].Sep_18
+  //           quantity[j+9]=onHandrows[i].Oct_18
+  //           quantity[j+10]=onHandrows[i].Nov_18
+  //           quantity[j+11]=onHandrows[i].Dec_18
+  //           quantity[j+12]=onHandrows[i].Jan_19
+  //           quantity[j+13]=onHandrows[i].Feb_19
+  //           quantity[j+14]=onHandrows[i].Mar_19
+  //           quantity[j+15]=onHandrows[i].Apr_19
+  //           quantity[j+16]=onHandrows[i].May_19
+  //           quantity[j+17]=onHandrows[i].Jun_19
+  //           quantity[j+18]=onHandrows[i].Jul_19
+  //           quantity[j+19]=onHandrows[i].Aug_19
+  //           quantity[j+20]=onHandrows[i].Sep_19
+  //           quantity[j+21]=onHandrows[i].Oct_19
+  //           quantity[j+22]=onHandrows[i].Nov_19
+  //           quantity[j+23]=onHandrows[i].Dec_19
+
+
+            
+
+            
+
+  //           console.log(SKU_CodesonHand);
+  //           console.log(quantity);
+
+
+  //           for (var j = 0; j < quantity.length; j++) {
+
+  //             var onHandQuantity = quantity[j];
+  //             var onHandQuantity = quantity[j];
+  //             var month = months[j];
+  //             console.log(onHandQuantity);
+  //             console.log(month);
+  //             console.log(SKU_CodeonHand);
+              
+  //             that.http.post("http://192.168.1.127:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity,month }).subscribe(res => {
+
+  //             //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
+  //               console.log(res);
+  //             })
+  //           }
+
+  //         }
+
+
+  //         // ===============onHand============================== / 
+
+
+
+  //         //Add the data rows from Excel file.
+  //         for (var i = 0; i < excelRows.length; i++) {
+  //           //Add the data row.
+
+  //           var row = table.insertRow(-1);
+
+  //           console.log(JSON.stringify(excelRows[i]));
+
+
+  //           //console.log(JSON.stringify(excelRows[i]['1']));
+  //           // console.log(JSON.stringify(excelRows[i]['4']));
+
+
+  //           SKU_Codes[i] = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+  //           SKU_Cats[i] = JSON.stringify(excelRows[i].Category).replace(/^"(.*)"$/, '$1');
+  //           SKU_Costs[i] = excelRows[i].Unit_Cost;
+
+  //           console.log(SKU_Costs);
+
+
+
+  //           SKU_Code = SKU_Codes[i];
+  //           SKU_Cat = SKU_Cats[i];
+  //           SKU_cost = SKU_Costs[i];
+
+  //           console.log(SKU_cost);
+
+  //           //Add the data cells.
+  //           var cell = row.insertCell(-1);
+  //           cell.innerHTML = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+
+
+
+  //           cell = row.insertCell(-1);
+  //           cell.innerHTML = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+
+  //           cell = row.insertCell(-1);
+  //           cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
+  //           that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+
+            
+  //         //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+  //             console.log(res);
+  //           })
+  //           // HomeComponent.prototype.http.post("/api/insertData", { SKU_Code }).subscribe(res => {
+  //           //   console.log(res);
+  //           //  })
+
+
+  //         }
+
+  //         var dvExcel = document.getElementById("dvExcel");
+  //         dvExcel.innerHTML = "";
+  //         dvExcel.appendChild(table);
+
+
+  //       };
+
+  //       //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+
+  //       //   console.log(SKU_Code);
+
+  //       //    this.http.post("/api/insertData", { SKU_Code }).subscribe(res => {
+  //       //  console.log(res);
+  //       // })
+
+  //       reader.readAsBinaryString(BR);
+  //     } else {
+  //       //for IE browsers 
+  //       // reader.onload = function(e)
+  //       // {
+  //       //   var data = "";
+  //       //   var bytes = new Uint8Array(e.target.result);
+  //       //   for( var i =0 ; i < bytes.byteLength;i++)
+  //       //   {
+  //       //     data += String.fromCharCode(bytes[i]);
+  //       //   }
+  //       //   ProcessExcel(data);
+  //       // };
+  //       // reader.readAsArrayBuffer(BR);
+  //     }
+
+  //   }
+  //   else {
+  //     alert("This browser does not support HTML5");
+  //   }
+
+
+
+  //   //}
+  //   // else {
+  //   //   alert("Please upload a valid Excel file.")
+  //   // }
+
+  // }
+
   public Upload() {
     console.log("this is inside upload")
 
-    let SKU_Codes: string[] = []; var SKU_Name; var SKU_Description; var cat; var SKU_Code; var SKU_Cat; var SKU_cost; var excelRows; var onHandrows; var that = this;
+    let SKU_Codes: string[] = []; var SKU_Names: string[] = []; var SKU_Name; var SKU_Description; var cat; var SKU_Code; var SKU_Cat; var SKU_cost; var excelRows; var onHandrows; var that = this;
     let SKU_Cats: string[] = [];
     let SKU_Costs: any[] = []; let quantity: any[] = [];
 
-    let SKU_CodesonHand: string[] = [];
-    let SKU_NamesonHand: string[] = [];
+    let SKU_CodesonHand: string[] = []; let  SKU_NamesonHand: string[] = [];
     var SKU_CodeonHand; var SKU_NameonHand;
 
     let onHandQuantitysDec: any[] = [];
@@ -653,143 +905,109 @@ export class HomeComponent implements OnInit {
           row.appendChild(headerCell);
 
 
-         // =========================================FullItemList=============================================//
-           //Add the data rows from Excel file.
-           for (var i = 0; i < excelRows.length; i++) {
-            //Add the data row.
-
-            let ItemID = i+1 ; 
-            let SKU_Names = [];
-
-            var row = table.insertRow(-1);
-
-            console.log(JSON.stringify(excelRows[i]));
-
-
-            //console.log(JSON.stringify(excelRows[i]['1']));
-            // console.log(JSON.stringify(excelRows[i]['4']));
-
-
-            SKU_Codes[i] = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
-            SKU_Names[i] = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
-
-            SKU_Cats[i] = JSON.stringify(excelRows[i].Category).replace(/^"(.*)"$/, '$1');
-            SKU_Costs[i] = excelRows[i].Unit_Cost;
-
-            console.log(SKU_Costs);
+          //==================FullItemList=========================//
 
 
 
-            let ItemName = SKU_Codes[i];
-            let ShortName = SKU_Names[i];
-            SKU_Cat = SKU_Cats[i];
-
-            
-            SKU_cost = SKU_Costs[i];
-
-            console.log(SKU_cost);
-
-            //Add the data cells.
-            var cell = row.insertCell(-1);
-            cell.innerHTML = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
-
-
-
-            cell = row.insertCell(-1);
-            cell.innerHTML = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
-
-            cell = row.insertCell(-1);
-            cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
-
-
-            // that.http.post("http://192.168.1.127:5000/getCategoryIDcpps2" || "/api/getCategoryIDcpps2", { SKU_Cat }).subscribe(res => {
-
-          
-                  
-
-            //       //  SKU_Cat  = res.recordsets[0].recordset.CategoryID;
-            //        SKU_Cat = res.recordsets[0];
-            //         console.log(SKU_Cat);
-                  
-              
-
-            //       // that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-
-            
-            //       //   //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-            //       //       console.log(res);
-            //       //     })
-          
-
-
-            //     })
-
-            that.PartsService.getCategoryCpps(SKU_Cat).subscribe(
-
-              res => {    
+               //Add the data rows from Excel file.
+               for (var i = 0; i < excelRows.length; i++) {
+                //Add the data row.
+                let ItemID = i+1 ; 
+                var row = table.insertRow(-1);
+    
+                console.log(JSON.stringify(excelRows[i]));
+    
+    
+                //console.log(JSON.stringify(excelRows[i]['1']));
+                // console.log(JSON.stringify(excelRows[i]['4']));
+    
+    
+                SKU_Codes[i] = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+               SKU_Names[i] = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+                SKU_Cats[i] = JSON.stringify(excelRows[i].Category).replace(/^"(.*)"$/, '$1');
+                SKU_Costs[i] = excelRows[i].Unit_Cost;
+    
+                console.log(SKU_Costs);
+    
+    
+    
+                let ItemName = SKU_Codes[i];
+                SKU_Cat = SKU_Cats[i];
+                SKU_cost = SKU_Costs[i];
+                let ShortName = SKU_Names[i];
+    
+                console.log(SKU_cost);
+    
+                //Add the data cells.
+                var cell = row.insertCell(-1);
+                cell.innerHTML = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+    
+    
+    
+                cell = row.insertCell(-1);
+                cell.innerHTML = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+    
+                cell = row.insertCell(-1);
+                cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
+             //================================Write to Full item list======================/
+                that.PartsService.getCategoryCpps(SKU_Cat).subscribe(
+    
+                  res => {    
+                    
+                    let categoryIDs = [];
+                    console.log(res);
+    
+                    categoryIDs = res.recordsets[0];
+                    let size = Object.keys(res.recordsets[0]).length
+    
+                    console.log(size)
+                    console.log(categoryIDs[0].CategoryID)
+    
+                    let CategoryID = categoryIDs[0].CategoryID;
+    
+                          that.http.post("http://192.168.1.127:5000/insertDatacpps2" || "/api/insertDatacpps2", { ItemID,ItemName,ShortName,CategoryID }).subscribe(res => {
+    
                 
-                let categoryIDs = [];
-                console.log(res);
+                        //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+                            console.log(res);
+                          })
+    
+    
+    
+    
+    
+                  });
+   
+                // HomeComponent.prototype.http.post("/api/insertData", { SKU_Code }).subscribe(res => {
+                //   console.log(res);
+                //  })
+    
+    
+              }
 
-                categoryIDs = res.recordsets[0];
-                let size = Object.keys(res.recordsets[0]).length
+ //================================Write to Full item list======================/
 
-                console.log(size)
-                console.log(categoryIDs[0].CategoryID)
-
-                let CategoryID = categoryIDs[0].CategoryID;
-
-                      that.http.post("http://192.168.1.127:5000/insertDatacpps2" || "/api/insertDatacpps2", { ItemID,ItemName,ShortName,CategoryID }).subscribe(res => {
-
-            
-                    //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-                        console.log(res);
-                      })
-
-
-
-
-
-              });
-
-                    //     that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-
-            
-                    // //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-                    //     console.log(res);
-                    //   })
-
-                
-
-
-          //   that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-
-            
-          // //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-          //     console.log(res);
-          //   })
-
-
-            
-            // HomeComponent.prototype.http.post("/api/insertData", { SKU_Code }).subscribe(res => {
-            //   console.log(res);
-            //  })
-
-
-          }
 
           // ===============onHand============================== / 
 
-          
-          const months = ['1/1/2018','2/1/2018','3/1/2018','4/1/2018','5/1/2018','6/1/2018','7/1/2018','8/1/2018','9/1/2018','10/1/2018','11/1/2018','12/1/2018','1/1/2019','2/1/2019','3/1/2019','4/1/2019','5/1/2019','6/1/2019','7/1/2019','8/1/2019','9/1/2019','10/1/2019','11/11/2019','12/1/2019']
-          var ItemID = 0 ; 
+         
+         
+          const months = ['1/1/2018','2/1/2018','3/1/2018','4/1/2018','5/1/2018','6/1/2018','7/1/2018','8/1/2018','9/1/2018','10/1/2018','11/1/2018','12/1/2018','1/1/2019','2/1/2019','3/1/2019','4/1/2019','5/1/2019','6/1/2019','7/1/2019','8/1/2019','9/1/2019','10/1/2019','11/11/2019','12/1/2019'];
+         
+         
+          const warehouses = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];   var ItemID = 0 ;   
           for (var i = 0; i < onHandrows.length; i++) {
-
             ItemID += 1; 
+            var j = 0;
+
+
             SKU_CodesonHand[i] = JSON.stringify(onHandrows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
             SKU_NamesonHand[i] =  JSON.stringify(onHandrows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+
             SKU_CodeonHand = SKU_CodesonHand[i]
             SKU_NameonHand = SKU_NamesonHand[i]
+
+
             quantity[j]=onHandrows[i].Jan_18
             quantity[j+1]=onHandrows[i].Feb_18
             quantity[j+2]=onHandrows[i].Mar_18
@@ -820,34 +1038,24 @@ export class HomeComponent implements OnInit {
 
             
 
-            console.log(SKU_CodesonHand);
-            console.log(quantity);
+            //console.log(SKU_CodesonHand);
+           // console.log(quantity);
 
 
             for (var j = 0; j < quantity.length; j++) {
 
-
-
-              var onHandQuantity = quantity[j];
               var onHandQuantity = quantity[j];
               var month = months[j];
-           //   console.log(onHandQuantity);
-           //   console.log(month);
-           //   console.log(SKU_CodeonHand);
-              let WarehouseID = 1 ;
+              let WarehouseID = warehouses[j];
+              console.log(onHandQuantity);
+              console.log(month);
+              console.log(SKU_CodeonHand);
+              
+              that.http.post("http://192.168.1.127:5000/OnhandMonthEndCpps2" || "/api/OnhandMonthEndCpps2", {WarehouseID,ItemID, SKU_CodeonHand,onHandQuantity,month }).subscribe(res => {
 
-              that.PartsService.getItemIDCpps(SKU_CodeonHand).subscribe(
-
-                res => {  
-
-                  console.log(res);
-                });
-             // that.http.post("http://192.168.1.127:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity,month }).subscribe(res => {
-              // that.http.post("http://192.168.1.127:5000/OnhandMonthEndCpps2" || "/api/OnhandMonthEndCpps2", { WarehouseID,ItemID,SKU_CodeonHand,month, onHandQuantity }).subscribe(res => {
-
-              // //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
-              //   console.log(res);
-              // })
+              //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
+                console.log(res);
+              })
             }
 
           }
@@ -857,7 +1065,7 @@ export class HomeComponent implements OnInit {
 
 
 
-        
+     
 
           var dvExcel = document.getElementById("dvExcel");
           dvExcel.innerHTML = "";
@@ -1359,11 +1567,6 @@ export class HomeComponent implements OnInit {
 
 
 }
-
-
-
-
-
 
 
 
