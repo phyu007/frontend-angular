@@ -569,7 +569,8 @@ export class HomeComponent implements OnInit {
     let SKU_Costs: any[] = []; let quantity: any[] = [];
 
     let SKU_CodesonHand: string[] = [];
-    var SKU_CodeonHand;
+    let SKU_NamesonHand: string[] = [];
+    var SKU_CodeonHand; var SKU_NameonHand;
 
     let onHandQuantitysDec: any[] = [];
 
@@ -651,15 +652,144 @@ export class HomeComponent implements OnInit {
           headerCell.innerHTML = "SKU Description";
           row.appendChild(headerCell);
 
+
+         // =========================================FullItemList=============================================//
+           //Add the data rows from Excel file.
+           for (var i = 0; i < excelRows.length; i++) {
+            //Add the data row.
+
+            let ItemID = i+1 ; 
+            let SKU_Names = [];
+
+            var row = table.insertRow(-1);
+
+            console.log(JSON.stringify(excelRows[i]));
+
+
+            //console.log(JSON.stringify(excelRows[i]['1']));
+            // console.log(JSON.stringify(excelRows[i]['4']));
+
+
+            SKU_Codes[i] = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+            SKU_Names[i] = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+
+            SKU_Cats[i] = JSON.stringify(excelRows[i].Category).replace(/^"(.*)"$/, '$1');
+            SKU_Costs[i] = excelRows[i].Unit_Cost;
+
+            console.log(SKU_Costs);
+
+
+
+            let ItemName = SKU_Codes[i];
+            let ShortName = SKU_Names[i];
+            SKU_Cat = SKU_Cats[i];
+
+            
+            SKU_cost = SKU_Costs[i];
+
+            console.log(SKU_cost);
+
+            //Add the data cells.
+            var cell = row.insertCell(-1);
+            cell.innerHTML = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+
+
+
+            cell = row.insertCell(-1);
+            cell.innerHTML = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+
+            cell = row.insertCell(-1);
+            cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
+
+
+            // that.http.post("http://192.168.1.127:5000/getCategoryIDcpps2" || "/api/getCategoryIDcpps2", { SKU_Cat }).subscribe(res => {
+
+          
+                  
+
+            //       //  SKU_Cat  = res.recordsets[0].recordset.CategoryID;
+            //        SKU_Cat = res.recordsets[0];
+            //         console.log(SKU_Cat);
+                  
+              
+
+            //       // that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+
+            
+            //       //   //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+            //       //       console.log(res);
+            //       //     })
+          
+
+
+            //     })
+
+            that.PartsService.getCategoryCpps(SKU_Cat).subscribe(
+
+              res => {    
+                
+                let categoryIDs = [];
+                console.log(res);
+
+                categoryIDs = res.recordsets[0];
+                let size = Object.keys(res.recordsets[0]).length
+
+                console.log(size)
+                console.log(categoryIDs[0].CategoryID)
+
+                let CategoryID = categoryIDs[0].CategoryID;
+
+                      that.http.post("http://192.168.1.127:5000/insertDatacpps2" || "/api/insertDatacpps2", { ItemID,ItemName,ShortName,CategoryID }).subscribe(res => {
+
+            
+                    //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+                        console.log(res);
+                      })
+
+
+
+
+
+              });
+
+                    //     that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+
+            
+                    // //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+                    //     console.log(res);
+                    //   })
+
+                
+
+
+          //   that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+
+            
+          // //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+          //     console.log(res);
+          //   })
+
+
+            
+            // HomeComponent.prototype.http.post("/api/insertData", { SKU_Code }).subscribe(res => {
+            //   console.log(res);
+            //  })
+
+
+          }
+
           // ===============onHand============================== / 
 
+          
           const months = ['1/1/2018','2/1/2018','3/1/2018','4/1/2018','5/1/2018','6/1/2018','7/1/2018','8/1/2018','9/1/2018','10/1/2018','11/1/2018','12/1/2018','1/1/2019','2/1/2019','3/1/2019','4/1/2019','5/1/2019','6/1/2019','7/1/2019','8/1/2019','9/1/2019','10/1/2019','11/11/2019','12/1/2019']
+          var ItemID = 0 ; 
           for (var i = 0; i < onHandrows.length; i++) {
 
-            var j = 0;
+            ItemID += 1; 
             SKU_CodesonHand[i] = JSON.stringify(onHandrows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
-
+            SKU_NamesonHand[i] =  JSON.stringify(onHandrows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
             SKU_CodeonHand = SKU_CodesonHand[i]
+            SKU_NameonHand = SKU_NamesonHand[i]
             quantity[j]=onHandrows[i].Jan_18
             quantity[j+1]=onHandrows[i].Feb_18
             quantity[j+2]=onHandrows[i].Mar_18
@@ -696,18 +826,28 @@ export class HomeComponent implements OnInit {
 
             for (var j = 0; j < quantity.length; j++) {
 
+
+
               var onHandQuantity = quantity[j];
               var onHandQuantity = quantity[j];
               var month = months[j];
-              console.log(onHandQuantity);
-              console.log(month);
-              console.log(SKU_CodeonHand);
-              
-              that.http.post("http://192.168.1.127:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity,month }).subscribe(res => {
+           //   console.log(onHandQuantity);
+           //   console.log(month);
+           //   console.log(SKU_CodeonHand);
+              let WarehouseID = 1 ;
 
-              //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
-                console.log(res);
-              })
+              that.PartsService.getItemIDCpps(SKU_CodeonHand).subscribe(
+
+                res => {  
+
+                  console.log(res);
+                });
+             // that.http.post("http://192.168.1.127:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity,month }).subscribe(res => {
+              // that.http.post("http://192.168.1.127:5000/OnhandMonthEndCpps2" || "/api/OnhandMonthEndCpps2", { WarehouseID,ItemID,SKU_CodeonHand,month, onHandQuantity }).subscribe(res => {
+
+              // //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
+              //   console.log(res);
+              // })
             }
 
           }
@@ -717,56 +857,7 @@ export class HomeComponent implements OnInit {
 
 
 
-          //Add the data rows from Excel file.
-          for (var i = 0; i < excelRows.length; i++) {
-            //Add the data row.
-
-            var row = table.insertRow(-1);
-
-            console.log(JSON.stringify(excelRows[i]));
-
-
-            //console.log(JSON.stringify(excelRows[i]['1']));
-            // console.log(JSON.stringify(excelRows[i]['4']));
-
-
-            SKU_Codes[i] = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
-            SKU_Cats[i] = JSON.stringify(excelRows[i].Category).replace(/^"(.*)"$/, '$1');
-            SKU_Costs[i] = excelRows[i].Unit_Cost;
-
-            console.log(SKU_Costs);
-
-
-
-            SKU_Code = SKU_Codes[i];
-            SKU_Cat = SKU_Cats[i];
-            SKU_cost = SKU_Costs[i];
-
-            console.log(SKU_cost);
-
-            //Add the data cells.
-            var cell = row.insertCell(-1);
-            cell.innerHTML = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
-
-
-
-            cell = row.insertCell(-1);
-            cell.innerHTML = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
-
-            cell = row.insertCell(-1);
-            cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
-            that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-
-            
-          //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-              console.log(res);
-            })
-            // HomeComponent.prototype.http.post("/api/insertData", { SKU_Code }).subscribe(res => {
-            //   console.log(res);
-            //  })
-
-
-          }
+        
 
           var dvExcel = document.getElementById("dvExcel");
           dvExcel.innerHTML = "";

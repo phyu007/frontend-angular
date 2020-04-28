@@ -22,7 +22,7 @@ export class PartsService {
  };
 
  time: SKUEventArgs2 = {
-   newVal : 24
+   newVal : 0
  }
 
 
@@ -208,6 +208,7 @@ export class PartsService {
      this.newVal = category;
      this.time = time;
     console.log(this.time);
+    console.log(this.newVal);
 
    
   // return this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  });
@@ -217,6 +218,42 @@ export class PartsService {
 
     
   }
+
+
+
+  getCategoryCpps(category:any): Observable<any>
+  {
+
+    let SKU_Cat = category 
+    console.log(SKU_Cat);
+
+   
+  // return this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  });
+
+  return this.http.post("http://192.168.1.127:5000/getCategoryIDcpps2" || "/api/getCategoryIDcpps2", {  SKU_Cat : SKU_Cat   });
+
+
+    
+  }
+
+
+  getItemIDCpps(SKU_CodeonHand:any): Observable<any>
+  {
+
+    let SKU_Code = SKU_CodeonHand 
+    console.log(SKU_CodeonHand);
+
+   
+  // return this.http.post("http://192.168.1.84:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", {  newVal : this.newVal  });
+
+  return this.http.post("http://192.168.1.127:5000/getItemIDCpps" || "/api/getItemIDCpps", {  SKU_Code : SKU_Code   });
+
+
+    
+  }
+
+
+
 
 
   postChosenCategory()

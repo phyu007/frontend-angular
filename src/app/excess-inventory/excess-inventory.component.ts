@@ -31,39 +31,156 @@ export class ExcessInventoryComponent implements OnInit {
   public onHandCost: number[]; public onHandData = [];
   public OpenOrderCost: number[];
   public cat = []; public recordsets = []; public chosenTime;
-
+  public time = ""; public newVal ; 
   public shareData: string;
+
+  //public timeOnhandCost: number [];
+  //public timetonHandMonths = [];
 
   public timeStamp = ["6 months", "1 year", "2 year"]
 
   public onChange(event): void {
 
-    var newVal = event.target.value;
-    
+     var timeOnhandCost = [] ;
+    var  timetonHandMonths = [];
+
+     this.time = event.target.value;
+
+     console.log(this.time)
+    this.newVal = 0;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    switch (newVal) {
+    switch (this.time ) {
 
       case '6 months':
-        newVal = 7;
+        this.newVal  = 6;
         break;
       case '1 year':
-        newVal = 12;
+        this.newVal  = 12;
         break;
 
       case '2 year':
-        newVal = 24;
+        this.newVal  = 24;
         break;
 
       default:
 
-        newVal = 2;
+        this.newVal  = 24;
         break;
 
     }
+      console.log(this.newVal);
+   
+     this.PartsService.$isChosen.subscribe((data) => {
+      console.log("In Child Component of time changed", data);
+      console.log(data.category);
+      this.chosenTime = data.category;
+     });
 
-     this.change.emit(newVal);
-     this.PartsService.timestamp(newVal);
+
+      this.PartsService.getTimeStamp(this.chosenTime,this.newVal).subscribe(
+        res => {
+
+          console.log(this.chosenTime)
+          console.log(this.newVal)
+          console.log(res);
+
+          this.data = res.recordsets[0];
+          this.size = Object.keys(res.recordsets[0]).length
+          console.log(this.size);
+        //  console.log(this.data[12].totalOnHand);
+
+          for (var i = 0; i < this.size; i++) {
+            timeOnhandCost[i] = this.data[i].totalOnHand
+            timetonHandMonths[i] = this.data[i].Monthly
+
+          }
+         
+          console.log(timeOnhandCost);
+
+          console.log(timetonHandMonths); 
+        
+
+          
+          var chart = new Chart('canvas', {
+
+
+            // The type of chart we want to create
+            type: 'bar',
+
+
+            // The data for our dataset
+            data: {
+              labels: timetonHandMonths,   //this.toonHandMonths
+
+              datasets: [{
+
+                label: 'COGSByCategory',
+                backgroundColor: 'rgb(240,139,132)',
+                data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+              },
+              {
+                label: 'OnhandCostByCategory',
+                backgroundColor: 'rgb(48,124,207)',
+                data: timeOnhandCost
+              },
+              {
+                label: 'OpenOrderCostByCategory',
+                backgroundColor: 'rgb(160,219,179)',
+                data: [230, 900, 450, 212, 200, 3230, 400]
+              }
+              ]
+            },
+
+
+            options: {
+              responsive: true,
+              scales: {
+                yAxes: [
+                  {
+                    gridLines: {
+                      lineWidth: 0
+                    }
+                  }
+                ],
+                xAxes: [
+                  {
+                    gridLines: {
+                      lineWidth: 0
+                    }
+                  }
+                ]
+              },
+
+              legend: { display: true },
+              plugins: {
+                datalabels:
+                {
+                  display: true,
+                  anchor: 'end',
+                  align: 'top',
+                }
+              }
+            }
+
+
+
+          });
+        
+        
+        
+        
+        
+        });
+  
+   // })
+
+
+
+
+  
+
     // this.PartsService.getTimeStamp(newVal).subscribe(
     //   res => {
     //     console.log(res);
@@ -607,7 +724,7 @@ export class ExcessInventoryComponent implements OnInit {
 
     // );
 
-    console.log(newVal);
+   // console.log(newVal);
 
 
 
@@ -623,23 +740,25 @@ export class ExcessInventoryComponent implements OnInit {
     PartsService.getCategory();
 
     PartsService.postChosenCategory();
-
+    //this.PartsService.timestamp(this.newVal);
     
 
-    
  
+    this.PartsService.$isTimeStamp.subscribe((data) => {
+      console.log("In Child Component for Time Stamp", data);
+      console.log(data);
+   
+    })
 
     this.PartsService.$isChosen.subscribe((data) => {
       console.log("In Child Component", data);
       console.log(data.category);
 
-          
-      this.PartsService. $isTimeStamp.subscribe((data) => {
+      this.PartsService.$isTimeStamp.subscribe((data) => {
         console.log("In Child Component for Time Stamp", data);
-        console.log(data.newVal);
-        this.chosenTime = data.newVal
+        console.log(data);
+     
       })
-
 
       PartsService.getChosenCategory(data.category).subscribe(
         res => {
@@ -661,23 +780,23 @@ export class ExcessInventoryComponent implements OnInit {
 
 
           
-      PartsService.getTimeStamp(data.category,this.chosenTime).subscribe(
-        res => {
-          console.log(res);
+      // PartsService.getTimeStamp(data.category,this.chosenTime).subscribe(
+      //   res => {
+      //     console.log(res);
 
-          this.data = res.recordsets[0];
-          this.size = Object.keys(res.recordsets[0]).length
-          console.log(this.size);
+      //     this.data = res.recordsets[0];
+      //     this.size = Object.keys(res.recordsets[0]).length
+      //     console.log(this.size);
 
-          for (var i = 0; i < this.size; i++) {
-            this.onHandCost[i] = this.data[i].totalOnHand
-            this.tonHandMonths[i] = this.data[i].Monthly
+      //     for (var i = 0; i < this.size; i++) {
+      //       this.onHandCost[i] = this.data[i].totalOnHand
+      //       this.tonHandMonths[i] = this.data[i].Monthly
 
-          }
+      //     }
 
-          console.log(this.tonHandMonths);
+      //     console.log(this.tonHandMonths);
 
-          console.log(this.onHandCost); });
+      //     console.log(this.onHandCost); });
 
           var chart = new Chart('canvas', {
 
