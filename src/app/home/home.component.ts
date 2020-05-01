@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PartsService } from '../parts.service';
-import { Observable } from 'rxjs';
-import * as CanvasJS from './canvasjs.min.js';
 import * as Chart from 'chart.js';
-import { error } from '@angular/compiler/src/util';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 
