@@ -47,6 +47,12 @@ export class MainNavComponent {
      }
 
 
+     public changed(event)
+     {
+       if(event.isUserInput) {
+         console.log(event.source.value, event.source.selected);
+       }
+     }
 
 
     

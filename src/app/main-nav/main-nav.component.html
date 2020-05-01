@@ -3,13 +3,13 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar> <span routerLink="/"><img src="https://www.a-star.edu.sg/images/librariesprovider27/default-album/astar_simtech_horizontal-logo_rgb.png" style="width:150px;"></span></mat-toolbar>
+    <mat-toolbar> <span routerLink="/"><img class="img-responsive" src="assets/ASTAR_Horizontal Logo_White_RGB.png" style="width:150px;"></span></mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/overall">Overall Inventory Performance</a>
       <a mat-list-item routerLink="/excess-inventory">Excess Inventory Analysis</a>
       <a mat-list-item routerLink="/sku-performace">SKU Performace</a>
       <a mat-list-item routerLink="/data-table">Performance Validation</a>
-      <a mat-list-item>
+      <a mat-list-item style="margin-top: 50px;">
         <mat-form-field>
           <mat-list-item style="color: white;">Category</mat-list-item >
           <select matNativeControl required ngModel name="category" id="category"
@@ -21,6 +21,18 @@
       </mat-form-field>
 
       </a>
+
+      <a mat-list-item style="margin-top: 50px;">
+        <mat-form-field >
+          <mat-list-item style="color: white;">Category</mat-list-item >
+          <mat-select multiple placeholder="">
+            <mat-option (onSelectionChange)="changed($event)" *ngFor="let c of cat" [value]="c">
+              {{ c }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </a>
+      
 
 
      

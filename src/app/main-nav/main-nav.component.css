@@ -14,6 +14,20 @@
 
 }
 
+.mat-select-value {
+  color:  white;
+}
+
+
+.not-empty-select.mat-selected {
+  color: white !important;
+}
+
+:host /deep/ .mat-select-value-text {
+  color: white !important;
+}
+
+
 .mat-button
 {
   font-family: Roboto, "Helvetica Neue", sans-serif;
