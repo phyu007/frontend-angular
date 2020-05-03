@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
 import { environment } from 'src/environments/environment';
@@ -20,7 +20,7 @@ import { PartsService } from '@src/app/parts.service';
 import { HttpModule, Http } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 
-
+import { IonicModule } from '@ionic/angular';
 import { CdkTableModule } from '@angular/cdk/table';
 import { ExcessInventoryComponent } from '@src/app/excess-inventory/excess-inventory.component';
 import { SkuPerformaceComponent } from '@src/app/sku-performace/sku-performace.component';
@@ -85,7 +85,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     
   ],
   imports: [
-
+ 
+    IonicModule,
     FlexLayoutModule,
     FontAwesomeModule,
     BrowserModule,
@@ -152,6 +153,7 @@ import { LayoutModule } from '@angular/cdk/layout';
   ],
   exports:[MatTableModule,  CdkTableModule],
   providers: [PartsService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
