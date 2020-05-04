@@ -1202,8 +1202,8 @@ export class OverallComponent implements OnInit {
                 onComplete: function () {
                   if (!this.rectangleSet) {
                     const scale = window.devicePixelRatio;
-                    const copyWidth = myChart.scales['y-axis-0'].width - 10;
-                    const copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                    const copyWidth = myChart['y-axis-0'].width - 10;
+                    const copyHeight = myChart['y-axis-0'].height + myChart['y-axis-0'].top + 10;
 
                     targetCtx.scale(scale, scale);
                     targetCtx.canvas.width = copyWidth * scale;
@@ -1217,8 +1217,8 @@ export class OverallComponent implements OnInit {
                 },
                 onProgress: function () {
                   if (this.rectangleSet) {
-                    var copyWidth = myChart.scales['y-axis-0'].width;
-                    var copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                    var copyWidth = myChart['y-axis-0'].width;
+                    var copyHeight = myChart['y-axis-0'].height + myChart['y-axis-0'].top + 10;
                     this.sourceCtx.clearRect(0, 0, copyWidth, copyHeight);
                   }
                 },
