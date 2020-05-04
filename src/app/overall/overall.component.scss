@@ -1037,15 +1037,15 @@ h5, .h5 {
 }
 
 
+ 
 #canvas
 {
 
-    max-height: 270px;
-    max-width: 650px;
-    min-height: 100px;
-    min-width: 100px; 
-    height: 100%;
-  
+   max-height: 400px;
+   max-width: 1200px;
+   min-height: 100px;
+   min-width: 100px;
+   
    
 }
 
@@ -1328,6 +1328,18 @@ p {
  .chartAreaWrapper {
     height: 300px;
     overflow-y: scroll;
+ }
+
+ .canvasHead
+ {
+     max-width: 800px;
+     overflow-x: scroll;
+     
+ }
+
+ .chartAreaCanvasWrapper {
+    width: 1200px;
+    
  }
 
 

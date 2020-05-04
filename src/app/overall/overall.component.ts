@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Chart from 'chart.js';
 import { HttpClient } from '@angular/common/http';
 import { PartsService } from '../parts.service';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-overall',
   templateUrl: './overall.component.html',
@@ -9,7 +10,8 @@ import { PartsService } from '../parts.service';
 })
 export class OverallComponent implements OnInit {
 
-  
+   format = 'MMM/yyyy';
+    locale = 'en-US';
   // file: File;
 
   // values: number[] = [233, 115, 130, 137];
@@ -827,20 +829,20 @@ export class OverallComponent implements OnInit {
 
           for (var i = 0; i < this.size; i++) {
             this.onHandCost[i] = this.data[i].totalOnHand
-            this.tonHandMonths[i] = this.data[i].Monthly
+            this.tonHandMonths[i] = formatDate(this.data[i].Monthly, this.format, this.locale);
 
           }
 
           console.log(this.tonHandMonths);
 
           console.log(this.onHandCost);
-
+          const formattedDate = formatDate(this.tonHandMonths[0], this.format, this.locale);
+         
           var chart = new Chart('canvas', {
 
 
             // The type of chart we want to create
             type: 'bar',
-
 
             // The data for our dataset
             data: {
@@ -872,10 +874,18 @@ export class OverallComponent implements OnInit {
               scales: {
                 yAxes: [
                   {
+
+                    ticks:{
+                        // Include a dollar sign in the ticks
+                  callback: function (value, index, values) {
+                    return '$' + value;
+                  }
+
+                    },
                     gridLines: {
                           lineWidth: 0
                       }
-                  }
+                  },
                 ],
                 xAxes : [
                   {
