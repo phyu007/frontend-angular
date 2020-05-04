@@ -947,8 +947,8 @@ export class OverallComponent implements OnInit {
               var copyWidth = this.scale.xScalePaddingLeft - 5;
               var copyHeight = this.scale.endPoint + 5;
               var targetCtx= document.getElementById("myChartAxis") as HTMLCanvasElement;
-               targetCtx.canvas.width = copyWidth;
-              targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
+        //       targetCtx.canvas.width = copyWidth;
+        //      targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
       
             }
           }
