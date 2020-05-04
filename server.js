@@ -1,8 +1,14 @@
 const express = require('express');
 const path = require('path');
-const ngApp = express();
-ngApp.use(express.static('./dist/out-tsc/src/app'));
-ngApp.get('/*', function (request, response) {
-    response.sendFile(path.join(__dirname, './dist/out-tsc/src/app/excess-inventory/excess-inventory.html'));
+const app = express();
+
+// Serve static files....
+app.use(express.static(__dirname + '/dist/out-tsc'));
+
+// Send all requests to index.html
+app.get('/*', function (req, res) {
+    res.sendFile(path.join());
 });
-ngApp.listen(process.env.PORT || 8080);
+
+// default Heroku PORT
+app.listen(process.env.PORT || 3000);
