@@ -7,7 +7,7 @@ app.use(express.static("app"));
 
 // Send all requests to index.html
 app.get('/*', function (req, res) {
-    res.redirect('/');
+    res.redirect('/overall');
 });
 
 // default Heroku PORT
