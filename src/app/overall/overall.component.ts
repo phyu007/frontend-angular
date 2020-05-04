@@ -15,6 +15,7 @@ export class OverallComponent implements OnInit {
 
   @ViewChild('sourceCanvas') sourceCanvasRef: ElementRef<HTMLCanvasElement>;
   @ViewChild('targetCanvas') targetCanvasRef: ElementRef<HTMLCanvasElement>;
+  @ViewChild('targetCanvass') targetCanvasReff: ElementRef<HTMLCanvasElement>;
 
    format = 'MMM/yyyy';
     locale = 'en-US';
@@ -922,8 +923,10 @@ export class OverallComponent implements OnInit {
     const sourceCanvas = this.sourceCanvasRef.nativeElement;
     const sourceCtx = sourceCanvas.getContext('2d');
     const targetCanvas = this.targetCanvasRef.nativeElement;
+    const targetCanvass =this.targetCanvasReff.nativeElement;
     const targetCtx = targetCanvas.getContext('2d');
  
+    const targetCtxx = targetCanvass.getContext('2d');
       
     targetCtx.clearRect(0, 0, targetCanvas.width, targetCanvas.height);
   var myChart = new Chart(sourceCtx, {
@@ -981,7 +984,7 @@ export class OverallComponent implements OnInit {
             if (!this.rectangleSet) {
               const scale = window.devicePixelRatio;
               const copyWidth = myChart['y-axis-0'].width - 10;
-              const copyHeight = myChart['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+              const copyHeight = myChart['y-axis-0'].height + myChart['y-axis-0'].top + 10;
               
               targetCtx.scale(scale, scale);
               targetCtx.canvas.width = copyWidth * scale;
@@ -1032,9 +1035,9 @@ export class OverallComponent implements OnInit {
               var sourceCanvas = this.chart.ctx.canvas;
               var copyWidth = this.scale.xScalePaddingLeft - 5;
               var copyHeight = this.scale.endPoint + 5;
-              var targetCtx= document.getElementById("myChartAxis") as HTMLCanvasElement;
-               targetCtx.canvas.width = copyWidth;
-             targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
+          //    targetCtxx= document.getElementById("myChartAxis") as HTMLCanvasElement;
+              targetCtxx.canvas.width = copyWidth;
+              targetCtxx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
       
             }
           }
