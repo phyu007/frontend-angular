@@ -3,6 +3,8 @@ import * as Chart from 'chart.js';
 import { HttpClient } from '@angular/common/http';
 import { PartsService } from '../parts.service';
 import { formatDate } from '@angular/common';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 @Component({
   selector: 'app-overall',
   templateUrl: './overall.component.html',
@@ -16,8 +18,8 @@ export class OverallComponent implements OnInit {
   @ViewChild('sourceCanvas') sourceCanvasRef: ElementRef<HTMLCanvasElement>;
   @ViewChild('targetCanvas') targetCanvasRef: ElementRef<HTMLCanvasElement>;
 
-   format = 'MMM/yyyy';
-    locale = 'en-US';
+  format = 'MMM/yyyy';
+  locale = 'en-US';
   // file: File;
 
   // values: number[] = [233, 115, 130, 137];
@@ -36,14 +38,14 @@ export class OverallComponent implements OnInit {
   //   PartsService.getAllParts();
   //   PartsService.getOnHandCost();
   //   PartsService.getCategory();
-    
+
 
   //   this.codes = PartsService.code;
 
   //   console.log(this.codes);
 
   //   this.onHandCost = PartsService.tonHand;
-   
+
   //   this.PartsService.$isChosen.subscribe((data) => {
 
 
@@ -127,8 +129,8 @@ export class OverallComponent implements OnInit {
   //               data: {
   //                 labels:  ["Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18"],
   //                 datasets: [{
-                     
-                   
+
+
   //                   data: [
   //                     { x: 10, y: 10, r: 10 },
   //                     { x: 15, y: 5, r: 15 },
@@ -141,8 +143,8 @@ export class OverallComponent implements OnInit {
   //                   hoverBackgroundColor: 'purple',
   //                   hoverBorderColor: 'red',
   //                   }, 
-                    
-                    
+
+
   //                 ]
   //               },
   //               options: {
@@ -158,10 +160,10 @@ export class OverallComponent implements OnInit {
   //                 legend: { display: false }
   //               }
   //           });
-      
-      
+
+
   //       var ctx = document.getElementById("myChart")  as HTMLCanvasElement;;
-      
+
   //       var data = {
   //         labels:  ["Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18"],
   //         datasets: [
@@ -187,9 +189,9 @@ export class OverallComponent implements OnInit {
   //             }
   //         ]
   //     };
-      
+
   //     var myBarChart = new Chart(ctx, {
-      
+
   //       type: 'horizontalBar',
   //       data: {
   //         labels:  ["Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18","Sep-17", "Oct-17", "Nov-17", "Dec-17","Jan-18","Feb-18"],
@@ -205,11 +207,11 @@ export class OverallComponent implements OnInit {
   //             data: [600, 101, 905, 25, 330, 956, 453]
   //           }
   //       ]
-      
+
   //       },
   //       options: {
   //           animation: { 
-              
+
   //             onComplete: function () {
   //             var sourceCanvas = this.chart.ctx.canvas;
   //             var copyWidth = this.scale.xScalePaddingLeft - 5;
@@ -217,27 +219,27 @@ export class OverallComponent implements OnInit {
   //             var targetCtx= document.getElementById("myChartAxis") as HTMLCanvasElement;;
   //        //     targetCtx.canvas.width = copyWidth;
   //        //     targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
-      
+
   //           }
   //         }
-      
+
   //       }
-      
-      
+
+
   //     });
-      
-      
+
+
   //       var myBarChart = new Chart("myChart", {
   //         type: 'horizontalBar',
   //         data: {
   //               labels: [ "SKU1001" ,"SKU1002" , "SKU1003" , "SKU1004","SKU1005", "SKU1006","SKU1001" ,"SKU1002" , "SKU1003" , "SKU1004","SKU1005", "SKU1006"],   //this.SKUcodes
-      
+
   //           datasets: [{
-      
+
   //             label: 'TotalCOGS',
   //             backgroundColor: 'rgb(240,139,132)',
   //             data: [500, 1010, 805, 250, 230, 3056, 4535]
-      
+
   //           },
   //           {
   //             label: 'AvgOnhandCost',
@@ -265,19 +267,19 @@ export class OverallComponent implements OnInit {
   //           }
   //         }
   //     });
-      
-      
+
+
   //       var myBarChart = new Chart("barChart", {
   //         type: 'horizontalBar',
   //         data: {
   //               labels: [ "SKU1001" ,"SKU1002" , "SKU1003" , "SKU1004","SKU1005", "SKU1006","SKU1001" ,"SKU1002" , "SKU1003" , "SKU1004","SKU1005", "SKU1006"],   //this.SKUcodes
-      
+
   //           datasets: [{
-      
+
   //             label: 'TotalCOGS',
   //             backgroundColor: 'rgb(240,139,132)',
   //             data: [500, 1010, 805, 250, 230, 3056, 4535]
-      
+
   //           },
   //           {
   //             label: 'AvgOnhandCost',
@@ -305,21 +307,21 @@ export class OverallComponent implements OnInit {
   //           }
   //         }
   //     });
-      
-      
+
+
 
 
 
   //       });
   //   })
-    
+
 
   // }
-  
+
 
   // ngOnInit() {
 
-    
+
   // }
 
 
@@ -843,7 +845,7 @@ export class OverallComponent implements OnInit {
 
           console.log(this.onHandCost);
           const formattedDate = formatDate(this.tonHandMonths[0], this.format, this.locale);
-         
+
           var chart = new Chart('canvas', {
 
 
@@ -852,7 +854,7 @@ export class OverallComponent implements OnInit {
 
             // The data for our dataset
             data: {
-              labels:  this.tonHandMonths,   //this.toonHandMonths
+              labels: this.tonHandMonths,   //this.toonHandMonths
 
               datasets: [{
 
@@ -881,23 +883,23 @@ export class OverallComponent implements OnInit {
                 yAxes: [
                   {
 
-                    ticks:{
-                        // Include a dollar sign in the ticks
-                  callback: function (value, index, values) {
-                    return '$' + value;
-                  }
+                    ticks: {
+                      // Include a dollar sign in the ticks
+                      callback: function (value, index, values) {
+                        return '$' + value;
+                      }
 
                     },
                     gridLines: {
-                          lineWidth: 0
-                      }
+                      lineWidth: 0
+                    }
                   },
                 ],
-                xAxes : [
+                xAxes: [
                   {
                     gridLines: {
-                          lineWidth: 0
-                      }
+                      lineWidth: 0
+                    }
                   }
                 ]
               },
@@ -917,115 +919,137 @@ export class OverallComponent implements OnInit {
 
           });
 
-        
-     
 
-      var ctx = document.getElementById("myChart")  as HTMLCanvasElement;;
 
-      var myBarChart = new Chart(ctx, {
-      
-        type: 'line',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [
-            {
-              label: 'TotalCOGS',
-              backgroundColor: 'rgb(240,139,132)',
-              data: [500, 1010, 805, 250, 230, 3056, 4535]
-            },
-            {
-              label: 'AvgOnhandCost',
-              backgroundColor: 'rgb(48,124,207)',
-              data: [600, 101, 905, 25, 330, 956, 453]
-            }
-        ]
-      
-        },
-        options: {
-            animation: { 
-              
-              onComplete: function () {
-              var sourceCanvas = this.chart.ctx.canvas;
-              var copyWidth = this.scale.xScalePaddingLeft - 5;
-              var copyHeight = this.scale.endPoint + 5;
-              var targetCtx= document.getElementById("myChartAxis") as HTMLCanvasElement;
-               targetCtx.canvas.width = copyWidth;
-             targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
-      
-            }
-          }
-      
-        }
-      
-      
-      });
-      
 
-          
-        var myBarChart = new Chart("barChart", {
-          type: 'horizontalBar',
-          data: {
-                labels: this.codes,
+
+          //  const sourceCtx = this.sourceCanvas.nativeElement.getContext('2d');
+
+
+
+
+
+          var data = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
             datasets: [{
-      
-              label: 'TotalCOGS',
-              backgroundColor: 'rgb(240,139,132)',
-              data: [500, 1010, 805, 250, 230, 3056, 4535],
-              barPercentage:1.0
-      
+              label: "My First dataset",
+              fillColor: "rgba(220,220,220,0.2)",
+              strokeColor: "rgba(220,220,220,1)",
+              pointColor: "rgba(220,220,220,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(220,220,220,1)",
+              data: [65, 59, 80, 81, 56, 55, 40]
             },
             {
-              label: 'AvgOnhandCost',
-              backgroundColor: 'rgb(48,124,207)',
-              data: [600, 101, 905, 25, 330, 956, 453],
-              barPercentage:1.0
-      
-            },
-            {
-              label: 'AvgOpenOrderCost',
-              backgroundColor: 'rgb(160,219,179)',
-              data: [230, 900, 450, 212, 200, 3230, 400],
-              barPercentage:1.0
-      
+              label: "My Second dataset",
+              fillColor: "rgba(151,187,205,0.2)",
+              strokeColor: "rgba(151,187,205,1)",
+              pointColor: "rgba(151,187,205,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(151,187,205,1)",
+              data: [28, 48, 40, 19, 86, 27, 90]
             }
             ]
-          },
-          options:  {
-            responsive: true,
-            
-            scales: {
-              yAxes: [
-                
-                {
-                  gridLines: {
-                        lineWidth: 0
-                    }
-                },
-              
-              ],
-              xAxes : [
-                {
-                  
-                  gridLines: {
-                        lineWidth: 0,
-                        
-                    }
-                }
+          };
+
+          // var myBarChart = new Chart(sourceCtx, {
+
+          //   type: 'line',
+          //   data: data,
+          //   options: {
+          //       animation: { 
+
+          //         onComplete: function () {
+          //         var sourceCanvas = this.chart.ctx.canvas;
+          //         var copyWidth = this.scale.xScalePaddingLeft - 5;
+          //         var copyHeight = this.scale.endPoint + 5;
+
+          //       const targetCtx =  this.targetCanvas.nativeElement.getContext('2d');
+          //          targetCtx.canvas.width = copyWidth;
+          //        targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
+
+          //       },
+          //       onProgress: function () {
+
+          //     }
+
+          //     }
+
+          //   }
+
+
+          // });
+
+
+
+
+
+          var myBarChart = new Chart("barChart", {
+            type: 'horizontalBar',
+            data: {
+              labels: this.codes,
+              datasets: [{
+
+                label: 'TotalCOGS',
+                backgroundColor: 'rgb(240,139,132)',
+                data: [500, 1010, 805, 250, 230, 3056, 4535],
+                barPercentage: 1.0
+
+              },
+              {
+                label: 'AvgOnhandCost',
+                backgroundColor: 'rgb(48,124,207)',
+                data: [600, 101, 905, 25, 330, 956, 453],
+                barPercentage: 1.0
+
+              },
+              {
+                label: 'AvgOpenOrderCost',
+                backgroundColor: 'rgb(160,219,179)',
+                data: [230, 900, 450, 212, 200, 3230, 400],
+                barPercentage: 1.0
+
+              }
               ]
             },
-            maintainAspectRatio:false,
-            legend: { display: true },
-            plugins: {
-              datalabels:
-              {
-                display: true,
-                anchor: 'end',
-                align: 'top',
+            options: {
+              responsive: true,
+
+              scales: {
+                yAxes: [
+
+                  {
+                    gridLines: {
+                      lineWidth: 0
+                    }
+                  },
+
+                ],
+                xAxes: [
+                  {
+
+                    gridLines: {
+                      lineWidth: 0,
+
+                    }
+                  }
+                ]
+              },
+              maintainAspectRatio: false,
+              legend: { display: true },
+              plugins: {
+                datalabels:
+                {
+                  display: true,
+                  anchor: 'end',
+                  align: 'top',
+                }
               }
             }
-          }
-      });
-      
+          });
+
 
 
           var myPieChart = new Chart("doughnutChart2", {
@@ -1123,6 +1147,88 @@ export class OverallComponent implements OnInit {
             }
           });
 
+          const sourceCanvas = this.sourceCanvasRef.nativeElement;
+          const sourceCtx = sourceCanvas.getContext('2d');
+          const targetCanvas = this.targetCanvasRef.nativeElement;
+          const targetCtx = targetCanvas.getContext('2d');
+
+          var myChart = new Chart(sourceCtx, {
+            type: 'bar',
+
+            data: {
+
+              labels: this.tonHandMonths,   //this.toonHandMonths
+              datasets: [{
+
+                label: 'COGSByCategory',
+                backgroundColor: 'rgb(240,139,132)',
+                data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+              },
+              {
+                label: 'OnhandCostByCategory',
+                backgroundColor: 'rgb(48,124,207)',
+                data: this.onHandCost
+              },
+              {
+                label: 'OpenOrderCostByCategory',
+                backgroundColor: 'rgb(160,219,179)',
+                data: [230, 900, 450, 212, 200, 3230, 400]
+              }
+              ]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                xAxes: [{
+                  gridLines: {
+                    lineWidth: 0
+                  }
+                }],
+                yAxes: [{
+                  type: 'linear',
+                  ticks: {
+                    callback: function (value, index, values) {
+                      return '$' + value;
+                    }
+                  },
+                  gridLines: {
+                    lineWidth: 0
+                  }
+
+                }],
+              },
+              animation: {
+                onComplete: function () {
+                  if (!this.rectangleSet) {
+                    const scale = window.devicePixelRatio;
+                    const copyWidth = myChart.scales['y-axis-0'].width - 10;
+                    const copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+
+                    targetCtx.scale(scale, scale);
+                    targetCtx.canvas.width = copyWidth * scale;
+                    targetCtx.canvas.height = copyHeight * scale;
+                    targetCtx.canvas.style.width = copyWidth + 'px';
+                    targetCtx.canvas.style.height = copyHeight + 'px';
+                    targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth * scale, copyHeight * scale, 0, 0, copyWidth * scale, copyHeight * scale);
+                    sourceCtx.clearRect(0, 0, copyWidth, copyHeight);
+                    this.rectangleSet = true;
+                  }
+                },
+                onProgress: function () {
+                  if (this.rectangleSet) {
+                    var copyWidth = myChart.scales['y-axis-0'].width;
+                    var copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                    this.sourceCtx.clearRect(0, 0, copyWidth, copyHeight);
+                  }
+                },
+              }
+            },
+           
+         
+          });
+
+
 
           var mixedChart = new Chart("mixedChart2", {
             type: 'bar',
@@ -1206,12 +1312,16 @@ export class OverallComponent implements OnInit {
               scales:
               {
                 xAxes: [
-                  { stacked: true ,
-                    gridLines:{lineWidth:0}}
+                  {
+                    stacked: true,
+                    gridLines: { lineWidth: 0 }
+                  }
 
                 ],
-                yAxes: [{ stacked: true ,
-                          gridLines:{lineWidth:0}}]
+                yAxes: [{
+                  stacked: true,
+                  gridLines: { lineWidth: 0 }
+                }]
               },
               title: {
                 display: false,
@@ -1295,6 +1405,8 @@ export class OverallComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+
 
 
   }

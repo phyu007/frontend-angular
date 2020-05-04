@@ -85,7 +85,7 @@
       </div>
 
 
-    </div><!-- container -->
+    </div>
 
     <div>
       <div class="row" style="margin-top: 40px;">
@@ -99,74 +99,17 @@
                 Performance History
               </div>
             </div>
-            <div class="chartWrapper">
-              <div class="canvasHead"> 
-              <div class="chartAreaCanvasWrapper">
-                  <div class="chartAreaWrapperChart">
-          <canvas id="canvas"></canvas>
-      </div>
-      </div>
-  </div>
-</div>
-
-
-
-          </div>
-        </div>
-
-        <div class="col-sm-12 col-lg-6">
-          <div class="mb-3 card">
-
-            <div class="card-header-tab card-header">
-              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                Scrollable Test
-              </div>
-          </div>
-
             <div class="chartWrapper"> 
               <div class="chartAreaWrapperBarChart"> 
                 <div class = "chartArreaWrapper2"> 
-                 <canvas id="myChart" height="350" width="1200"></canvas> 
+                 <canvas  #sourceCanvas id="sourceCanvas" height="350" width="1200"></canvas> 
               </div> 
             </div>
-            <canvas id="myChartAxis" height="350" width="0"></canvas> 
-           </div>
-           <!-- <div id="container">
-            <div id="scrollArea">
-              <div id="chartArea">
-                <canvas #sourceCanvas id="myChart" width="800" height="400"></canvas>
-              </div>    
-            </div>
-            <canvas #targetCanvas id="chartAxis" height="400" width="0"></canvas>
-          </div>  -->
+            <canvas #targetCanvas id="targetCanvas" height="350" width="0"></canvas> 
+           </div> 
 
 
 
-          </div>
-        </div>
-
-
-      </div>
-
-      <div class="row" style="margin-top: 20px;">
-
-        <div class="col-sm-12 col-lg-6">
-          <div class="mb-3 card">
-
-            <div class="card-header-tab card-header">
-              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                Inventory Turns
-              </div>
-            </div>
-
-
-            <div class="chartWrapper">
-              <div class="chartAreaWrapper">
-              <canvas baseChart id="line2" class="chart"></canvas>
-            </div>
-            </div>
           </div>
         </div>
 
@@ -192,6 +135,58 @@
 
           </div>
         </div>
+
+      
+
+
+
+      </div>
+
+      <div class="row" style="margin-top: 20px;">
+
+        <div class="col-sm-12 col-lg-6">
+          <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                Inventory Turns
+              </div>
+            </div>
+
+
+            <div class="chartWrapper">
+              <div class="chartAreaWrapper">
+              <canvas baseChart id="line2" class="chart"></canvas>
+            </div>
+            </div>
+          </div>
+        </div>
+<!-- 
+        <div class="col-sm-12 col-lg-6">
+          <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                Scrollable Test
+              </div>
+          </div>
+
+            <div class="chartWrapper"> 
+              <div class="chartAreaWrapperBarChart"> 
+                <div class = "chartArreaWrapper2"> 
+                 <canvas  #sourceCanvas id="sourceCanvas" height="350" width="1200"></canvas> 
+              </div> 
+            </div>
+            <canvas #targetCanvas id="targetCanvas" height="350" width="0"></canvas> 
+           </div> 
+         
+
+
+
+          </div>
+        </div> -->
       </div>
     </div>
   </div>

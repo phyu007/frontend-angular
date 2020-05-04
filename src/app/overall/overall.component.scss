@@ -1344,7 +1344,7 @@ p {
 
 
  .chartAreaWrapperBarChart {
-    width: 600px;
+    width: 800px;
     overflow-x: scroll;
  }
 
@@ -1352,10 +1352,6 @@ p {
  {
     width: 1200px;
  
- }
-
- #myChart{
-     min-height: 420px;
  }
 
 
@@ -1374,9 +1370,10 @@ p {
   #scrollArea {
     width: 800px;  
     overflow-x: scroll;
+  
   }
   
-  #chartArea {
+  #chartAreaWrapperrr {
     width: 1200px;  
   }
   
@@ -1386,7 +1383,8 @@ p {
     top: 0;
     pointer-events: none;
   }
-  
+
+ 
 
 
 
