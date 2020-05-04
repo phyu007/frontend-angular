@@ -844,7 +844,7 @@ export class OverallComponent implements OnInit {
 
             // The data for our dataset
             data: {
-              labels: ["Jan/2019", "Feb/2019", "Mar/2019", "Apr/2019", "May/2019", "Jun/2019"],   //this.toonHandMonths
+              labels:  this.tonHandMonths,   //this.toonHandMonths
 
               datasets: [{
 
