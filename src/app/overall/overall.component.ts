@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import * as Chart from '@angular/chart.js';
+import * as Chart from 'charts/chart.js';
 import { HttpClient } from '@angular/common/http';
 import { PartsService } from '../parts.service';
 import { formatDate } from '@angular/common';

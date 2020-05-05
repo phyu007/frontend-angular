@@ -4814,8 +4814,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverallComponent", function() { return OverallComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
-/* harmony import */ var _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/chart.js */ "./node_modules/@angular/chart.js/dist/Chart.js");
-/* harmony import */ var _angular_chart_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_angular_chart_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var charts_chart_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! charts/chart.js */ "./node_modules/charts/chart.js/dist/Chart.js");
+/* harmony import */ var charts_chart_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(charts_chart_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
 /* harmony import */ var _parts_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../parts.service */ "./src/app/parts.service.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/common.js");
@@ -5250,7 +5250,7 @@ var OverallComponent = /** @class */ (function () {
                 console.log(_this.tonHandMonths);
                 console.log(_this.onHandCost);
                 var formattedDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_5__["formatDate"])(_this.tonHandMonths[0], _this.format, _this.locale);
-                var chart = new _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__('canvas', {
+                var chart = new charts_chart_js__WEBPACK_IMPORTED_MODULE_2__('canvas', {
                     // The type of chart we want to create
                     type: 'bar',
                     // The data for our dataset
@@ -5350,7 +5350,7 @@ var OverallComponent = /** @class */ (function () {
                 //     }
                 //   }
                 // });
-                var myBarChart = new _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__("barChart", {
+                var myBarChart = new charts_chart_js__WEBPACK_IMPORTED_MODULE_2__("barChart", {
                     type: 'horizontalBar',
                     data: {
                         labels: _this.codes,
@@ -5403,7 +5403,7 @@ var OverallComponent = /** @class */ (function () {
                         }
                     }
                 });
-                var myPieChart = new _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__("doughnutChart2", {
+                var myPieChart = new charts_chart_js__WEBPACK_IMPORTED_MODULE_2__("doughnutChart2", {
                     type: 'doughnut',
                     data: {
                         datasets: [{
@@ -5428,7 +5428,7 @@ var OverallComponent = /** @class */ (function () {
                         }
                     }
                 });
-                var myChart = new _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__("stackedBarChart", {
+                var myChart = new charts_chart_js__WEBPACK_IMPORTED_MODULE_2__("stackedBarChart", {
                     type: 'horizontalBar',
                     data: {
                         labels: ["SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006"],
@@ -5458,7 +5458,7 @@ var OverallComponent = /** @class */ (function () {
                             onComplete: function () {
                                 if (this.data.datasets.length === 2) {
                                     var ctx = this.chart.ctx;
-                                    ctx.font = _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__["helpers"].fontString(_angular_chart_js__WEBPACK_IMPORTED_MODULE_2__["defaults"].global.defaultFontSize, 'normal', _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__["defaults"].global.defaultFontFamily);
+                                    ctx.font = charts_chart_js__WEBPACK_IMPORTED_MODULE_2__["helpers"].fontString(charts_chart_js__WEBPACK_IMPORTED_MODULE_2__["defaults"].global.defaultFontSize, 'normal', charts_chart_js__WEBPACK_IMPORTED_MODULE_2__["defaults"].global.defaultFontFamily);
                                     ctx.fillStyle = this.chart.config.options.defaultFontColor;
                                     ctx.textAlign = 'center';
                                     ctx.textBaseline = 'bottom';
@@ -5497,7 +5497,7 @@ var OverallComponent = /** @class */ (function () {
                 var sourceCtx = sourceCanvas.getContext('2d');
                 var targetCanvas = _this.targetCanvasRef.nativeElement;
                 var targetCtx = targetCanvas.getContext('2d');
-                var myChart = new _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__(sourceCtx, {
+                var myChart = new charts_chart_js__WEBPACK_IMPORTED_MODULE_2__(sourceCtx, {
                     type: 'bar',
                     data: {
                         labels: _this.tonHandMonths,
@@ -5564,7 +5564,7 @@ var OverallComponent = /** @class */ (function () {
                         }
                     },
                 });
-                var mixedChart = new _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__("mixedChart2", {
+                var mixedChart = new charts_chart_js__WEBPACK_IMPORTED_MODULE_2__("mixedChart2", {
                     type: 'bar',
                     data: {
                         labels: ["Curr mth", "Last 2", "Last 3", "Last 4", "Last 5", "Last 6"],
@@ -5612,7 +5612,7 @@ var OverallComponent = /** @class */ (function () {
                         legend: { display: true }
                     }
                 });
-                var mixedChart = new _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__("line2", {
+                var mixedChart = new charts_chart_js__WEBPACK_IMPORTED_MODULE_2__("line2", {
                     type: 'bubble',
                     data: {
                         labels: ["Sep-17", "Oct-17", "Nov-17", "Dec-17", "Jan-18", "Feb-18"],
@@ -5651,7 +5651,7 @@ var OverallComponent = /** @class */ (function () {
                         legend: { display: false }
                     }
                 });
-                var mixedChart = new _angular_chart_js__WEBPACK_IMPORTED_MODULE_2__("mixedChart", {
+                var mixedChart = new charts_chart_js__WEBPACK_IMPORTED_MODULE_2__("mixedChart", {
                     type: 'bar',
                     data: {
                         labels: ["Sep-17", "Oct-17", "Nov-17", "Dec-17", "Jan-18", "Feb-18"],
