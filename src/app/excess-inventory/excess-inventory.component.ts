@@ -5,6 +5,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PartsService } from '../parts.service';
 import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
+import { formatDate } from '@angular/common';
+
+
+
+
+
 
 @Component({
   selector: 'app-excess-inventory',
@@ -13,7 +19,11 @@ import { Variable } from '@angular/compiler/src/render3/r3_ast';
 })
 export class ExcessInventoryComponent implements OnInit {
 
+  public timeStamp = ["6 months", "1 year", "2 year"]
+  format = 'MMM/yyyy';
+  locale = 'en-US';
 
+  
   @Output('change') change = new EventEmitter();
 
   message: string;
@@ -37,7 +47,7 @@ export class ExcessInventoryComponent implements OnInit {
   //public timeOnhandCost: number [];
   //public timetonHandMonths = [];
 
-  public timeStamp = ["6 months", "1 year", "2 year"]
+
 
   public onChange(event): void {
 
@@ -92,8 +102,7 @@ export class ExcessInventoryComponent implements OnInit {
 
           for (var i = 0; i < this.size; i++) {
             timeOnhandCost[i] = this.data[i].totalOnHand
-            timetonHandMonths[i] = this.data[i].Monthly
-
+            timetonHandMonths[i] =  formatDate(this.data[i].Monthly, this.format, this.locale);
           }
          
           console.log(timeOnhandCost);
@@ -770,7 +779,7 @@ export class ExcessInventoryComponent implements OnInit {
 
           for (var i = 0; i < this.size; i++) {
             this.onHandCost[i] = this.data[i].totalOnHand
-            this.tonHandMonths[i] = this.data[i].Monthly
+            this.tonHandMonths[i] = formatDate(this.data[i].Monthly, this.format, this.locale);
 
           }
 

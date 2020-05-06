@@ -47,6 +47,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
@@ -107,6 +108,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
+    MatFormFieldModule,
     MatStepperModule,
     MatDatepickerModule,
     MatDialogModule,
@@ -146,7 +148,8 @@ import { LayoutModule } from '@angular/cdk/layout';
       { path: 'sku-performace', component: SkuPerformaceComponent },
       { path: 'performance-validation', component: PerformanceValidComponent }, 
       { path: 'overall', component: OverallComponent }, 
-      { path: 'data-table', component: DataTableComponent },]),
+      { path: 'data-table', component: DataTableComponent },
+    ]),
     BrowserAnimationsModule,
     FontAwesomeModule,
     LayoutModule

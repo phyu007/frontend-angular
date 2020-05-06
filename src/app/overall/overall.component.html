@@ -87,6 +87,8 @@
 
     </div>
 
+    
+
     <div>
       <div class="row" style="margin-top: 40px;">
 
@@ -98,16 +100,40 @@
                 <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
                 Performance History
               </div>
+
+             
+
+      
+
+            <select id="mySelect" (change)="onChange($event)">
+              <option value="6 months">6 months</option>
+              <option value="1 year">1 year</option>
+              <option value="2 year">2 year</option>
+            
+            </select>
+
+            
+
+          
+              
             </div>
-            <div class="chartWrapper"> 
+            <!-- <div class="chartWrapper"> 
               <div class="chartAreaWrapperBarChart"> 
                 <div class = "chartArreaWrapper2"> 
                  <canvas  #sourceCanvas id="sourceCanvas" height="350" width="1200"></canvas> 
               </div> 
             </div>
             <canvas #targetCanvas id="targetCanvas" height="350" width="0"></canvas> 
-           </div> 
-
+           </div>  -->
+           <div class="chartWrapper">
+            <div class="canvasHead"> 
+            <div class="chartAreaCanvasWrapper">
+                <div class="chartAreaWrapperChart">
+        <canvas id="canvas"></canvas>
+    </div>
+    </div>
+</div>
+</div>
 
 
           </div>

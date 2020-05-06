@@ -1,9 +1,12 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { PartsService } from '../parts.service';
-import { formatDate } from '@angular/common';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import * as Chart from 'chart.js';
+import { flatMap } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PartsService } from '../parts.service';
+import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
+import { formatDate } from '@angular/common';
+
 @Component({
   selector: 'app-overall',
   templateUrl: './overall.component.html',
@@ -11,6 +14,9 @@ import * as Chart from 'chart.js';
 })
 export class OverallComponent implements OnInit {
 
+  
+  selected = 'option2';
+  public timeStamp = ["6 months", "1 year", "2 year"];
   canvas: any;
 
 
@@ -19,6 +25,240 @@ export class OverallComponent implements OnInit {
 
   format = 'MMM/yyyy';
   locale = 'en-US';
+  
+  public time = ""; public newVal ;public chosenTime;  
+
+  public onChange(event): void {
+
+    var timeOnhandCost = [] ;
+   var  timetonHandMonths = [];
+
+
+    this.time = event.target.value;
+
+    console.log(this.time)
+   this.newVal = 0;
+   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+   switch (this.time ) {
+
+     case '6 months':
+       this.newVal  = 6;
+       break;
+     case '1 year':
+       this.newVal  = 12;
+       break;
+
+     case '2 year':
+       this.newVal  = 24;
+       break;
+
+     default:
+
+       this.newVal  = 24;
+       break;
+
+   }
+     console.log(this.newVal);
+  
+    this.PartsService.$isChosen.subscribe((data) => {
+     console.log("In Child Component of time changed", data);
+     console.log(data.category);
+     this.chosenTime = data.category;
+    });
+
+    
+
+     this.PartsService.getTimeStamp(this.chosenTime,this.newVal).subscribe(
+       res => {
+
+         console.log(this.chosenTime)
+         console.log(this.newVal)
+         console.log(res);
+
+         this.data = res.recordsets[0];
+         this.size = Object.keys(res.recordsets[0]).length
+         console.log(this.size);
+       //  console.log(this.data[12].totalOnHand);
+
+         for (var i = 0; i < this.size; i++) {
+           timeOnhandCost[i] = this.data[i].totalOnHand
+           timetonHandMonths[i] =  formatDate(this.data[i].Monthly, this.format, this.locale);
+
+         }
+        
+         console.log(timeOnhandCost);
+
+         console.log(timetonHandMonths); 
+       
+         var chart = new Chart('canvas', {
+
+
+          // The type of chart we want to create
+          type: 'bar',
+
+
+          // The data for our dataset
+          data: {
+            labels: timetonHandMonths,   //this.toonHandMonths
+
+            datasets: [{
+
+              label: 'COGSByCategory',
+              backgroundColor: 'rgb(240,139,132)',
+              data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+            },
+            {
+              label: 'OnhandCostByCategory',
+              backgroundColor: 'rgb(48,124,207)',
+              data: timeOnhandCost
+            },
+            {
+              label: 'OpenOrderCostByCategory',
+              backgroundColor: 'rgb(160,219,179)',
+              data: [230, 900, 450, 212, 200, 3230, 400]
+            }
+            ]
+          },
+
+
+          options: {
+            responsive: true,
+            scales: {
+              yAxes: [
+                {
+                  gridLines: {
+                    lineWidth: 0
+                  }
+                }
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    lineWidth: 0
+                  }
+                }
+              ]
+            },
+
+            legend: { display: true },
+            plugins: {
+              datalabels:
+              {
+                display: true,
+                anchor: 'end',
+                align: 'top',
+              }
+            }
+          }
+
+
+
+        });
+         
+         const sourceCanvas = this.sourceCanvasRef.nativeElement;
+         const sourceCtx = sourceCanvas.getContext('2d');
+         const targetCanvas = this.targetCanvasRef.nativeElement;
+         const targetCtx = targetCanvas.getContext('2d');
+
+         var myChart = new Chart(sourceCtx, {
+           type: 'bar',
+
+           data: {
+
+             labels: timetonHandMonths,   //this.toonHandMonths
+             datasets: [{
+
+               label: 'COGSByCategory',
+               backgroundColor: 'rgb(240,139,132)',
+               data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+             },
+             {
+               label: 'OnhandCostByCategory',
+               backgroundColor: 'rgb(48,124,207)',
+               data: timeOnhandCost
+             },
+             {
+               label: 'OpenOrderCostByCategory',
+               backgroundColor: 'rgb(160,219,179)',
+               data: [230, 900, 450, 212, 200, 3230, 400]
+             }
+             ]
+           },
+           options: {
+             legend:
+             {
+               labels:
+               {
+                 fontSize:18
+               }
+             },
+             responsive: true,
+             scales: {
+               xAxes: [{
+                 gridLines: {
+                   lineWidth: 0
+                 }
+               }],
+               yAxes: [{
+                 type: 'linear',
+                 ticks: {
+                   callback: function (value, index, values) {
+                     return '$' + value;
+                   }
+                 },
+                 gridLines: {
+                   lineWidth: 0
+                 }
+
+               }],
+             },
+             animation: {
+               onComplete: function () {
+                 if (!this.rectangleSet) {
+                   const scale = window.devicePixelRatio;
+                 //  const copyWidth = myChart.scales['y-axis-0'].width - 10;
+                   const copyWidth = myChart.options.scales['y-axis-0'].width - 10;
+                 //  const copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                   const copyHeight = myChart.options.scales['y-axis-0'].height + myChart.options.scales['y-axis-0'].top + 10;
+
+                   targetCtx.scale(scale, scale);
+                   targetCtx.canvas.width = copyWidth * scale;
+                   targetCtx.canvas.height = copyHeight * scale;
+                   targetCtx.canvas.style.width = copyWidth + 'px';
+                   targetCtx.canvas.style.height = copyHeight + 'px';
+                   targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth * scale, copyHeight * scale, 0, 0, copyWidth * scale, copyHeight * scale);
+                   sourceCtx.clearRect(0, 0, copyWidth, copyHeight);
+                   this.rectangleSet = true;
+                 }
+               },
+               onProgress: function () {
+                 if (this.rectangleSet) {
+                 //  var copyWidth = myChart.scales['y-axis-0'].width;
+                   var copyWidth = myChart.options.scales['y-axis-0'].width;
+                //   var copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                   var copyHeight = myChart.options.scales['y-axis-0'].height + myChart.options.scales['y-axis-0'].top + 10;
+                   this.sourceCtx.clearRect(0, 0, copyWidth, copyHeight);
+                 }
+               },
+             }
+           },
+          
+        
+         });
+
+
+       
+       
+       
+       
+       
+       });
+      }
+
+
   // file: File;
 
   // values: number[] = [233, 115, 130, 137];
@@ -821,6 +1061,8 @@ export class OverallComponent implements OnInit {
 
     PartsService.postChosenCategory();
 
+    var timeStamp = ["6 months", "1 year", "2 year"];
+
     this.PartsService.$isChosen.subscribe((data) => {
       console.log("In Child Component", data);
       console.log(data.category);
@@ -1177,6 +1419,13 @@ export class OverallComponent implements OnInit {
               ]
             },
             options: {
+              legend:
+              {
+                labels:
+                {
+                  fontSize:18
+                }
+              },
               responsive: true,
               scales: {
                 xAxes: [{
@@ -1201,8 +1450,10 @@ export class OverallComponent implements OnInit {
                 onComplete: function () {
                   if (!this.rectangleSet) {
                     const scale = window.devicePixelRatio;
-                    const copyWidth = myChart.scales['y-axis-0'].width - 10;
-                    const copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                  //  const copyWidth = myChart.scales['y-axis-0'].width - 10;
+                    const copyWidth = myChart.options.scales['y-axis-0'].width - 10;
+                  //  const copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                    const copyHeight = myChart.options.scales['y-axis-0'].height + myChart.options.scales['y-axis-0'].top + 10;
 
                     targetCtx.scale(scale, scale);
                     targetCtx.canvas.width = copyWidth * scale;
@@ -1216,8 +1467,10 @@ export class OverallComponent implements OnInit {
                 },
                 onProgress: function () {
                   if (this.rectangleSet) {
-                    var copyWidth = myChart.scales['y-axis-0'].width;
-                    var copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                  //  var copyWidth = myChart.scales['y-axis-0'].width;
+                    var copyWidth = myChart.options.scales['y-axis-0'].width;
+                 //   var copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                    var copyHeight = myChart.options.scales['y-axis-0'].height + myChart.options.scales['y-axis-0'].top + 10;
                     this.sourceCtx.clearRect(0, 0, copyWidth, copyHeight);
                   }
                 },
@@ -1279,8 +1532,8 @@ export class OverallComponent implements OnInit {
               title: {
                 display: false,
                 text: 'Performance History'
-              },
-              legend: { display: true }
+              },  
+              legend: { display: true , labels:{fontSize:18} }
             }
           });
 
@@ -1326,7 +1579,9 @@ export class OverallComponent implements OnInit {
                 display: false,
                 text: 'Performance History'
               },
-              legend: { display: false }
+              legend: { display: false , labels:{
+                fontSize:18
+              } }
             }
           });
 
@@ -1405,7 +1660,7 @@ export class OverallComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+  
 
 
   }
@@ -1413,4 +1668,8 @@ export class OverallComponent implements OnInit {
 
 
 
+
+
+
 }
+

@@ -26,7 +26,7 @@ export class PartsService {
  }
 
 
-
+ public timeStamp = ["6 months", "1 year", "2 year"];
 
  choose(category){
    console.log("Part Service");
