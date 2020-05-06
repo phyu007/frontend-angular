@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 import { PerformanceValidComponent } from './performance-valid.component';
 
 describe('PerformanceValidComponent', () => {
@@ -8,7 +10,10 @@ describe('PerformanceValidComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PerformanceValidComponent ]
+      declarations: [ PerformanceValidComponent ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
     })
     .compileComponents();
   }));

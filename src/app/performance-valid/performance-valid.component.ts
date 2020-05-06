@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 
@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-performance-valid',
   templateUrl: './performance-valid.component.html',
-  styleUrls: ['./performance-valid.component.css']
+  styleUrls: ['./performance-valid.component.css'],
+
 })
 export class PerformanceValidComponent  {
 
