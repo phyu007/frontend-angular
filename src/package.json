@@ -3,5 +3,8 @@
   "android": {
     "v8Flags": "--expose_gc",
     "markingMode": "none"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.20"
   }
 }

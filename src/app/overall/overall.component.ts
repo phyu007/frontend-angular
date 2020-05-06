@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import * as Chart from 'chart.js';
 import { HttpClient } from '@angular/common/http';
 import { PartsService } from '../parts.service';
 import { formatDate } from '@angular/common';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-
+import * as Chart from 'chart.js';
 @Component({
   selector: 'app-overall',
   templateUrl: './overall.component.html',
@@ -1202,8 +1201,8 @@ export class OverallComponent implements OnInit {
                 onComplete: function () {
                   if (!this.rectangleSet) {
                     const scale = window.devicePixelRatio;
-                    const copyWidth = myChart.scales['y-axis-0'].width - 10;
-                    const copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                    const copyWidth = myChart.options.scales['y-axis-0'].width - 10;
+                    const copyHeight = myChart.options.scales['y-axis-0'].height + myChart.options.scales['y-axis-0'].top + 10;
 
                     targetCtx.scale(scale, scale);
                     targetCtx.canvas.width = copyWidth * scale;
@@ -1217,8 +1216,8 @@ export class OverallComponent implements OnInit {
                 },
                 onProgress: function () {
                   if (this.rectangleSet) {
-                    var copyWidth = myChart.scales['y-axis-0'].width;
-                    var copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+                    var copyWidth = myChart.options.scales['y-axis-0'].width;
+                    var copyHeight = myChart.options.scales['y-axis-0'].height + myChart.options.scales['y-axis-0'].top + 10;
                     this.sourceCtx.clearRect(0, 0, copyWidth, copyHeight);
                   }
                 },
