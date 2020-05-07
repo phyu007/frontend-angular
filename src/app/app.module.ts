@@ -70,6 +70,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PerformanceSummaryComponent } from './performance-summary/performance-summary.component';
 
 @NgModule({
   declarations: [
@@ -138,6 +140,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatTreeModule,
     RouterModule.forRoot([
       { path: '',component: ExcessInventoryComponent},
+      { path: 'dashboard',component: DashboardComponent},
+      { path: 'performance',component: PerformanceSummaryComponent},
       { path: 'products',component: ProductsComponent},
       { path: 'stock',component: StockComponent},
       { path: 'check-out',component: CheckOutComponent},

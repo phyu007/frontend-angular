@@ -8,7 +8,8 @@
       <a mat-list-item routerLink="/overall">Overall Inventory Performance</a>
       <a mat-list-item routerLink="/excess-inventory">Excess Inventory Analysis</a>
       <a mat-list-item routerLink="/sku-performace">SKU Performace</a>
-      <a mat-list-item routerLink="/data-table">Performance Validation</a>
+      <a mat-list-item routerLink="/dashboard">Dashboard</a>
+      <a mat-list-item routerLink="/performance">Performance Summary</a>
       <a mat-list-item style="margin-top: 50px;">
         <mat-form-field>
           <mat-list-item style="color: white;">Category</mat-list-item >
@@ -31,6 +32,24 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+      </a>
+      
+      <a mat-list-item style="margin-top: 50px;">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input type="text" 
+                   placeholder="Pick one"
+                   aria-label="Number"
+                   matInput
+                   [formControl]="myControl"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
       </a>
       
 
