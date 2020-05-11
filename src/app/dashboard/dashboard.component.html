@@ -56,14 +56,14 @@
 
 <body>
   <div class="content content-fixed">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-      <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
-        <div class="header">
-          <h1>Overall Inventory Performance Dashboard</h1>
-        </div>
-      </div>
 
-      <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
+    <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+      <div class="header">
+        <h1>Overall Inventory Performance Dashboard</h1>
+      </div>
+    </div>
+
+    <!-- <div class="list" fxLayout="row" fxLayoutAlign="space-between center">
 
         <div class="list-inline-item">
           <h5 class="tx-normal tx-rubik title1">TOTAL COGS($)(6 months) </h5>
@@ -91,14 +91,137 @@
           <h5 class="tx-normal tx-rubik number">0.3</h5>
         </div>
 
-      </div>
-
-
-    </div>
+    </div> -->
 
 
 
     <div>
+
+      <div class="row" style="margin-top: 40px;">
+
+        <div class="col-sm-12 col-lg-6 header1">
+
+          <div class="mb-3 card2">
+
+            <div class="card-header-tab header3">
+              <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+                <app-card fxFlex="0 1 calc(50% - 32px)" fxFlex.lt-md="0 1 calc(25% - 32px)" fxFlex.lt-sm="50%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/overall">
+                        <div mat-card-image class="card card-body title1">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$634,955
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">TOTAL COGS($)(6 months)</h3>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
+                <app-card fxFlex="0 1 calc(50% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/excess-inventory">
+                        <div mat-card-image class="card card-body title2">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">2.1
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total Turns(6 months)</h3>
+
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-12 col-lg-6 header1">
+          <div class="mb-3 card3 ">
+
+            <div class="card-header-tab header3">
+              <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(25% - 32px)" fxFlex.lt-sm="50%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/overall">
+                        <div mat-card-image class="card card-body title1">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$190,764
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total on-hand($)</h3>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
+                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/excess-inventory">
+                        <div mat-card-image class="card card-body title2">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$144,797
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total Open Order($)</h3>
+
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
+
+                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/sku-performace">
+                        <div mat-card-image class="card card-body title3">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$122,749
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total Threshold Cost $</h3>
+
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
+
+                <app-card fxFlex="0 1 calc(25%- 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/data-table">
+                        <div mat-card-image class="card card-body title4">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$93,678
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total Excess Inventory $</h3>
+
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
       <div class="row" style="margin-top: 40px;">
 
         <div class="col-sm-12 col-lg-6">
@@ -110,36 +233,87 @@
                 Performance History
               </div>
 
+              <mat-form-field>
+                <mat-list-item style="color: white;">Category</mat-list-item>
+                <select matNativeControl required ngModel name="category" id="category" class="form-control"
+                  (change)="onChange($event)">
+                  <option *ngFor="let c of timeStamp">
+                    {{c}}
+                  </option>
+                </select>
+              </mat-form-field>
+            
+              <mat-form-field>
+                <mat-list-item style="color: white;">Category</mat-list-item>
+                <select matNativeControl required ngModel name="chart" id="chartType" class="form-control"
+                  (change)="onChangeChart($event)">
+                  <option *ngFor="let c of charts">
+                    {{c}}
+                  </option>
+                </select>
+              </mat-form-field>
+
+              <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(25% - 32px)" fxFlex.lt-sm="50%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/overall">
+                        <div mat-card-image class="card card-body title1">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$209,344
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">COGS</h3>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
+                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/excess-inventory">
+                        <div mat-card-image class="card card-body title2">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$384,755
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">ONHAND</h3>
 
 
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
+
+                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/sku-performace">
+                        <div mat-card-image class="card card-body title3">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$$277,179
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">OPEN ORDER</h3>
 
 
-              <select id="mySelect" (change)="onChange($event)">
-                <option value="6 months">6 months</option>
-                <option value="1 year">1 year</option>
-                <option value="2 year">2 year</option>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
 
-              </select>
+                <app-card fxFlex="0 1 calc(25%- 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                    <div gdArea="A">
+                      <a routerLink="/data-table">
+                        <div mat-card-image class="card card-body title4">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">0.3
+                          </h6>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">TURNS</h3>
 
-              <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
 
-                <div class="list-inline-item">
-                  <h5 class="tx-normal tx-rubik title1">COGS </h5>
-                  <h5 class="tx-normal tx-rubik number">$209,344</h5>
-                </div>
-                <div class="list-inline-item">
-                  <h5 class="tx-normal tx-rubik title2">ONHAND </h5>
-                  <h5 class="tx-normal tx-rubik number">$384,755</h5>
-                </div>
-                <div class="list-inline-item">
-                  <h5 class="tx-normal tx-rubik title3">OPEN ORDER </h5>
-                  <h5 class="tx-normal tx-rubik number">$277,179</h5>
-                </div>
-                <div class="list-inline-item">
-                  <h5 class="tx-normal tx-rubik title4">TURNS </h5>
-                  <h5 class="tx-normal tx-rubik number">0.3</h5>
-                </div>
-
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </app-card>
               </div>
 
 
@@ -269,7 +443,7 @@
 
 
       </div>
-<!-- 
+      <!-- 
       <div class="row" style="margin-top: 20px;">
 
         <div class="col-sm-12 col-lg-6">

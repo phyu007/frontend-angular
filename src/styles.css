@@ -2,8 +2,17 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-
-
-body
- { margin: 0;}
+body {
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0;
+  }
+  .basic-container {
+    padding: 30px;
+  }
+  .version-info {
+    font-size: 8pt;
+    float: right;
+    margin: 8px;
+  }

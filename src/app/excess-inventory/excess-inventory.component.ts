@@ -10,8 +10,6 @@ import { formatDate } from '@angular/common';
 
 
 
-
-
 @Component({
   selector: 'app-excess-inventory',
   templateUrl: './excess-inventory.component.html',
