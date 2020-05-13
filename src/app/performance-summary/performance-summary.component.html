@@ -56,110 +56,127 @@
 
 <body>
   <div class="content content-fixed">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-      <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
-        <div class="header">
-          <h1>Overall Inventory Performance Dashboard</h1>
-        </div>
+    <nav class="navbar navbar-expand-lg  bg-light">
+      <a class="navbar-brand" href="#" style="color:black">Performance Summary for individual items</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+
+            <mat-button-toggle-group #group="matButtonToggleGroup" multiple=true>
+              <mat-button-toggle *ngFor="let item of toggleOptions;" (change)="selectionChanged($event)" [value]="item">
+                {{item}}</mat-button-toggle>
+            </mat-button-toggle-group>
+
+          </div>
+        </form>
       </div>
-
-      <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
-
-        <div class="list-inline-item">
-          <h5 class="tx-normal tx-rubik title1">COGS </h5>
-          <h5 class="tx-normal tx-rubik number">$209,344</h5>
-        </div>
-        <div class="list-inline-item">
-          <h5 class="tx-normal tx-rubik title2">ONHAND </h5>
-          <h5 class="tx-normal tx-rubik number">$384,755</h5>
-        </div>
-        <div class="list-inline-item">
-          <h5 class="tx-normal tx-rubik title3">OPEN ORDER </h5>
-          <h5 class="tx-normal tx-rubik number">$277,179</h5>
-        </div>
-        <div class="list-inline-item">
-          <h5 class="tx-normal tx-rubik title4">TURNS </h5>
-          <h5 class="tx-normal tx-rubik number">0.3</h5>
-        </div>
-
-      </div>
+    </nav>
 
 
-    </div>
+    <table style="width:100%">
+      <tr>
+        <td rowspan="2">
+          <div class="mb-3 card ">
+            
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                Excess Inventory Cost
+              </div>
+            </div>
+            <div class="chartWrapper">
+              <div class="chartAreaBarWrapper">
+                  <div class="chartAreaWrapperBarChart">
+                      <canvas baseChart id="barChart" class="chart"></canvas>
+                  </div>
+              </div>
+          </div>
+
+
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 card">
+
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                Excess Inventory Cost
+              </div>
+            </div>
+
+            <div class="chartWrapper">
+              <div class="canvasHead">
+                <div class="chartAreaCanvasWrapper">
+                  <div class="chartAreaWrapperChart">
+                  <canvas baseChart id="canvas2" class="chart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 card">
 
     
+            <div class="chartWrapper">
+              <div class="chartAreaStackedBarWrapper">
+                  <div class="chartAreaWrapperBarChart">
+                      <canvas baseChart id="stackedBarChart" class="chart"></canvas>
+                  </div>
+              </div>
+          </div>
 
+
+          </div>
+        </td>
+      </tr>
+
+    </table>
+<!-- 
     <div>
       <div class="row" style="margin-top: 40px;">
 
-        <div class="col-sm-12 col-lg-6">
+        <div class="column">
           <div class="mb-3 card ">
-
-            <!-- <div class="card-header-tab card-header">
-              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                Performance History
+            <div class="chartWrapper">
+              <div class="chartAreaWrapper">
+                <div class="chartAreaWrapperBarChart">
+                  <canvas baseChart id="barChart" class="chart"></canvas>
+                </div>
               </div>
-
-             
-
-      
-
-            <select id="mySelect" (change)="onChange($event)">
-              <option value="6 months">6 months</option>
-              <option value="1 year">1 year</option>
-              <option value="2 year">2 year</option>
-            
-            </select>
-
-            
-
-          
-              
-            </div> -->
-            <!-- <div class="chartWrapper"> 
-              <div class="chartAreaWrapperBarChart"> 
-                <div class = "chartArreaWrapper2"> 
-                 <canvas  #sourceCanvas id="sourceCanvas" height="350" width="1200"></canvas> 
-              </div> 
             </div>
-            <canvas #targetCanvas id="targetCanvas" height="350" width="0"></canvas> 
-           </div>  -->
-           <!-- <div class="chartWrapper">
-            <div class="canvasHead"> 
-            <div class="chartAreaCanvasWrapper">
-                <div class="chartAreaWrapperChart">
-        <canvas id="canvas"></canvas>
-    </div>
-    </div>
-</div>
-</div> -->
-<div class="chartWrapper">
-  <div class="chartAreaWrapper">
-    <div class="chartAreaWrapperBarChart">
-    <canvas baseChart id="barChart" class="chart"></canvas>
-    </div>
-  </div>
-</div>
 
 
           </div>
         </div>
 
-        <div class="col-sm-12 col-lg-6">
+        <div class="column">
           <div class="mb-3 card">
 
             <div class="card-header-tab card-header">
               <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                 <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                 Excess Inventory Cost
+                Excess Inventory Cost
               </div>
             </div>
 
             <div class="chartWrapper">
               <div class="chartAreaWrapper">
                 <div class="chartAreaWrapperBarChart">
-                <canvas baseChart id="canvas2" class="chart"></canvas>
+                  <canvas baseChart id="canvas2" class="chart"></canvas>
                 </div>
               </div>
             </div>
@@ -169,82 +186,31 @@
           </div>
         </div>
 
-      
 
 
 
-      </div>
 
-      <div class="row" style="margin-top: 20px;">
-<!-- 
-        <div class="col-sm-12 col-lg-6">
+
+
+    
+
+        <div class="column">
           <div class="mb-3 card">
-
-            <div class="card-header-tab card-header">
-              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                Inventory Turns
-              </div>
-            </div>
-
 
             <div class="chartWrapper">
               <div class="chartAreaWrapper">
-              <canvas baseChart id="line2" class="chart"></canvas>
-            </div>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- <div class="col-sm-12 col-lg-6">
-          <div class="mb-3 card">
-
-            <div class="card-header-tab card-header">
-              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                Scrollable Test
+                <div class="chartAreaWrapperBarChart">
+                  <canvas baseChart id="stackedBarChart" class="chart"></canvas>
+                </div>
               </div>
-          </div>
-
-            <div class="chartWrapper"> 
-              <div class="chartAreaWrapperBarChart"> 
-                <div class = "chartArreaWrapper2"> 
-                 <canvas  #sourceCanvas id="sourceCanvas" height="350" width="1200"></canvas> 
-              </div> 
             </div>
-            <canvas #targetCanvas id="targetCanvas" height="350" width="0"></canvas> 
-           </div> 
-         
-
 
 
           </div>
-        </div> -->
         
-        <div class="col-sm-12 col-lg-6">
-          <div class="mb-3 card">
-
-            <!-- <div class="card-header-tab card-header">
-              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                 Excess Inventory Cost
-              </div>
-            </div> -->
-
-            <div class="chartWrapper">
-              <div class="chartAreaWrapper">
-                <div class="chartAreaWrapperBarChart">
-                <canvas baseChart id="stackedBarChart" class="chart"></canvas>
-                </div>
-              </div>
-            </div>
-
-
-
-          </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
 </body>

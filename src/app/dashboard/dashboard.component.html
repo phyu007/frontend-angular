@@ -57,11 +57,29 @@
 <body>
   <div class="content content-fixed">
 
-    <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
-      <div class="header">
-        <h1>Overall Inventory Performance Dashboard</h1>
+    <nav class="navbar navbar-expand-lg  bg-light">
+      <a class="navbar-brand" href="#" style="color:black">Dashboard</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+
+            <mat-button-toggle-group #group="matButtonToggleGroup" multiple=true>
+              <mat-button-toggle *ngFor="let item of toggleOptions;" (change)="selectionChanged($event)" [value]="item">{{item}}</mat-button-toggle>
+            </mat-button-toggle-group>
+            <!-- <button type="submit" class="btn btn-secondary" value=6>Past 6 months</button>
+            <button type="submit" class="btn btn-secondary" value=12>Past 1 year</button>
+            <button type="submit" class="btn btn-secondary" value=24>Past 2 year</button> -->
+          </div>
+        </form>
       </div>
-    </div>
+    </nav>
 
     <!-- <div class="list" fxLayout="row" fxLayoutAlign="space-between center">
 
@@ -97,7 +115,7 @@
 
     <div>
 
-      <div class="row" style="margin-top: 40px;">
+      <div class="row">
 
         <div class="col-sm-12 col-lg-6 header1">
 
@@ -109,10 +127,11 @@
                   <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/overall">
-                        <div mat-card-image class="card card-body title1">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$634,955
+                        <div mat-card-image class="cardHeading card-body totolCOG">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title1">TOTAL
+                            COGS($)(6 months)
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">TOTAL COGS($)(6 months)</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">$634,955</h3>
                         </div>
                       </a>
                     </div>
@@ -122,10 +141,11 @@
                   <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/excess-inventory">
-                        <div mat-card-image class="card card-body title2">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">2.1
+                        <div mat-card-image class="cardHeading card-body totalTurns">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title2">Total
+                            Turns(6 months)
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total Turns(6 months)</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">2.1</h3>
 
 
                         </div>
@@ -150,10 +170,11 @@
                   <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/overall">
-                        <div mat-card-image class="card card-body title1">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$190,764
+                        <div mat-card-image class="cardHeading card-body totalonHand">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title1">Total
+                            on-hand($)
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total on-hand($)</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">$190,764</h3>
                         </div>
                       </a>
                     </div>
@@ -163,10 +184,11 @@
                   <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/excess-inventory">
-                        <div mat-card-image class="card card-body title2">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$144,797
+                        <div mat-card-image class="cardHeading card-body totalOpenOrder">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title2">Total Open
+                            Order($)
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total Open Order($)</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">$144,797</h3>
 
 
                         </div>
@@ -179,10 +201,11 @@
                   <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/sku-performace">
-                        <div mat-card-image class="card card-body title3">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$122,749
+                        <div mat-card-image class="cardHeading card-body totalThre">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title3">Total
+                            Threshold Cost $
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total Threshold Cost $</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">$122,749</h3>
 
 
                         </div>
@@ -195,10 +218,11 @@
                   <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/data-table">
-                        <div mat-card-image class="card card-body title4">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$93,678
+                        <div mat-card-image class="cardHeading card-body  totalExcess">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title4">Total Excess
+                            Inventory $
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Total Excess Inventory $</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">$93,678</h3>
 
 
                         </div>
@@ -233,17 +257,7 @@
                 Performance History
               </div>
 
-              <mat-form-field>
-                <mat-list-item style="color: white;">Category</mat-list-item>
-                <select matNativeControl required ngModel name="category" id="category" class="form-control"
-                  (change)="onChange($event)">
-                  <option *ngFor="let c of timeStamp">
-                    {{c}}
-                  </option>
-                </select>
-              </mat-form-field>
-            
-              <mat-form-field>
+              <mat-form-field style="float: right;">
                 <mat-list-item style="color: white;">Category</mat-list-item>
                 <select matNativeControl required ngModel name="chart" id="chartType" class="form-control"
                   (change)="onChangeChart($event)">
@@ -255,26 +269,26 @@
 
               <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
                 <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(25% - 32px)" fxFlex.lt-sm="50%">
-                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                  <div gdAreas="header|A |footer"  gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/overall">
-                        <div mat-card-image class="card card-body title1">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$209,344
+                        <div mat-card-image class="cardHeading card-body ">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title1">COGS
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">COGS</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">$209,344</h3>
                         </div>
                       </a>
                     </div>
                   </div>
                 </app-card>
                 <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                  <div gdAreas="header|A |footer"  gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/excess-inventory">
-                        <div mat-card-image class="card card-body title2">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$384,755
+                        <div mat-card-image class="cardHeading card-body ">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title2">ONHAND
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">ONHAND</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">$384,755</h3>
 
 
                         </div>
@@ -284,13 +298,13 @@
                 </app-card>
 
                 <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                  <div gdAreas="header|A |footer"  gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/sku-performace">
-                        <div mat-card-image class="card card-body title3">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">$$277,179
+                        <div mat-card-image class="cardHeading card-body ">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title3">OPEN ORDER
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">OPEN ORDER</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">$277,179</h3>
 
 
                         </div>
@@ -300,13 +314,13 @@
                 </app-card>
 
                 <app-card fxFlex="0 1 calc(25%- 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-                  <div gdAreas="header|A |footer" gdGap="16px" gdRows="auto auto auto">
+                  <div gdAreas="header|A |footer"  gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/data-table">
-                        <div mat-card-image class="card card-body title4">
-                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">0.3
+                        <div mat-card-image class="cardHeading card-body ">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 title4">TURNS
                           </h6>
-                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">TURNS</h3>
+                          <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 ">0.3</h3>
 
 
                         </div>
@@ -342,28 +356,8 @@
         </div>
 
         <div class="col-sm-12 col-lg-6">
-          <!-- <div class="mb-3 card">
 
-            <div class="card-header-tab card-header">
-              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
-                Total COGS vs. Avg Onhand Cost For Past 6 Months
-              </div>
-            </div>
-
-            <div class="chartWrapper">
-              <div class="chartAreaWrapper">
-                <div class="chartAreaWrapperBarChart">
-                  <canvas baseChart id="barChart" class="chart"></canvas>
-                </div>
-              </div>
-            </div>
-
-
-
-          </div> -->
-
-          <div class="row" style="margin-top: 40px;">
+          <div class="row">
 
             <div class="col-sm-12 col-lg-6">
 

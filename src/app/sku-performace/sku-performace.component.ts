@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import * as Chart from 'chart.js';
+import { flatMap } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PartsService } from '../parts.service';
+import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
+import { formatDate } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-sku-performace',
@@ -7,8 +14,8 @@ import * as Chart from 'chart.js';
   styleUrls: ['./sku-performace.component.css']
 })
 export class SkuPerformaceComponent implements OnInit {
-
-  constructor() { }
+  toggleOptions: Array<String> = ["Past 6 Months", "Past 1 Year","Past 2 Year"];
+  constructor(private http: HttpClient, public PartsService: PartsService) { }
 
   ngOnInit(): void {
 

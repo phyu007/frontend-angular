@@ -17,6 +17,8 @@ import { AdminOrdersComponent } from '@src/app/admin/admin-orders/admin-orders.c
 import { LoginComponent } from '@src/app/login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PartsService } from '@src/app/parts.service';
+import { AuthService } from '@src/app/auth.service';
+import { UserService } from '@src/app/user.service';
 import { HttpModule, Http } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 
@@ -72,7 +74,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PerformanceSummaryComponent } from './performance-summary/performance-summary.component';
-
+import {AuthGuard} from './auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +88,9 @@ import { PerformanceSummaryComponent } from './performance-summary/performance-s
     DataTableComponent,
     MainNavComponent,
     ProductsComponent,
-    DashboardComponent
+    DashboardComponent,
+    PerformanceSummaryComponent,
+    SkuPerformaceComponent
     
   ],
   imports: [
@@ -140,7 +144,8 @@ import { PerformanceSummaryComponent } from './performance-summary/performance-s
     MatTooltipModule,
     MatTreeModule,
     RouterModule.forRoot([
-      { path: '',component: ExcessInventoryComponent},
+      { path: '',component: ExcessInventoryComponent,canActivate :[AuthGuard]},
+      { path: 'main-nav',component: MainNavComponent,canActivate :[AuthGuard]},
       { path: 'dashboard',component: DashboardComponent},
       { path: 'performance',component: PerformanceSummaryComponent},
       { path: 'products',component: ProductsComponent},
@@ -197,7 +202,7 @@ import { PerformanceSummaryComponent } from './performance-summary/performance-s
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,],
-  providers: [PartsService],
+  providers: [PartsService,AuthService,UserService,AuthGuard],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

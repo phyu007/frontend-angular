@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   format = 'MMM/yyyy';
   locale = 'en-US';
 
-  public time = ""; public newVal = 24  ; public chosenTime; public chartChosen = "";
+  public time = ""; public newVal = 24; public chosenTime; public chartChosen = ""; public myChart;
 
   public onChangeChart(event): void {
     var timeOnhandCost = [];
@@ -61,120 +61,47 @@ export class DashboardComponent implements OnInit {
 
 
 
-        switch(this.chartChosen)  {
-          case 'bar': 
-          if (chart) chart.destroy();
-          var chart = new Chart('canvas', {
+        switch (this.chartChosen) {
+          case 'bar':
 
 
-            // The type of chart we want to create
-            type: 'bar',
-
-
-            // The data for our dataset
-            data: {
-              labels: timetonHandMonths,   //this.toonHandMonths
-
-              datasets: [{
-
-
-
-                label: 'COGSByCategory',
-                backgroundColor: 'rgb(240,139,132)',
-                data: [500, 1010, 805, 250, 230, 3056, 4535]
-
-              },
-              {
-                label: 'OnhandCostByCategory',
-                backgroundColor: 'rgb(48,124,207)',
-                data: timeOnhandCost
-              },
-              {
-                label: 'OpenOrderCostByCategory',
-                backgroundColor: 'rgb(160,219,179)',
-                data: [230, 900, 450, 212, 200, 3230, 400]
-              },
-
-              ]
-            },
-
-
-            options: {
-              responsive: true,
-              scales: {
-                yAxes: [
-                  {
-                    gridLines: {
-                      lineWidth: 0
-                    }
-                  }
-                ],
-                xAxes: [
-                  {
-                    gridLines: {
-                      lineWidth: 0
-                    }
-                  }
-                ]
-              },
-
-              legend: { display: true },
-              plugins: {
-                datalabels:
-                {
-                  display: true,
-                  anchor: 'end',
-                  align: 'top',
-                }
-              }
-            }
-
-
-
-          });
-
-          break;
-
-          case 'line':
-
-            var chart = new Chart('canvas', {
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              // var chart = new Chart('canvas', {
 
 
               // The type of chart we want to create
-              type: 'line',
-  
-  
+              type: 'bar',
+
+
               // The data for our dataset
               data: {
                 labels: timetonHandMonths,   //this.toonHandMonths
-  
+
                 datasets: [{
-  
-  
-  
+
+
+
                   label: 'COGSByCategory',
-                  borderColor: 'rgb(240,139,132)',
-                  data: [500, 1010, 805, 250, 230, 3056, 4535],
-                  fill: false,
-  
+                  backgroundColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535]
+
                 },
                 {
                   label: 'OnhandCostByCategory',
-                  borderColor: 'rgb(48,124,207)',
-                  data: timeOnhandCost,
-                  fill: false,
+                  backgroundColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost
                 },
                 {
                   label: 'OpenOrderCostByCategory',
-                  borderColor: 'rgb(160,219,179)',
-                  data: [230, 900, 450, 212, 200, 3230, 400],
-                  fill: false,
+                  backgroundColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400]
                 },
-  
+
                 ]
               },
-  
-  
+
+
               options: {
                 responsive: true,
                 scales: {
@@ -193,7 +120,7 @@ export class DashboardComponent implements OnInit {
                     }
                   ]
                 },
-  
+
                 legend: { display: true },
                 plugins: {
                   datalabels:
@@ -204,99 +131,180 @@ export class DashboardComponent implements OnInit {
                   }
                 }
               }
-  
-  
-  
+
+
+
             });
 
             break;
 
-            default:
-              var chart = new Chart('canvas', {
+          case 'line':
+
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              // var chart = new Chart('canvas', {
 
 
-                // The type of chart we want to create
-                type: 'bar',
-    
-    
-                // The data for our dataset
-                data: {
-                  labels: timetonHandMonths,   //this.toonHandMonths
-    
-                  datasets: [{
-    
-    
-    
-                    label: 'COGSByCategory',
-                    backgroundColor: 'rgb(240,139,132)',
-                    data: [500, 1010, 805, 250, 230, 3056, 4535]
-    
-                  },
-                  {
-                    label: 'OnhandCostByCategory',
-                    backgroundColor: 'rgb(48,124,207)',
-                    data: timeOnhandCost
-                  },
-                  {
-                    label: 'OpenOrderCostByCategory',
-                    backgroundColor: 'rgb(160,219,179)',
-                    data: [230, 900, 450, 212, 200, 3230, 400]
-                  },
-                  {
-                    label: 'Line',
-                    borderColor: "#eb4034",
-                    data: timeOnhandCost,
-                    // Changes this dataset to become a line
-                    type: 'line',
-                    fill: false,
-      
-                  },
-    
+              // The type of chart we want to create
+              type: 'line',
+
+
+              // The data for our dataset
+              data: {
+                labels: timetonHandMonths,   //this.toonHandMonths
+
+                datasets: [{
+
+
+
+                  label: 'COGSByCategory',
+                  borderColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535],
+                  fill: false,
+
+                },
+                {
+                  label: 'OnhandCostByCategory',
+                  borderColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost,
+                  fill: false,
+                },
+                {
+                  label: 'OpenOrderCostByCategory',
+                  borderColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400],
+                  fill: false,
+                },
+
+                ]
+              },
+
+
+              options: {
+                responsive: true,
+                scales: {
+                  yAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
                   ]
                 },
-    
-    
-                options: {
-                  responsive: true,
-                  scales: {
-                    yAxes: [
-                      {
-                        gridLines: {
-                          lineWidth: 0
-                        }
-                      }
-                    ],
-                    xAxes: [
-                      {
-                        gridLines: {
-                          lineWidth: 0
-                        }
-                      }
-                    ]
-                  },
-    
-                  legend: { display: true },
-                  plugins: {
-                    datalabels:
-                    {
-                      display: true,
-                      anchor: 'end',
-                      align: 'top',
-                    }
+
+                legend: { display: true },
+                plugins: {
+                  datalabels:
+                  {
+                    display: true,
+                    anchor: 'end',
+                    align: 'top',
                   }
                 }
-    
-    
-    
-              });
-             
-              break;
+              }
 
-            
+
+
+            });
+
+            break;
+
+          default:
+
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              //   var chart = new Chart('canvas', {
+
+
+              // The type of chart we want to create
+              type: 'bar',
+
+
+              // The data for our dataset
+              data: {
+                labels: timetonHandMonths,   //this.toonHandMonths
+
+                datasets: [{
+
+
+
+                  label: 'COGSByCategory',
+                  backgroundColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+                },
+                {
+                  label: 'OnhandCostByCategory',
+                  backgroundColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost
+                },
+                {
+                  label: 'OpenOrderCostByCategory',
+                  backgroundColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400]
+                },
+                {
+                  label: 'Line',
+                  borderColor: "#eb4034",
+                  data: timeOnhandCost,
+                  // Changes this dataset to become a line
+                  type: 'line',
+                  fill: false,
+
+                },
+
+                ]
+              },
+
+
+              options: {
+                responsive: true,
+                scales: {
+                  yAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ]
+                },
+
+                legend: { display: true },
+                plugins: {
+                  datalabels:
+                  {
+                    display: true,
+                    anchor: 'end',
+                    align: 'top',
+                  }
+                }
+              }
+
+
+
+            });
+
+            break;
+
+
 
         }
 
-        
+
 
 
 
@@ -304,6 +312,325 @@ export class DashboardComponent implements OnInit {
 
 
   }
+
+  toggleOptions: Array<String> = ["Past 6 Months", "Past 1 Year","Past 2 Year"];
+  
+  selectionChanged(item) {
+
+    var timeOnhandCost = [];
+    var timetonHandMonths = [];
+
+    console.log(this.chartChosen)
+    console.log("Selected value: " + item.value);
+    this.time = item.value; 
+    console.log(this.time)
+    this.newVal = 0;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    switch (this.time) {
+
+      case 'Past 6 Months':
+        this.newVal = 6;
+        break;
+      case 'Past 1 Year':
+        this.newVal = 12;
+        break;
+
+      case 'Past 2 Year':
+        this.newVal = 24;
+        break;
+
+      default:
+
+        this.newVal = 24;
+        break;
+        
+
+    }
+    console.log(this.newVal);
+    
+    this.PartsService.$isChosen.subscribe((data) => {
+      console.log("In Child Component of time changed", data);
+      console.log(data.category);
+      this.chosenTime = data.category;
+    });
+
+
+    this.PartsService.getTimeStamp(this.chosenTime, this.newVal).subscribe(
+      res => {
+
+        console.log(this.chosenTime)
+        console.log(this.newVal)
+        console.log(res);
+
+        this.data = res.recordsets[0];
+        this.size = Object.keys(res.recordsets[0]).length
+        console.log(this.size);
+        //  console.log(this.data[12].totalOnHand);
+
+        for (var i = 0; i < this.size; i++) {
+          timeOnhandCost[i] = this.data[i].totalOnHand
+          timetonHandMonths[i] = formatDate(this.data[i].Monthly, this.format, this.locale);
+
+        }
+
+        console.log(timeOnhandCost);
+
+        console.log(timetonHandMonths);
+
+
+
+        switch (this.chartChosen) {
+          case 'bar':
+
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              //   var chart = new Chart('canvas', {
+
+
+              // The type of chart we want to create
+              type: 'bar',
+
+
+              // The data for our dataset
+              data: {
+                labels: timetonHandMonths,   //this.toonHandMonths
+
+                datasets: [{
+
+
+
+                  label: 'COGSByCategory',
+                  backgroundColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+                },
+                {
+                  label: 'OnhandCostByCategory',
+                  backgroundColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost
+                },
+                {
+                  label: 'OpenOrderCostByCategory',
+                  backgroundColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400]
+                },
+
+                ]
+              },
+
+
+              options: {
+                responsive: true,
+                scales: {
+                  yAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ]
+                },
+
+                legend: { display: true },
+                plugins: {
+                  datalabels:
+                  {
+                    display: true,
+                    anchor: 'end',
+                    align: 'top',
+                  }
+                }
+              }
+
+
+
+            });
+
+            break;
+
+          case 'line':
+
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              //  var chart = new Chart('canvas', {
+
+
+              // The type of chart we want to create
+              type: 'line',
+
+
+              // The data for our dataset
+              data: {
+                labels: timetonHandMonths,   //this.toonHandMonths
+
+                datasets: [{
+
+
+
+                  label: 'COGSByCategory',
+                  borderColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535],
+                  fill: false,
+
+                },
+                {
+                  label: 'OnhandCostByCategory',
+                  borderColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost,
+                  fill: false,
+                },
+                {
+                  label: 'OpenOrderCostByCategory',
+                  borderColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400],
+                  fill: false,
+                },
+
+                ]
+              },
+
+
+              options: {
+                responsive: true,
+                scales: {
+                  yAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ]
+                },
+
+                legend: { display: true },
+                plugins: {
+                  datalabels:
+                  {
+                    display: true,
+                    anchor: 'end',
+                    align: 'top',
+                  }
+                }
+              }
+
+
+
+            });
+
+            break;
+
+          default:
+
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              //    var chart = new Chart('canvas', {
+
+
+              // The type of chart we want to create
+              type: 'bar',
+
+
+              // The data for our dataset
+              data: {
+                labels: timetonHandMonths,   //this.toonHandMonths
+
+                datasets: [{
+
+
+
+                  label: 'COGSByCategory',
+                  backgroundColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+                },
+                {
+                  label: 'OnhandCostByCategory',
+                  backgroundColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost
+                },
+                {
+                  label: 'OpenOrderCostByCategory',
+                  backgroundColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400]
+                },
+                {
+                  label: 'Line',
+                  borderColor: "#eb4034",
+                  data: timeOnhandCost,
+                  // Changes this dataset to become a line
+                  type: 'line',
+                  fill: false,
+
+                },
+
+                ]
+              },
+
+
+              options: {
+                responsive: true,
+                scales: {
+                  yAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ]
+                },
+
+                legend: { display: true },
+                plugins: {
+                  datalabels:
+                  {
+                    display: true,
+                    anchor: 'end',
+                    align: 'top',
+                  }
+                }
+              }
+
+
+
+            });
+
+            break;
+
+
+
+        }
+
+
+
+
+
+      });
+
+
+  }
+ 
 
   public onChange(event): void {
 
@@ -371,119 +698,46 @@ export class DashboardComponent implements OnInit {
 
 
 
-        switch(this.chartChosen)  {
-          case 'bar': 
-          var chart = new Chart('canvas', {
+        switch (this.chartChosen) {
+          case 'bar':
 
-
-            // The type of chart we want to create
-            type: 'bar',
-
-
-            // The data for our dataset
-            data: {
-              labels: timetonHandMonths,   //this.toonHandMonths
-
-              datasets: [{
-
-
-
-                label: 'COGSByCategory',
-                backgroundColor: 'rgb(240,139,132)',
-                data: [500, 1010, 805, 250, 230, 3056, 4535]
-
-              },
-              {
-                label: 'OnhandCostByCategory',
-                backgroundColor: 'rgb(48,124,207)',
-                data: timeOnhandCost
-              },
-              {
-                label: 'OpenOrderCostByCategory',
-                backgroundColor: 'rgb(160,219,179)',
-                data: [230, 900, 450, 212, 200, 3230, 400]
-              },
-
-              ]
-            },
-
-
-            options: {
-              responsive: true,
-              scales: {
-                yAxes: [
-                  {
-                    gridLines: {
-                      lineWidth: 0
-                    }
-                  }
-                ],
-                xAxes: [
-                  {
-                    gridLines: {
-                      lineWidth: 0
-                    }
-                  }
-                ]
-              },
-
-              legend: { display: true },
-              plugins: {
-                datalabels:
-                {
-                  display: true,
-                  anchor: 'end',
-                  align: 'top',
-                }
-              }
-            }
-
-
-
-          });
-
-          break;
-
-          case 'line':
-
-            var chart = new Chart('canvas', {
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              //   var chart = new Chart('canvas', {
 
 
               // The type of chart we want to create
-              type: 'line',
-  
-  
+              type: 'bar',
+
+
               // The data for our dataset
               data: {
                 labels: timetonHandMonths,   //this.toonHandMonths
-  
+
                 datasets: [{
-  
-  
-  
+
+
+
                   label: 'COGSByCategory',
-                  borderColor: 'rgb(240,139,132)',
-                  data: [500, 1010, 805, 250, 230, 3056, 4535],
-                  fill: false,
-  
+                  backgroundColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535]
+
                 },
                 {
                   label: 'OnhandCostByCategory',
-                  borderColor: 'rgb(48,124,207)',
-                  data: timeOnhandCost,
-                  fill: false,
+                  backgroundColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost
                 },
                 {
                   label: 'OpenOrderCostByCategory',
-                  borderColor: 'rgb(160,219,179)',
-                  data: [230, 900, 450, 212, 200, 3230, 400],
-                  fill: false,
+                  backgroundColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400]
                 },
-  
+
                 ]
               },
-  
-  
+
+
               options: {
                 responsive: true,
                 scales: {
@@ -502,7 +756,7 @@ export class DashboardComponent implements OnInit {
                     }
                   ]
                 },
-  
+
                 legend: { display: true },
                 plugins: {
                   datalabels:
@@ -513,99 +767,180 @@ export class DashboardComponent implements OnInit {
                   }
                 }
               }
-  
-  
-  
+
+
+
             });
 
             break;
 
-            default:
-              var chart = new Chart('canvas', {
+          case 'line':
+
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              //  var chart = new Chart('canvas', {
 
 
-                // The type of chart we want to create
-                type: 'bar',
-    
-    
-                // The data for our dataset
-                data: {
-                  labels: timetonHandMonths,   //this.toonHandMonths
-    
-                  datasets: [{
-    
-    
-    
-                    label: 'COGSByCategory',
-                    backgroundColor: 'rgb(240,139,132)',
-                    data: [500, 1010, 805, 250, 230, 3056, 4535]
-    
-                  },
-                  {
-                    label: 'OnhandCostByCategory',
-                    backgroundColor: 'rgb(48,124,207)',
-                    data: timeOnhandCost
-                  },
-                  {
-                    label: 'OpenOrderCostByCategory',
-                    backgroundColor: 'rgb(160,219,179)',
-                    data: [230, 900, 450, 212, 200, 3230, 400]
-                  },
-                  {
-                    label: 'Line',
-                    borderColor: "#eb4034",
-                    data: timeOnhandCost,
-                    // Changes this dataset to become a line
-                    type: 'line',
-                    fill: false,
-      
-                  },
-    
+              // The type of chart we want to create
+              type: 'line',
+
+
+              // The data for our dataset
+              data: {
+                labels: timetonHandMonths,   //this.toonHandMonths
+
+                datasets: [{
+
+
+
+                  label: 'COGSByCategory',
+                  borderColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535],
+                  fill: false,
+
+                },
+                {
+                  label: 'OnhandCostByCategory',
+                  borderColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost,
+                  fill: false,
+                },
+                {
+                  label: 'OpenOrderCostByCategory',
+                  borderColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400],
+                  fill: false,
+                },
+
+                ]
+              },
+
+
+              options: {
+                responsive: true,
+                scales: {
+                  yAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
                   ]
                 },
-    
-    
-                options: {
-                  responsive: true,
-                  scales: {
-                    yAxes: [
-                      {
-                        gridLines: {
-                          lineWidth: 0
-                        }
-                      }
-                    ],
-                    xAxes: [
-                      {
-                        gridLines: {
-                          lineWidth: 0
-                        }
-                      }
-                    ]
-                  },
-    
-                  legend: { display: true },
-                  plugins: {
-                    datalabels:
-                    {
-                      display: true,
-                      anchor: 'end',
-                      align: 'top',
-                    }
+
+                legend: { display: true },
+                plugins: {
+                  datalabels:
+                  {
+                    display: true,
+                    anchor: 'end',
+                    align: 'top',
                   }
                 }
-    
-    
-    
-              });
-             
-              break;
+              }
 
-            
+
+
+            });
+
+            break;
+
+          default:
+
+            if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+            this.myChart = new Chart('canvas', {
+              //    var chart = new Chart('canvas', {
+
+
+              // The type of chart we want to create
+              type: 'bar',
+
+
+              // The data for our dataset
+              data: {
+                labels: timetonHandMonths,   //this.toonHandMonths
+
+                datasets: [{
+
+
+
+                  label: 'COGSByCategory',
+                  backgroundColor: 'rgb(240,139,132)',
+                  data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+                },
+                {
+                  label: 'OnhandCostByCategory',
+                  backgroundColor: 'rgb(48,124,207)',
+                  data: timeOnhandCost
+                },
+                {
+                  label: 'OpenOrderCostByCategory',
+                  backgroundColor: 'rgb(160,219,179)',
+                  data: [230, 900, 450, 212, 200, 3230, 400]
+                },
+                {
+                  label: 'Line',
+                  borderColor: "#eb4034",
+                  data: timeOnhandCost,
+                  // Changes this dataset to become a line
+                  type: 'line',
+                  fill: false,
+
+                },
+
+                ]
+              },
+
+
+              options: {
+                responsive: true,
+                scales: {
+                  yAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      gridLines: {
+                        lineWidth: 0
+                      }
+                    }
+                  ]
+                },
+
+                legend: { display: true },
+                plugins: {
+                  datalabels:
+                  {
+                    display: true,
+                    anchor: 'end',
+                    align: 'top',
+                  }
+                }
+              }
+
+
+
+            });
+
+            break;
+
+
 
         }
 
-        
+
 
 
 
@@ -930,7 +1265,7 @@ export class DashboardComponent implements OnInit {
   values: number[] = [233, 115, 130, 137];
   public codes = []; size: number = 0; public tonHandMonths = []; test: number = 0;
   public names = []; public description = []; public data;
-  public onHandCost: number[]; public onHandData = []; 
+  public onHandCost: number[]; public onHandData = [];
 
   public OpenOrderCost: number[];
   public cat = []; public recordsets = [];
@@ -1419,7 +1754,7 @@ export class DashboardComponent implements OnInit {
     var timeStamp = ["6 months", "1 year", "2 year"];
     var timeOnhandCost = [];
     var timetonHandMonths = [];
-    var dataTest =[] ; 
+    var dataTest = [];
 
     this.PartsService.$isChosen.subscribe((data) => {
       console.log("In Child Component", data);
@@ -1429,167 +1764,73 @@ export class DashboardComponent implements OnInit {
 
       PartsService.getChosenCategory(data.category).subscribe(
         res => {
-          // console.log(res);
-
-          // this.data = res.recordsets[0];
-          // this.size = Object.keys(res.recordsets[0]).length
-          // console.log(this.size);
-        
-
-          // for (var i = 0; i < this.size; i++) {
-          //   this.onHandCost[i] = this.data[i].totalOnHand
-          //   this.tonHandMonths[i] = formatDate(this.data[i].Monthly, this.format, this.locale);
-
-          // }
-
-          // console.log(this.tonHandMonths);
-          // console.log(this.newVal);
-
-          // console.log(this.onHandCost);
-          // console.log(this.chartChosen);
-          // const formattedDate = formatDate(this.tonHandMonths[0], this.format, this.locale);
           
-    
-
 
           this.PartsService.getTimeStamp(this.chosenTime, this.newVal).subscribe(
             res => {
-      
+
               console.log(this.chosenTime)
               console.log(this.newVal)
               console.log(this.chartChosen)
               console.log(res);
-      
+
               let dataTest = res.recordsets[0];
               this.size = Object.keys(res.recordsets[0]).length
               console.log(this.size);
-               console.log(dataTest)
-      
+              console.log(dataTest)
+
               for (var i = 0; i < this.size; i++) {
                 timeOnhandCost[i] = dataTest[i].totalOnHand
                 timetonHandMonths[i] = formatDate(dataTest[i].Monthly, this.format, this.locale);
-      
+
               }
-      
+
               console.log(timeOnhandCost);
-      
+
               console.log(timetonHandMonths);
-      
-      
-      
-              switch(this.chartChosen)  {
-                case 'bar': 
-                var chart = new Chart('canvas', {
-      
-      
-                  // The type of chart we want to create
-                  type: 'bar',
-      
-      
-                  // The data for our dataset
-                  data: {
-                    labels: timetonHandMonths,   //this.toonHandMonths
-      
-                    datasets: [{
-      
-      
-      
-                      label: 'COGSByCategory',
-                      backgroundColor: 'rgb(240,139,132)',
-                      data: [500, 1010, 805, 250, 230, 3056, 4535]
-      
-                    },
-                    {
-                      label: 'OnhandCostByCategory',
-                      backgroundColor: 'rgb(48,124,207)',
-                      data: timeOnhandCost
-                    },
-                    {
-                      label: 'OpenOrderCostByCategory',
-                      backgroundColor: 'rgb(160,219,179)',
-                      data: [230, 900, 450, 212, 200, 3230, 400]
-                    },
-      
-                    ]
-                  },
-      
-      
-                  options: {
-                    responsive: true,
-                    scales: {
-                      yAxes: [
-                        {
-                          gridLines: {
-                            lineWidth: 0
-                          }
-                        }
-                      ],
-                      xAxes: [
-                        {
-                          gridLines: {
-                            lineWidth: 0
-                          }
-                        }
-                      ]
-                    },
-      
-                    legend: { display: true },
-                    plugins: {
-                      datalabels:
-                      {
-                        display: true,
-                        anchor: 'end',
-                        align: 'top',
-                      }
-                    }
-                  }
-      
-      
-      
-                });
-      
-                break;
-      
-                case 'line':
-      
-                  var chart = new Chart('canvas', {
-      
-      
+
+
+
+              switch (this.chartChosen) {
+                case 'bar':
+
+                  if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+                  this.myChart = new Chart('canvas', {
+                    //  var chart = new Chart('canvas', {
+
+
                     // The type of chart we want to create
-                    type: 'line',
-        
-        
+                    type: 'bar',
+
+
                     // The data for our dataset
                     data: {
                       labels: timetonHandMonths,   //this.toonHandMonths
-        
+
                       datasets: [{
-        
-        
-        
+
+
+
                         label: 'COGSByCategory',
-                        borderColor: 'rgb(240,139,132)',
-                        data: [500, 1010, 805, 250, 230, 3056, 4535],
-                        fill: false,
-        
+                        backgroundColor: 'rgb(240,139,132)',
+                        data: [500, 1010, 805, 250, 230, 3056, 4535]
+
                       },
                       {
                         label: 'OnhandCostByCategory',
-                        borderColor: 'rgb(48,124,207)',
-                        data: timeOnhandCost,
-                        fill: false,
+                        backgroundColor: 'rgb(48,124,207)',
+                        data: timeOnhandCost
                       },
                       {
                         label: 'OpenOrderCostByCategory',
-                        borderColor: 'rgb(160,219,179)',
-                        data: [230, 900, 450, 212, 200, 3230, 400],
-                        fill: false,
+                        backgroundColor: 'rgb(160,219,179)',
+                        data: [230, 900, 450, 212, 200, 3230, 400]
                       },
-        
+
                       ]
                     },
-        
-        
+
+
                     options: {
                       responsive: true,
                       scales: {
@@ -1608,7 +1849,7 @@ export class DashboardComponent implements OnInit {
                           }
                         ]
                       },
-        
+
                       legend: { display: true },
                       plugins: {
                         datalabels:
@@ -1619,123 +1860,204 @@ export class DashboardComponent implements OnInit {
                         }
                       }
                     }
-        
-        
-        
+
+
+
                   });
-      
+
                   break;
-      
-                  default:
-                    var chart = new Chart('canvas', {
-      
-      
-                      // The type of chart we want to create
-                      type: 'bar',
-          
-          
-                      // The data for our dataset
-                      data: {
-                        labels: timetonHandMonths,   //this.toonHandMonths
-          
-                        datasets: [{
-          
-          
-          
-                          label: 'COGSByCategory',
-                          backgroundColor: 'rgb(240,139,132)',
-                          data: [500, 1010, 805, 250, 230, 3056, 4535]
-          
-                        },
-                        {
-                          label: 'OnhandCostByCategory',
-                          backgroundColor: 'rgb(48,124,207)',
-                          data: timeOnhandCost
-                        },
-                        {
-                          label: 'OpenOrderCostByCategory',
-                          backgroundColor: 'rgb(160,219,179)',
-                          data: [230, 900, 450, 212, 200, 3230, 400]
-                        },
-                        {
-                          label: 'Line',
-                          borderColor: "#eb4034",
-                          data: timeOnhandCost,
-                          // Changes this dataset to become a line
-                          type: 'line',
-                          fill: false,
-            
-                        },
-          
+
+                case 'line':
+
+                  if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+                  this.myChart = new Chart('canvas', {
+                    //  var chart = new Chart('canvas', {
+
+
+                    // The type of chart we want to create
+                    type: 'line',
+
+
+                    // The data for our dataset
+                    data: {
+                      labels: timetonHandMonths,   //this.toonHandMonths
+
+                      datasets: [{
+
+
+
+                        label: 'COGSByCategory',
+                        borderColor: 'rgb(240,139,132)',
+                        data: [500, 1010, 805, 250, 230, 3056, 4535],
+                        fill: false,
+
+                      },
+                      {
+                        label: 'OnhandCostByCategory',
+                        borderColor: 'rgb(48,124,207)',
+                        data: timeOnhandCost,
+                        fill: false,
+                      },
+                      {
+                        label: 'OpenOrderCostByCategory',
+                        borderColor: 'rgb(160,219,179)',
+                        data: [230, 900, 450, 212, 200, 3230, 400],
+                        fill: false,
+                      },
+
+                      ]
+                    },
+
+
+                    options: {
+                      responsive: true,
+                      scales: {
+                        yAxes: [
+                          {
+                            gridLines: {
+                              lineWidth: 0
+                            }
+                          }
+                        ],
+                        xAxes: [
+                          {
+                            gridLines: {
+                              lineWidth: 0
+                            }
+                          }
                         ]
                       },
-          
-          
-                      options: {
-                        responsive: true,
-                        scales: {
-                          yAxes: [
-                            {
-                              gridLines: {
-                                lineWidth: 0
-                              }
-                            }
-                          ],
-                          xAxes: [
-                            {
-                              gridLines: {
-                                lineWidth: 0
-                              }
-                            }
-                          ]
-                        },
-          
-                        legend: { display: true },
-                        plugins: {
-                          datalabels:
-                          {
-                            display: true,
-                            anchor: 'end',
-                            align: 'top',
-                          }
+
+                      legend: { display: true },
+                      plugins: {
+                        datalabels:
+                        {
+                          display: true,
+                          anchor: 'end',
+                          align: 'top',
                         }
                       }
-          
-          
-          
-                    });
-                   
-                    break;
-      
-                  
-      
+                    }
+
+
+
+                  });
+
+                  break;
+
+                default:
+
+                  if (this.myChart) this.myChart.destroy(); //destroy prev chart instance
+                  this.myChart = new Chart('canvas', {
+                    // var chart = new Chart('canvas', {
+
+
+                    // The type of chart we want to create
+                    type: 'bar',
+
+
+                    // The data for our dataset
+                    data: {
+                      labels: timetonHandMonths,   //this.toonHandMonths
+
+                      datasets: [{
+
+
+
+                        label: 'COGSByCategory',
+                        backgroundColor: 'rgb(240,139,132)',
+                        data: [500, 1010, 805, 250, 230, 3056, 4535]
+
+                      },
+                      {
+                        label: 'OnhandCostByCategory',
+                        backgroundColor: 'rgb(48,124,207)',
+                        data: timeOnhandCost
+                      },
+                      {
+                        label: 'OpenOrderCostByCategory',
+                        backgroundColor: 'rgb(160,219,179)',
+                        data: [230, 900, 450, 212, 200, 3230, 400]
+                      },
+                      {
+                        label: 'Line',
+                        borderColor: "#eb4034",
+                        data: timeOnhandCost,
+                        // Changes this dataset to become a line
+                        type: 'line',
+                        fill: false,
+
+                      },
+
+                      ]
+                    },
+
+
+                    options: {
+                      responsive: true,
+                      scales: {
+                        yAxes: [
+                          {
+                            gridLines: {
+                              lineWidth: 0
+                            }
+                          }
+                        ],
+                        xAxes: [
+                          {
+                            gridLines: {
+                              lineWidth: 0
+                            }
+                          }
+                        ]
+                      },
+
+                      legend: { display: true },
+                      plugins: {
+                        datalabels:
+                        {
+                          display: true,
+                          anchor: 'end',
+                          align: 'top',
+                        }
+                      }
+                    }
+
+
+
+                  });
+
+                  break;
+
+
+
               }
-      
-              
-      
-              
-      
-      
-      
+
+
+
+
+
+
+
               // var chart = new Chart('canvas', {
-      
-      
+
+
               //   // The type of chart we want to create
               //   type: 'bar',
-      
-      
+
+
               //   // The data for our dataset
               //   data: {
               //     labels: timetonHandMonths,   //this.toonHandMonths
-      
+
               //     datasets: [{
-      
-      
-      
+
+
+
               //       label: 'COGSByCategory',
               //       backgroundColor: 'rgb(240,139,132)',
               //       data: [500, 1010, 805, 250, 230, 3056, 4535]
-      
+
               //     },
               //     {
               //       label: 'OnhandCostByCategory',
@@ -1754,13 +2076,13 @@ export class DashboardComponent implements OnInit {
               //       // Changes this dataset to become a line
               //       type: 'line',
               //       fill: false,
-      
+
               //     },
-      
+
               //     ]
               //   },
-      
-      
+
+
               //   options: {
               //     responsive: true,
               //     scales: {
@@ -1779,7 +2101,7 @@ export class DashboardComponent implements OnInit {
               //         }
               //       ]
               //     },
-      
+
               //     legend: { display: true },
               //     plugins: {
               //       datalabels:
@@ -1790,32 +2112,32 @@ export class DashboardComponent implements OnInit {
               //       }
               //     }
               //   }
-      
-      
-      
+
+
+
               // });
-      
-      
-      
-      
-      
+
+
+
+
+
               // const sourceCanvas = this.sourceCanvasRef.nativeElement;
               // const sourceCtx = sourceCanvas.getContext('2d');
               // const targetCanvas = this.targetCanvasRef.nativeElement;
               // const targetCtx = targetCanvas.getContext('2d');
-      
+
               // var myChart = new Chart(sourceCtx, {
               //   type: 'bar',
-      
+
               //   data: {
-      
+
               //     labels: timetonHandMonths,   //this.toonHandMonths
               //     datasets: [{
-      
+
               //       label: 'COGSByCategory',
               //       backgroundColor: 'rgb(240,139,132)',
               //       data: [500, 1010, 805, 250, 230, 3056, 4535]
-      
+
               //     },
               //     {
               //       label: 'OnhandCostByCategory',
@@ -1854,7 +2176,7 @@ export class DashboardComponent implements OnInit {
               //         gridLines: {
               //           lineWidth: 0
               //         }
-      
+
               //       }],
               //     },
               //     animation: {
@@ -1865,7 +2187,7 @@ export class DashboardComponent implements OnInit {
               //           const copyWidth = myChart.options.scales['y-axis-0'].width - 10;
               //           //  const copyHeight = myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
               //           const copyHeight = myChart.options.scales['y-axis-0'].height + myChart.options.scales['y-axis-0'].top + 10;
-      
+
               //           targetCtx.scale(scale, scale);
               //           targetCtx.canvas.width = copyWidth * scale;
               //           targetCtx.canvas.height = copyHeight * scale;
@@ -1887,16 +2209,16 @@ export class DashboardComponent implements OnInit {
               //       },
               //     }
               //   },
-      
-      
+
+
               // });
-      
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
+
             });
 
 

@@ -1,3 +1,11 @@
+body, html {
+    margin:0;
+    padding:0;
+    line-height: 1.5em;
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+}
 // /* /* .card.mb-3 {
 //     margin-bottom: 30px !important;
 //     margin-top: 40px;
@@ -745,7 +753,17 @@
 //     height:50px;
 // }
 
+.navbar
+{
+    padding:0px
+}
 
+
+.btn-secondary {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #495057;
+}
 
 .card2
 {
@@ -766,6 +784,30 @@
     border-image-repeat: initial;
     border-radius: .25rem;
 }
+
+.cardHeading{
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: .25rem;
+    text-align: center;
+
+}
+
+*:focus {
+    outline: none;
+}
+
+
+
+
+
+
 
 .card3
 {
@@ -841,25 +883,54 @@ div {
 .title1 {
     background-color:#4287f5;
     border-radius: 25px;
+    
+}
+
+.totolCOG
+{
+    text-align: center;
  
 }
+
+.totalTurns
+{
+    text-align: center;
+}
+
 
 .title2 {
     background-color: #f54257;
     border-radius: 25px;
- 
 }
 
+.totalonHand
+{
+    text-align: center;
+}
+
+.totalOpenOrder{
+    text-align: center;
+}
+
+.totalThre
+{
+    text-align: center;
+}
+
+.totalExcess
+{
+    text-align: center;
+}
 .title3 {
     background-color:#07edb4;
     border-radius: 25px;
- 
+    text-align: center;
 }
 
 .title4 {
     background-color:#07a8ed;
     border-radius: 25px;
- 
+    text-align: center;
 }
 
 
@@ -1056,10 +1127,8 @@ h5, .h5 {
 
 
 
-.header
-{
-    width: 100%;
-    text-align: center;
+.name{
+    float:left; 
 }
 
 
@@ -1181,6 +1250,7 @@ h5, .h5 {
     padding: 15px 20px;
     background-color: transparent;
     border-color: rgba(72,94,144,0.16);
+ 
 }
 
 
@@ -1376,6 +1446,7 @@ p {
  .canvasHead
  {
      max-width: 800px;
+     max-height: 450px;
      overflow-x: scroll;
      
  }

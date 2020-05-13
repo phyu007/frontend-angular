@@ -1,33 +1,30 @@
 
-
+<html>
+  <body >
 <div class="content content-fixed">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-      <div class="d-sm-flex justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
-        <div class="header">
-          <h1>SKU Performance Analysis Dashboard</h1>
-        </div>
+    <nav class="navbar navbar-expand-lg  bg-light">
+      <a class="navbar-brand" href="#" style="color:black">Individual item details</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+
+            <mat-button-toggle-group #group="matButtonToggleGroup" multiple=true>
+              <mat-button-toggle *ngFor="let item of toggleOptions;" (change)="selectionChanged($event)" [value]="item">{{item}}</mat-button-toggle>
+            </mat-button-toggle-group>
+            <!-- <button type="submit" class="btn btn-secondary" value=6>Past 6 months</button>
+            <button type="submit" class="btn btn-secondary" value=12>Past 1 year</button>
+            <button type="submit" class="btn btn-secondary" value=24>Past 2 year</button> -->
+          </div>
+        </form>
       </div>
-  
-      <div class="list" fxLayout="row" fxLayoutAlign="space-around center">
-        <div>
-          <div class="list-inline-item">
-            <h5 class="tx-normal tx-rubik title1">SKU Code: </h5>
-            <h5 class="tx-normal tx-rubik number">SKU1003</h5>
-          </div>
-          <div class="list-inline-item">
-            <h5 class="tx-normal tx-rubik title2">SKU Name: </h5>
-            <h5 class="tx-normal tx-rubik number">Name-1003</h5>
-          </div>
-          <div class="list-inline-item">
-            <h5 class="tx-normal tx-rubik title3">Classification</h5>
-            <h5 class="tx-normal tx-rubik number">ASX</h5>
-          </div>
-          
-        </div>
-      </div>
-   
-  
-    </div><!-- container -->
+    </nav>
   </div>
 <div class="row" style="margin-top: 40px;">
 
@@ -93,5 +90,10 @@
     </div>
 
 </div>
+</body>
+</html>
+
+
+
 
 

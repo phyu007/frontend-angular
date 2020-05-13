@@ -758,6 +758,16 @@ div {
     width: 100%;
 }
 
+td
+{
+    vertical-align: top;
+}
+td.a div
+{
+    background-color: #f00;
+    height: 100%;overflow:auto;
+}
+
  .charts{
      background-color: red;
      height: 100vh;
@@ -826,7 +836,13 @@ div {
     display: inline;
 }
 
-
+#canvas2{
+    
+    max-width: 1200px;
+   
+    min-width: 100px;
+    
+}
 
 .content-fixed {
     margin-top: 0px;
@@ -1077,10 +1093,11 @@ h5, .h5 {
 
 #stackedBarChart
 {
-    max-height: 330px;
+    max-height: 1000px;
     max-width: 650px;
     min-height: 100px;
     min-width: 100px;
+ 
 }
 
 
@@ -1238,6 +1255,21 @@ h5, .h5 {
     max-width: 25%;
 }
 
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+  
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
 .card-footer{
     border-top: 1px solid rgba(72,94,144,0.16);
 }
@@ -1330,6 +1362,24 @@ p {
     overflow-y: scroll;
  }
 
+ .chartAreaBarWrapper {
+    height: 750px;
+    overflow-y: scroll;
+ }
+
+ .chartAreaWrapperBarChart {
+    height: 1000px;
+ }
+ .chartAreaWrapperStakedbarChart{
+     height:1000px
+ }
+
+ .chartAreaStackedBarWrapper
+ {
+    height: 350px;
+    overflow-y: scroll;
+ }
+
  .canvasHead
  {
      max-width: 800px;
@@ -1343,10 +1393,8 @@ p {
  }
 
 
- .chartAreaWrapperBarChart {
-    width: 800px;
-    overflow-x: scroll;
- }
+
+
 
  .chartArreaWrapper2
  {

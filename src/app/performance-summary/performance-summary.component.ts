@@ -27,6 +27,7 @@ export class PerformanceSummaryComponent implements OnInit {
   locale = 'en-US';
   
   public time = ""; public newVal ;public chosenTime;  
+  toggleOptions: Array<String> = ["Past 6 Months", "Past 1 Year","Past 2 Year"];
 
   public onChange(event): void {
 
@@ -1329,7 +1330,7 @@ export class PerformanceSummaryComponent implements OnInit {
       
             // The data for our dataset
             data: {
-              labels: ["SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006"],   //this.SKUcodes
+              labels: this.codes,   //this.SKUcodes
               datasets: [{
       
                 label: 'COGSByCategory',
@@ -1379,22 +1380,23 @@ export class PerformanceSummaryComponent implements OnInit {
           var myChart = new Chart("stackedBarChart", {
             type: 'horizontalBar',
             data: {
-              labels: ["SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006"],   //this.SKUcodes
+              labels:  this.codes,   //this.SKUcodes
               datasets: [{
                 label: "Within",
                 backgroundColor: 'rgb(160,219,179)',
-                data: [7000, 5565, 3806, 5925, 5721, 6635, 14080, 9027, 25553]
+                data: [7000, 5565, 3806, 5925, 5721, 6635, 14080, 9027, 25553],
+                barPercentage: 1.0
               }, {
                 label: "Excess Cost",
                 backgroundColor: 'rgb(240,139,132)',
-                data: [17724, 2565, 1506, 3625, 3721, 4635, 7080, 4027, 12553]
-                //data: [17, 1, 18, 14, 3, 1, 5, 10, 1]
+                data: [17724, 2565, 1506, 3625, 3721, 4635, 7080, 4027, 12553],
+                barPercentage: 1.0
               },
               {
                 label: "ThresholdCost",
                 backgroundColor: 'rgb(160,219,179)',
                 data: [8000, 6000, 4000, 500, 572, 6646, 140, 9043, 255],
-                barThickness: 10
+                barPercentage: 1.0
               }]
             },
             options: {
@@ -1429,15 +1431,25 @@ export class PerformanceSummaryComponent implements OnInit {
               },
               scales: {
                 yAxes: [{
+
+                  gridLines: {
+                    lineWidth: 0
+                  },
                   ticks: {
                     beginAtZero: true
                   },
-                  stacked: true
+                  stacked: true,
+                  
                 }],
                 xAxes: [{
+                  gridLines: {
+                    lineWidth: 0
+                  },
                   stacked: true,
                 }]
-              }
+              },
+              maintainAspectRatio: false,
+              legend: { display: true },
             }
           });
 
