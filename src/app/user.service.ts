@@ -23,15 +23,20 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getSomeData() {
-    return this.http.get<myData>('/api/database.php')
+    return true; // this.http.get<myData>('/api/database.php')
   }
 
-  isLoggedIn(): Observable<isLoggedIn> {
-    return this.http.get<isLoggedIn>('/api/isloggedin.php')
+  // isLoggedIn() : Observable<isLoggedIn> {
+  //   return this.http.get<isLoggedIn>('/api/isloggedin.php')
+  // }
+
+  isLoggedIn(username, password)  : Observable<any> {
+    // post these details to API server return user info if correct
+    return this.http.post("http://192.168.1.127:5000/auth" || "/api/auth", {  username, password  });
   }
 
   logout() {
-    return this.http.get<logoutStatus>('/api/logout.php')
+    return true;  //this.http.get<logoutStatus>('/api/logout.php')
   }
 
   

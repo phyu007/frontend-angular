@@ -7,6 +7,7 @@ import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/st
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { formatDate } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavbarService } from '../main-nav/navbar.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -1742,7 +1743,7 @@ export class DashboardComponent implements OnInit {
 
   //   }
 
-  constructor(private http: HttpClient, public PartsService: PartsService) {
+  constructor(private http: HttpClient, public nav: NavbarService ,public PartsService: PartsService) {
 
     this.PartsService = PartsService;
     PartsService.getAllParts();
@@ -2223,7 +2224,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-          //  const sourceCtx = this.sourceCanvas.nativeElement.getContext('2d');
+        
 
 
 
@@ -2752,7 +2753,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
 
-
+    this.nav.show();
 
   }
 

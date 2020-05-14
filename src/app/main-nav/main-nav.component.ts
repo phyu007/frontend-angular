@@ -9,6 +9,8 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { PartsService } from '../parts.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -17,6 +19,7 @@ import { FormControl } from '@angular/forms';
 })
 export class MainNavComponent implements OnInit {
   
+  isLoggedIn$: boolean;                  // check isLoggedIn
 
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
@@ -28,6 +31,11 @@ export class MainNavComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value))
       );
+
+     this.isLoggedIn$ = true; //this.authService.isLoggedIn;
+   // this.isLoggedIn$ = false;
+
+      console.log(this.isLoggedIn$);
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -84,7 +92,9 @@ export class MainNavComponent implements OnInit {
       
      }
 
-  constructor(private breakpointObserver: BreakpointObserver,private http: HttpClient, public PartsService: PartsService) {
+     
+
+  constructor(private breakpointObserver: BreakpointObserver,private http: HttpClient, public PartsService: PartsService, public nav: NavbarService ,private authService: AuthService) {
 
     PartsService.getCategory();
     PartsService.getAllParts();
@@ -97,6 +107,8 @@ export class MainNavComponent implements OnInit {
     console.log(this.category);
 
   }
+
+  
 
 
 
