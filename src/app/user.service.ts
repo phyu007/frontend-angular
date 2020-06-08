@@ -20,6 +20,8 @@ interface logoutStatus {
 })
 export class UserService {
 
+   isLoggedInn;
+
   constructor(private http: HttpClient) { }
 
   getSomeData() {
@@ -30,9 +32,10 @@ export class UserService {
   //   return this.http.get<isLoggedIn>('/api/isloggedin.php')
   // }
 
-  isLoggedIn(username, password)  : Observable<any> {
-    // post these details to API server return user info if correct
-    return this.http.post("http://192.168.1.127:5000/auth" || "/api/auth", {  username, password  });
+  isLoggedIn()  : Observable<isLoggedIn> {
+  
+    return this.http.post<isLoggedIn>("http://192.168.1.127:5000/isLoggedIn" || "/api/isLoggedIn", {  });
+
   }
 
   logout() {

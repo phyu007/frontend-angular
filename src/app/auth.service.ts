@@ -11,7 +11,7 @@ interface myData {
 })
 export class AuthService {
 
-  private loggedInStatus = false ;
+  private loggedInStatus = false
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +22,13 @@ export class AuthService {
   get isLoggedIn() {
     return this.loggedInStatus
   }
+
+
+  //  isLoggedIn()  : Observable<any> {
+  //   // post these details to API server return user info if correct
+  //   return this.http.post("http://192.168.1.127:5000/isLoggedIn" || "/api/isLoggedIn", {  });
+  // }
+  
 
   getUserDetails(username, password)  : Observable<any> {
     // post these details to API server return user info if correct

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   public names = []; public description = []; public data;
   public onHandCost: number[]; public onHandData = [];
   public OpenOrderCost: number[];
-  public cat = []; public recordsets = []; files;  title = 'fileUpload'
+  public cat = []; public recordsets = []; files; title = 'fileUpload'
 
 
   getWidth(): any {
@@ -40,25 +40,31 @@ export class HomeComponent implements OnInit {
   }
 
 
-  selectFile(event){  //grab the event 
-    if(event.target.files.length > 0 ){  //if there are any file
+  selectFile(event) {  //grab the event 
+    if (event.target.files.length > 0) {  //if there are any file
       const file = event.target.files[0]  //get that file
-      this.files= file ; // assign 
+      this.files = file; // assign 
     }
   }
 
-  onSubmit(){
+  onSubmit(event) {
+    event.preventDefault()
+    const target = event.target
+    const sheetname = target.querySelector('#sheetname').value
+    console.log(sheetname);
     const formData = new FormData();
     formData.append('file', this.files);
+    console.log(formData)
 
-    this.http.post<any>("http://192.168.1.127:5000/file" || "/api/file", formData).subscribe(
+
+
+    this.http.post<any>("http://192.168.1.127:5000/file?sheetname=" + sheetname || "/api/file?sheetname=" + sheetname, formData).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     )
   }
 
-  processFile()
-  {
+  processFile() {
     console.log("Find the file. and Read it in python")
   }
 
@@ -69,12 +75,12 @@ export class HomeComponent implements OnInit {
     const newVal = event.target.value;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.post("http://192.168.1.127:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
-    
-  //  this.http.post("http://10.3.14.214:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
+
+      //  this.http.post("http://10.3.14.214:5000/OnHandLoadedCost" || "/api/OnHandLoadedCost", { newVal }).subscribe(
       res => {
 
-    //   this.data = res.recordsets[0];
-    //  this.size = Object.keys(res.recordsets[0]).length
+        //   this.data = res.recordsets[0];
+        //  this.size = Object.keys(res.recordsets[0]).length
         console.log(this.size);
 
 
@@ -131,13 +137,13 @@ export class HomeComponent implements OnInit {
                     return '$' + value;
                   }
                 },
-                gridLines:{lineWidth:0}
+                gridLines: { lineWidth: 0 }
               }],
-              xAxes : [
+              xAxes: [
                 {
                   gridLines: {
-                        lineWidth: 0
-                    }
+                    lineWidth: 0
+                  }
                 }
               ]
             },
@@ -181,10 +187,10 @@ export class HomeComponent implements OnInit {
 
 
           options: {
-              scales: {
+            scales: {
               yAxes: [{
                 stacked: true,
-                ticks:{
+                ticks: {
                   callback: function (value, index, values) {
                     return '$' + value;
                   }
@@ -227,7 +233,7 @@ export class HomeComponent implements OnInit {
             scales: {
               yAxes: [{
                 stacked: true,
-                ticks:{
+                ticks: {
                   callback: function (value, index, values) {
                     return '$' + value;
                   }
@@ -280,7 +286,7 @@ export class HomeComponent implements OnInit {
             scales: {
               yAxes: [{
                 stacked: true,
-                ticks:{
+                ticks: {
                   callback: function (value, index, values) {
                     return '$' + value;
                   }
@@ -306,8 +312,8 @@ export class HomeComponent implements OnInit {
           type: 'horizontalBar',
           data: {
             labels: ["SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006"],
-                     // "SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006",
-                      //"SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006"],   //this.SKUcodes
+            // "SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006",
+            //"SKU1001", "SKU1002", "SKU1003", "SKU1004", "SKU1005", "SKU1006"],   //this.SKUcodes
 
             datasets: [{
 
@@ -331,7 +337,7 @@ export class HomeComponent implements OnInit {
           options: {
             scales: {
               xAxes: [{
-                ticks:{
+                ticks: {
                   callback: function (value, index, values) {
                     return '$' + value;
                   }
@@ -410,7 +416,7 @@ export class HomeComponent implements OnInit {
           },
           options: {
             responsive: true,
-            legend: { display: false , position: 'bottom' },
+            legend: { display: false, position: 'bottom' },
             plugins: {
               datalabels:
               {
@@ -441,7 +447,7 @@ export class HomeComponent implements OnInit {
           options: {
 
             responsive: true,
-            legend: { display: false , position: 'bottom' },
+            legend: { display: false, position: 'bottom' },
             plugins: {
               datalabels:
               {
@@ -511,11 +517,11 @@ export class HomeComponent implements OnInit {
                   beginAtZero: true
                 },
                 stacked: true,
-                gridLines:{lineWidth:0}
+                gridLines: { lineWidth: 0 }
               }],
               xAxes: [{
                 stacked: true,
-                    gridLines:{lineWidth:0}
+                gridLines: { lineWidth: 0 }
               }]
             }
           }
@@ -683,9 +689,9 @@ export class HomeComponent implements OnInit {
   //           quantity[j+23]=onHandrows[i].Dec_19
 
 
-            
 
-            
+
+
 
   //           console.log(SKU_CodesonHand);
   //           console.log(quantity);
@@ -699,7 +705,7 @@ export class HomeComponent implements OnInit {
   //             console.log(onHandQuantity);
   //             console.log(month);
   //             console.log(SKU_CodeonHand);
-              
+
   //             that.http.post("http://192.168.1.127:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity,month }).subscribe(res => {
 
   //             //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
@@ -754,7 +760,7 @@ export class HomeComponent implements OnInit {
   //           cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
   //           that.http.post("http://192.168.1.127:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
 
-            
+
   //         //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
   //             console.log(res);
   //           })
@@ -818,7 +824,7 @@ export class HomeComponent implements OnInit {
     let SKU_Cats: string[] = [];
     let SKU_Costs: any[] = []; let quantity: any[] = [];
 
-    let SKU_CodesonHand: string[] = []; let  SKU_NamesonHand: string[] = [];
+    let SKU_CodesonHand: string[] = []; let SKU_NamesonHand: string[] = [];
     var SKU_CodeonHand; var SKU_NameonHand;
 
     let onHandQuantitysDec: any[] = [];
@@ -906,137 +912,137 @@ export class HomeComponent implements OnInit {
 
 
 
-               //Add the data rows from Excel file.
-               for (var i = 0; i < excelRows.length; i++) {
-                //Add the data row.
-                let ItemID = i+1 ; 
-                var row = table.insertRow(-1);
-    
-                console.log(JSON.stringify(excelRows[i]));
-    
-    
-                //console.log(JSON.stringify(excelRows[i]['1']));
-                // console.log(JSON.stringify(excelRows[i]['4']));
-    
-    
-                SKU_Codes[i] = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
-               SKU_Names[i] = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
-                SKU_Cats[i] = JSON.stringify(excelRows[i].Category).replace(/^"(.*)"$/, '$1');
-                SKU_Costs[i] = excelRows[i].Unit_Cost;
-    
-                console.log(SKU_Costs);
-    
-    
-    
-                let ItemName = SKU_Codes[i];
-                SKU_Cat = SKU_Cats[i];
-                SKU_cost = SKU_Costs[i];
-                let ShortName = SKU_Names[i];
-    
-                console.log(SKU_cost);
-    
-                //Add the data cells.
-                var cell = row.insertCell(-1);
-                cell.innerHTML = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
-    
-    
-    
-                cell = row.insertCell(-1);
-                cell.innerHTML = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
-    
-                cell = row.insertCell(-1);
-                cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
-             //================================Write to Full item list======================/
-                that.PartsService.getCategoryCpps(SKU_Cat).subscribe(
-    
-                  res => {    
-                    
-                    let categoryIDs = [];
-                    console.log(res);
-    
-                    categoryIDs = res.recordsets[0];
-                    let size = Object.keys(res.recordsets[0]).length
-    
-                    console.log(size)
-                    console.log(categoryIDs[0].CategoryID)
-    
-                    let CategoryID = categoryIDs[0].CategoryID;
-    
-                          that.http.post("http://192.168.1.127:5000/insertDatacpps2" || "/api/insertDatacpps2", { ItemID,ItemName,ShortName,CategoryID }).subscribe(res => {
-    
-                
-                        //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
-                            console.log(res);
-                          })
-    
-    
-    
-    
-    
-                  });
-   
-                // HomeComponent.prototype.http.post("/api/insertData", { SKU_Code }).subscribe(res => {
-                //   console.log(res);
-                //  })
-    
-    
-              }
+          //Add the data rows from Excel file.
+          for (var i = 0; i < excelRows.length; i++) {
+            //Add the data row.
+            let ItemID = i + 1;
+            var row = table.insertRow(-1);
 
- //================================Write to Full item list======================/
+            console.log(JSON.stringify(excelRows[i]));
+
+
+            //console.log(JSON.stringify(excelRows[i]['1']));
+            // console.log(JSON.stringify(excelRows[i]['4']));
+
+
+            SKU_Codes[i] = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+            SKU_Names[i] = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+            SKU_Cats[i] = JSON.stringify(excelRows[i].Category).replace(/^"(.*)"$/, '$1');
+            SKU_Costs[i] = excelRows[i].Unit_Cost;
+
+            console.log(SKU_Costs);
+
+
+
+            let ItemName = SKU_Codes[i];
+            SKU_Cat = SKU_Cats[i];
+            SKU_cost = SKU_Costs[i];
+            let ShortName = SKU_Names[i];
+
+            console.log(SKU_cost);
+
+            //Add the data cells.
+            var cell = row.insertCell(-1);
+            cell.innerHTML = JSON.stringify(excelRows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
+
+
+
+            cell = row.insertCell(-1);
+            cell.innerHTML = JSON.stringify(excelRows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+
+            cell = row.insertCell(-1);
+            cell.innerHTML = JSON.stringify(excelRows[i].SKU_Description).replace(/^"(.*)"$/, '$1');
+            //================================Write to Full item list======================/
+            that.PartsService.getCategoryCpps(SKU_Cat).subscribe(
+
+              res => {
+
+                let categoryIDs = [];
+                console.log(res);
+
+                categoryIDs = res.recordsets[0];
+                let size = Object.keys(res.recordsets[0]).length
+
+                console.log(size)
+                console.log(categoryIDs[0].CategoryID)
+
+                let CategoryID = categoryIDs[0].CategoryID;
+
+                that.http.post("http://192.168.1.127:5000/insertDatacpps2" || "/api/insertDatacpps2", { ItemID, ItemName, ShortName, CategoryID }).subscribe(res => {
+
+
+                  //  that.http.post("http://10.3.14.214:5000/insertData" || "/api/insertData", { SKU_Code, SKU_Cat, SKU_cost }).subscribe(res => {
+                  console.log(res);
+                })
+
+
+
+
+
+              });
+
+            // HomeComponent.prototype.http.post("/api/insertData", { SKU_Code }).subscribe(res => {
+            //   console.log(res);
+            //  })
+
+
+          }
+
+          //================================Write to Full item list======================/
 
 
           // ===============onHand============================== / 
 
-         
-         
-          const months = ['1/1/2018','2/1/2018','3/1/2018','4/1/2018','5/1/2018','6/1/2018','7/1/2018','8/1/2018','9/1/2018','10/1/2018','11/1/2018','12/1/2018','1/1/2019','2/1/2019','3/1/2019','4/1/2019','5/1/2019','6/1/2019','7/1/2019','8/1/2019','9/1/2019','10/1/2019','11/11/2019','12/1/2019'];
-         
-         
-          const warehouses = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];   var ItemID = 0 ;   
+
+
+          const months = ['1/1/2018', '2/1/2018', '3/1/2018', '4/1/2018', '5/1/2018', '6/1/2018', '7/1/2018', '8/1/2018', '9/1/2018', '10/1/2018', '11/1/2018', '12/1/2018', '1/1/2019', '2/1/2019', '3/1/2019', '4/1/2019', '5/1/2019', '6/1/2019', '7/1/2019', '8/1/2019', '9/1/2019', '10/1/2019', '11/11/2019', '12/1/2019'];
+
+
+          const warehouses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]; var ItemID = 0;
           for (var i = 0; i < onHandrows.length; i++) {
-            ItemID += 1; 
+            ItemID += 1;
             var j = 0;
 
 
             SKU_CodesonHand[i] = JSON.stringify(onHandrows[i].SKU_CODE).replace(/^"(.*)"$/, '$1');
-            SKU_NamesonHand[i] =  JSON.stringify(onHandrows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
+            SKU_NamesonHand[i] = JSON.stringify(onHandrows[i].SKU_Name).replace(/^"(.*)"$/, '$1');
 
             SKU_CodeonHand = SKU_CodesonHand[i]
             SKU_NameonHand = SKU_NamesonHand[i]
 
 
-            quantity[j]=onHandrows[i].Jan_18
-            quantity[j+1]=onHandrows[i].Feb_18
-            quantity[j+2]=onHandrows[i].Mar_18
-            quantity[j+3]=onHandrows[i].Apr_18
-            quantity[j+4]=onHandrows[i].May_18
-            quantity[j+5]=onHandrows[i].Jun_18
-            quantity[j+6]=onHandrows[i].Jul_18
-            quantity[j+7]=onHandrows[i].Aug_18
-            quantity[j+8]=onHandrows[i].Sep_18
-            quantity[j+9]=onHandrows[i].Oct_18
-            quantity[j+10]=onHandrows[i].Nov_18
-            quantity[j+11]=onHandrows[i].Dec_18
-            quantity[j+12]=onHandrows[i].Jan_19
-            quantity[j+13]=onHandrows[i].Feb_19
-            quantity[j+14]=onHandrows[i].Mar_19
-            quantity[j+15]=onHandrows[i].Apr_19
-            quantity[j+16]=onHandrows[i].May_19
-            quantity[j+17]=onHandrows[i].Jun_19
-            quantity[j+18]=onHandrows[i].Jul_19
-            quantity[j+19]=onHandrows[i].Aug_19
-            quantity[j+20]=onHandrows[i].Sep_19
-            quantity[j+21]=onHandrows[i].Oct_19
-            quantity[j+22]=onHandrows[i].Nov_19
-            quantity[j+23]=onHandrows[i].Dec_19
+            quantity[j] = onHandrows[i].Jan_18
+            quantity[j + 1] = onHandrows[i].Feb_18
+            quantity[j + 2] = onHandrows[i].Mar_18
+            quantity[j + 3] = onHandrows[i].Apr_18
+            quantity[j + 4] = onHandrows[i].May_18
+            quantity[j + 5] = onHandrows[i].Jun_18
+            quantity[j + 6] = onHandrows[i].Jul_18
+            quantity[j + 7] = onHandrows[i].Aug_18
+            quantity[j + 8] = onHandrows[i].Sep_18
+            quantity[j + 9] = onHandrows[i].Oct_18
+            quantity[j + 10] = onHandrows[i].Nov_18
+            quantity[j + 11] = onHandrows[i].Dec_18
+            quantity[j + 12] = onHandrows[i].Jan_19
+            quantity[j + 13] = onHandrows[i].Feb_19
+            quantity[j + 14] = onHandrows[i].Mar_19
+            quantity[j + 15] = onHandrows[i].Apr_19
+            quantity[j + 16] = onHandrows[i].May_19
+            quantity[j + 17] = onHandrows[i].Jun_19
+            quantity[j + 18] = onHandrows[i].Jul_19
+            quantity[j + 19] = onHandrows[i].Aug_19
+            quantity[j + 20] = onHandrows[i].Sep_19
+            quantity[j + 21] = onHandrows[i].Oct_19
+            quantity[j + 22] = onHandrows[i].Nov_19
+            quantity[j + 23] = onHandrows[i].Dec_19
 
 
-            
 
-            
+
+
 
             //console.log(SKU_CodesonHand);
-           // console.log(quantity);
+            // console.log(quantity);
 
 
             for (var j = 0; j < quantity.length; j++) {
@@ -1047,10 +1053,10 @@ export class HomeComponent implements OnInit {
               console.log(onHandQuantity);
               console.log(month);
               console.log(SKU_CodeonHand);
-              
-              that.http.post("http://192.168.1.127:5000/OnhandMonthEndCpps2" || "/api/OnhandMonthEndCpps2", {WarehouseID,ItemID, SKU_CodeonHand,onHandQuantity,month }).subscribe(res => {
 
-              //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
+              that.http.post("http://192.168.1.127:5000/OnhandMonthEndCpps2" || "/api/OnhandMonthEndCpps2", { WarehouseID, ItemID, SKU_CodeonHand, onHandQuantity, month }).subscribe(res => {
+
+                //that.http.post("http://10.3.14.214:5000/insertonHandData" || "/api/insertonHandData", { SKU_CodeonHand, onHandQuantity }).subscribe(res => {
                 console.log(res);
               })
             }
@@ -1062,7 +1068,7 @@ export class HomeComponent implements OnInit {
 
 
 
-     
+
 
           var dvExcel = document.getElementById("dvExcel");
           dvExcel.innerHTML = "";
@@ -1267,7 +1273,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
+
     var chart = new Chart('canvas', {
       // The type of chart we want to create
       type: 'bar',
@@ -1294,15 +1300,15 @@ export class HomeComponent implements OnInit {
           yAxes: [
             {
               gridLines: {
-                    lineWidth: 0
-                }
+                lineWidth: 0
+              }
             }
           ],
-          xAxes : [
+          xAxes: [
             {
               gridLines: {
-                    lineWidth: 0
-                }
+                lineWidth: 0
+              }
             }
           ]
         },
@@ -1320,7 +1326,7 @@ export class HomeComponent implements OnInit {
 
 
     });
- 
+
 
 
     var myChart = new Chart("stackedBarChart", {
@@ -1380,11 +1386,11 @@ export class HomeComponent implements OnInit {
               beginAtZero: true
             },
             stacked: true,
-            gridLines:{lineWidth:0}
+            gridLines: { lineWidth: 0 }
           }],
           xAxes: [{
             stacked: true,
-            gridLines:{lineWidth:0}
+            gridLines: { lineWidth: 0 }
           }]
         }
       }
@@ -1409,8 +1415,8 @@ export class HomeComponent implements OnInit {
       },
       options: {
         responsive: true,
-        cutoutPercentage:70,
-        legend: { display: false , position: 'bottom' },
+        cutoutPercentage: 70,
+        legend: { display: false, position: 'bottom' },
         plugins: {
           datalabels:
           {
@@ -1441,8 +1447,8 @@ export class HomeComponent implements OnInit {
       options: {
 
         responsive: true,
-        cutoutPercentage:70,
-        legend: { display: false , position: 'bottom' },
+        cutoutPercentage: 70,
+        legend: { display: false, position: 'bottom' },
         plugins: {
           datalabels:
           {
@@ -1454,7 +1460,7 @@ export class HomeComponent implements OnInit {
       }
     });
 
-   
+
 
 
     this.PartsService.getAPIData().subscribe((Response) => {

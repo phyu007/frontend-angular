@@ -52,7 +52,7 @@
 </div> -->
 
 
-<html >
+<html>
 
 <body>
   <div class="content content-fixed">
@@ -71,7 +71,8 @@
           <div class="btn-group" role="group" aria-label="Basic example">
 
             <mat-button-toggle-group #group="matButtonToggleGroup" multiple=true>
-              <mat-button-toggle *ngFor="let item of toggleOptions;" (change)="selectionChanged($event)" [value]="item">{{item}}</mat-button-toggle>
+              <mat-button-toggle *ngFor="let item of toggleOptions;" (change)="selectionChanged($event)" [value]="item">
+                {{item}}</mat-button-toggle>
             </mat-button-toggle-group>
             <!-- <button type="submit" class="btn btn-secondary" value=6>Past 6 months</button>
             <button type="submit" class="btn btn-secondary" value=12>Past 1 year</button>
@@ -269,7 +270,7 @@
 
               <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
                 <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(25% - 32px)" fxFlex.lt-sm="50%">
-                  <div gdAreas="header|A |footer"  gdRows="auto auto auto">
+                  <div gdAreas="header|A |footer" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/overall">
                         <div mat-card-image class="cardHeading card-body ">
@@ -281,8 +282,8 @@
                     </div>
                   </div>
                 </app-card>
-                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-                  <div gdAreas="header|A |footer"  gdRows="auto auto auto">
+                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(25% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/excess-inventory">
                         <div mat-card-image class="cardHeading card-body ">
@@ -297,8 +298,8 @@
                   </div>
                 </app-card>
 
-                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-                  <div gdAreas="header|A |footer"  gdRows="auto auto auto">
+                <app-card fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(25% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/sku-performace">
                         <div mat-card-image class="cardHeading card-body ">
@@ -313,8 +314,8 @@
                   </div>
                 </app-card>
 
-                <app-card fxFlex="0 1 calc(25%- 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-                  <div gdAreas="header|A |footer"  gdRows="auto auto auto">
+                <app-card fxFlex="0 1 calc(25%- 32px)" fxFlex.lt-md="0 1 calc(25% - 32px)" fxFlex.lt-sm="100%">
+                  <div gdAreas="header|A |footer" gdRows="auto auto auto">
                     <div gdArea="A">
                       <a routerLink="/data-table">
                         <div mat-card-image class="cardHeading card-body ">

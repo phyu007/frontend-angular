@@ -211,8 +211,35 @@
 <div id="dvExcel"></div> 
 
 <input type="file" name="file" (change)="selectFile($event)" />
-<button type="submit" (click)="onSubmit()">Upload</button> <br>
+<br>
 
+<br>
+<!-- <form (submit)="$event.preventDefault()">
+    <mat-form-field>
+      <mat-label>Sheet Name</mat-label>
+      <input matInput (cdkAutofill)="firstNameAutofilled = $event.isAutofilled">
+      <mat-hint *ngIf="firstNameAutofilled">Autofilled!</mat-hint>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Sheet name</mat-label>
+      <input matInput (cdkAutofill)="lastNameAutofilled = $event.isAutofilled">
+      <mat-hint *ngIf="lastNameAutofilled">Autofilled!</mat-hint>
+    </mat-form-field>
+  </form>
+  <button type="submit" (click)="onSubmit()">Upload</button> <br> -->
+
+
+  <form (submit)="onSubmit($event)">
+    <div class="container">
+    <div>
+      <input type="text" autocomplete="off" placeholder="Sheet Name" id="sheetname">
+    </div>
+    <div>
+      <button type="submit" id="submit">Submit</button>
+    </div>
+  </div>
+  </form>
 
 <!-- <div class="content content-fixed">
     <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">

@@ -1,13 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import * as Chart from 'chart.js';
-import { flatMap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PartsService } from '../parts.service';
-import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
-import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { formatDate } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { NavbarService } from '../main-nav/navbar.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +16,7 @@ export class DashboardComponent implements OnInit {
   public timeStamp = ["6 months", "1 year", "2 year"];
   public charts = ["line", "bar"];
   canvas: any;
-
+  isMenuCollapsed: any;
 
   @ViewChild('sourceCanvas') sourceCanvasRef: ElementRef<HTMLCanvasElement>;
   @ViewChild('targetCanvas') targetCanvasRef: ElementRef<HTMLCanvasElement>;
@@ -314,8 +310,8 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  toggleOptions: Array<String> = ["Past 6 Months", "Past 1 Year","Past 2 Year"];
-  
+  toggleOptions: Array<String> = ["Past 6 Months", "Past 1 Year", "Past 2 Year"];
+
   selectionChanged(item) {
 
     var timeOnhandCost = [];
@@ -323,7 +319,7 @@ export class DashboardComponent implements OnInit {
 
     console.log(this.chartChosen)
     console.log("Selected value: " + item.value);
-    this.time = item.value; 
+    this.time = item.value;
     console.log(this.time)
     this.newVal = 0;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -345,11 +341,11 @@ export class DashboardComponent implements OnInit {
 
         this.newVal = 24;
         break;
-        
+
 
     }
     console.log(this.newVal);
-    
+
     this.PartsService.$isChosen.subscribe((data) => {
       console.log("In Child Component of time changed", data);
       console.log(data.category);
@@ -631,7 +627,7 @@ export class DashboardComponent implements OnInit {
 
 
   }
- 
+
 
   public onChange(event): void {
 
@@ -1743,7 +1739,7 @@ export class DashboardComponent implements OnInit {
 
   //   }
 
-  constructor(private http: HttpClient, public nav: NavbarService ,public PartsService: PartsService) {
+  constructor(private http: HttpClient, public PartsService: PartsService) {
 
     this.PartsService = PartsService;
     PartsService.getAllParts();
@@ -1765,7 +1761,7 @@ export class DashboardComponent implements OnInit {
 
       PartsService.getChosenCategory(data.category).subscribe(
         res => {
-          
+
 
           this.PartsService.getTimeStamp(this.chosenTime, this.newVal).subscribe(
             res => {
@@ -2224,7 +2220,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-        
+
 
 
 
@@ -2753,7 +2749,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.nav.show();
+
 
   }
 

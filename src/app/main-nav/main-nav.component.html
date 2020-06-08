@@ -1,6 +1,6 @@
 <div fxShow="{{!nav.visible}}" >
-<mat-sidenav-container class="sidenav-container" >
-<!-- *ngIf="isLoggedIn$">  -->
+<mat-sidenav-container class="sidenav-container">
+ <!-- *ngIf="isLoggedIn$">  -->
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -84,7 +84,7 @@
       </form>
       <a mat-list-item><fa-icon [icon]="faBell"></fa-icon> </a>
       <a mat-list-item><fa-icon [icon]="faCog"></fa-icon> </a>
-      <li><a [routerLink]="['/login']">Logout</a></li>
+      <!-- <li><a [routerLink]="['/login']">Logout</a></li> -->
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

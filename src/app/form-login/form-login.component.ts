@@ -4,18 +4,16 @@ import { PartsService } from '../parts.service';
 import { Router } from '@angular/router';
 import { NavbarService } from '../main-nav/navbar.service';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-form-login',
+  templateUrl: './form-login.component.html',
+  styleUrls: ['./form-login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class FormLoginComponent implements OnInit {
 
-  constructor( private Auth: AuthService, private Part: PartsService,public nav: NavbarService  ,private router: Router) { }
-   isLoggedIn = false ; 
-  ngOnInit(): void {
-  }
+  constructor(private Auth: AuthService, private Part: PartsService,public nav: NavbarService  ,private router: Router) { }
+  isLoggedIn = false ; 
+  ngOnInit() {}
 
   loginUser(event) {
     event.preventDefault()
@@ -23,6 +21,8 @@ export class LoginComponent implements OnInit {
     const username = target.querySelector('#username').value
     const password = target.querySelector('#password').value
     
+
+
     this.Auth.getUserDetails(username, password).subscribe
     (
       

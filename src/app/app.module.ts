@@ -75,6 +75,8 @@ import { PerformanceSummaryComponent } from './performance-summary/performance-s
 import {AuthGuard} from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NavbarService } from './main-nav/navbar.service';
+import { FormLoginComponent } from './form-login/form-login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,6 +93,7 @@ import { NavbarService } from './main-nav/navbar.service';
     DashboardComponent,
     PerformanceSummaryComponent,
     SkuPerformaceComponent, 
+    FormLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -142,28 +145,12 @@ import { NavbarService } from './main-nav/navbar.service';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    RouterModule.forRoot([
-      { path: '',component: ExcessInventoryComponent},//canActivate :[AuthGuard]},
-      { path: 'main-nav',component: MainNavComponent},//,canActivate :[AuthGuard]},
-      { path: 'dashboard',component: DashboardComponent},
-      { path: 'performance',component: PerformanceSummaryComponent},
-      { path: 'products',component: ProductsComponent},
-      { path: 'stock',component: StockComponent},
-      { path: 'check-out',component: CheckOutComponent},
-      { path: 'login', component: LoginComponent},
-      { path: 'admin/products', component: AdminProductsComponent},
-      { path: 'admin/orders', component: AdminOrdersComponent },
-      { path: 'excess-inventory', component: HomeComponent },
-      { path: 'sku-performace', component: SkuPerformaceComponent },
-      { path: 'performance-validation', component: PerformanceValidComponent }, 
-      { path: 'overall', component: OverallComponent }, 
-      { path: 'data-table', component: DataTableComponent },
-    ]),
     BrowserAnimationsModule,
     FontAwesomeModule,
     LayoutModule
   ],
   exports:[
+
     MatTableModule,  
     CdkTableModule,
     MatAutocompleteModule,
@@ -200,7 +187,8 @@ import { NavbarService } from './main-nav/navbar.service';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule,],
+    MatTreeModule,
+    NgbModule,],
   providers: [PartsService,AuthService,UserService,AuthGuard,NavbarService  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

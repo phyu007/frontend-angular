@@ -10,6 +10,7 @@ import { PartsService } from '../parts.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { UserService } from '../user.service';
 import { NavbarService } from './navbar.service';
 
 @Component({
@@ -32,10 +33,6 @@ export class MainNavComponent implements OnInit {
         map(value => this._filter(value))
       );
 
-     this.isLoggedIn$ = true; //this.authService.isLoggedIn;
-   // this.isLoggedIn$ = false;
-
-      console.log(this.isLoggedIn$);
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -94,7 +91,7 @@ export class MainNavComponent implements OnInit {
 
      
 
-  constructor(private breakpointObserver: BreakpointObserver,private http: HttpClient, public PartsService: PartsService, public nav: NavbarService ,private authService: AuthService) {
+  constructor(private breakpointObserver: BreakpointObserver,private http: HttpClient, public PartsService: PartsService, public nav: NavbarService , private UserService: UserService, private authService: AuthService) {
 
     PartsService.getCategory();
     PartsService.getAllParts();
@@ -105,6 +102,12 @@ export class MainNavComponent implements OnInit {
     this.PartsService.setData(this.category);
 
     console.log(this.category);
+
+    UserService.isLoggedIn().subscribe((data) => {
+      console.log(data)
+    });
+ 
+    
 
   }
 

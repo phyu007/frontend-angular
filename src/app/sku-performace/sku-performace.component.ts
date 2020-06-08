@@ -15,6 +15,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 })
 export class SkuPerformaceComponent implements OnInit {
   toggleOptions: Array<String> = ["Past 6 Months", "Past 1 Year","Past 2 Year"];
+  isMenuCollapsed:any;
+  selectionChanged(item) {
+
+    var timeOnhandCost = [];
+    var timetonHandMonths = [];
+
+    console.log(this.chartChosen)
+    console.log("Selected value: " + item.value);
+
+
+  }
    chosenTime:any; 
    newVal;chartChosen;size;
  timeOnhandCost=[];

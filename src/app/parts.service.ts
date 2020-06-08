@@ -340,34 +340,10 @@ export class PartsService {
 
         console.log(result.recordsets);
          this.size = Object.keys(result.recordsets[0]).length
-        console.log(this.size)
-
-        this.onHandData = result.recordsets[0];
-        
-        console.log(this.onHandData)
-
-       
-
-        this.test = this.onHandData[0].totalOnHand;
-
-        console.log(this.test)
-
-       // for (var i = 0 ; i < this.size ; i++)
+     
       
-        for (var i = 0 ; i < this.size ; i++)
-        {
-         this.tonHand[i] = this.onHandData[i].totalOnHand
-        this.openOrderCost[i] = this.onHandData[i].totalOpenOrder
-   
-        }
-
-
-        for (var i = 0 ; i < 6 ; i++)
-        {
-         
-         this.tonHandMonth[i] = this.onHandData[i].Monthly
-   
-        }       
+    
+    
       
       })
 
