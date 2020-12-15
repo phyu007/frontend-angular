@@ -1,0 +1,38 @@
+.full-width-table {
+    width: 100%;
+  }
+  
+  .lampRed {
+   height: 25px;
+    width: 25px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block
+  }
+  
+  .lampGreen {
+    height: 25px;
+     width: 25px;
+     background-color: green;
+     border-radius: 50%;
+     display: inline-block
+   }
+  
+  .lampYellow {
+    height: 25px;
+    width: 25px;
+    background-color: yellow;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  th.mat-header-cell, td.mat-cell {
+    text-align: center;
+    border: 1px solid #CCC;
+    padding: 0 !important;
+  }
+
+  .mat-sort-header
+  {
+    text-align: center;
+  }

@@ -5,18 +5,21 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar> <span routerLink="/overall"><img class="img-responsive" src="assets/ASTAR_Horizontal Logo_White_RGB.png" style="width:150px;"></span></mat-toolbar>
+    <mat-toolbar> <span routerLink="/overall"><img class="img-responsive" src="assets/" style="width:150px;"></span></mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard">Dashboard</a>
-      <a mat-list-item routerLink="/sku-performace">SKU Performace</a>
+      <a mat-list-item routerLink="/claimdetail">View Claim History</a>
+      <!-- <a mat-list-item routerLink="/sku-performace">Review Claim</a>
       <a mat-list-item routerLink="/performance">Performance Summary</a>
+      <a mat-list-item routerLink="/data-table">Performace Validation</a> -->
+      <a mat-list-item routerLink="/data-table">Review Claim</a>
+      <!-- <a mat-list-item routerLink="/claimhistory">Review Claim</a> -->
       <!-- <a mat-list-item routerLink="/overall" >Overall Inventory Performance</a>
       <a mat-list-item routerLink="/excess-inventory">Excess Inventory Analysis</a>
       <a mat-list-item routerLink="/sku-performace">SKU Performace</a>
       <a mat-list-item routerLink="/dashboard">Dashboard</a>
       <a mat-list-item routerLink="/performance">Performance Summary</a>
       <a mat-list-item routerLink="/products">Test</a> -->
-      <a mat-list-item style="margin-top: 50px;">
+      <!-- <a mat-list-item style="margin-top: 50px;">
         <mat-form-field>
           <mat-list-item style="color: white;">Category</mat-list-item >
           <select matNativeControl required ngModel name="category" id="category"
@@ -56,7 +59,7 @@
             </mat-autocomplete>
           </mat-form-field>
         </form>
-      </a>
+      </a> -->
       
 
 
@@ -74,16 +77,9 @@
         *ngIf="isHandset$ | async">
         <fa-icon [icon]="faBars"></fa-icon>
       </button>
-      <span>
-        <fa-icon [icon]="faUser"></fa-icon>
-        Welcome <br> Dr Lee Yo
-      </span>
       <span class="spacer"></span>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      </form>
-      <a mat-list-item><fa-icon [icon]="faBell"></fa-icon> </a>
-      <a mat-list-item><fa-icon [icon]="faCog"></fa-icon> </a>
+      <a mat-list-item><fa-icon [icon]="faHome"></fa-icon> </a>
+      <a mat-list-item><fa-icon [icon]="faArrowLeft"></fa-icon> </a>
       <!-- <li><a [routerLink]="['/login']">Logout</a></li> -->
     </mat-toolbar>
     <ng-content></ng-content>

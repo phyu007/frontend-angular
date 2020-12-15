@@ -19,7 +19,7 @@
 
 .mat-nav-list a
 {
-  background-color:#0f3675;
+  background-color:#ee8910;
   color: white;
 
 
@@ -51,11 +51,11 @@ a:hover {
 
 .mat-sidenav
 {
-  background-color: #0f3675;
+  background-color: #ee8910;
 }
 
 .sidenav .mat-toolbar {
-  background: #0f3675;
+  background: #ee8910;
 }
 
 .mat-toolbar.mat-primary {
@@ -65,7 +65,7 @@ a:hover {
 }
 
 .mat-toolbar.mat-primary {
-  background:#0f3675;
+  background:#ee8910;
   color: #fff;
 }
 

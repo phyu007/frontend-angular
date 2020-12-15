@@ -6,6 +6,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import { PartsService } from '../parts.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
@@ -47,6 +49,8 @@ export class MainNavComponent implements OnInit {
   faUser = faUser;
   faBell = faBell;
   faCog = faCog;
+  faHome = faHome;
+  faArrowLeft = faArrowLeft;
   public category;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

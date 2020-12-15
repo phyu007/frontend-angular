@@ -16,7 +16,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   dataSource: DataTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['no', 'SKU_Code','SKU_Name','Ex_RP','Ex_Max', 'Ex_Min_Order', 'New_ROP','New_Max','Signal','Per_Turns','Signal','Per_fillRate','Signal','Per_IP','Per_onHand','Eval'];
+  displayedColumns = ['checked','Ex_Max','no', 'SKU_Code','SKU_Name','Ex_RP'];
  // displayedColumns = ['No', 'SKU Code','SKU Name','Reorder Point','Max','Min Order Qty','ROP','Max','Turns','Fill Rate(%)','IP(Onhand+ Open Order)','Onhand Qty','Tick "Yes" for evaluation'];
 
   ngOnInit() {

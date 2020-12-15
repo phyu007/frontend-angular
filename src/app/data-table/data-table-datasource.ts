@@ -6,6 +6,7 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
+  checked: boolean;
   No: number;
   SKU_Code: string;
   SKU_Name: string;
@@ -26,16 +27,16 @@ export interface DataTableItem {
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {No: 1, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
-  {No: 2, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:2},   
-  {No: 3, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
-  {No: 4, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
-  {No: 5, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:2},   
-  {No: 6, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
-  {No: 7, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:3},   
-  {No: 8, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
-  {No: 9, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
-  {No: 10, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:314, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:3},   
+  { checked: false , No: 1, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:100, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
+  {checked: false ,No: 2, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:101, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:2},   
+  {checked: false,No: 3, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:102, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
+  {checked: false,No: 4, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:103, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
+  {checked: false,No: 5, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:104, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:2},   
+  {checked: false,No: 6, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:105, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
+  {checked: false,No: 7, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:106, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:3},   
+  {checked: false,No: 8, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:107, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
+  {checked: false,No: 9, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:108, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:1},   
+  {checked: false,No: 10, SKU_Code: 'SKU10001',SKU_Name:'Name-10001',Ex_RP:253,Ex_Max:109, Ex_Min_Order:100,  New_ROP : 300,New_Max: 400,Per_Turns: 4.0,Per_fillRate: "94.58%",Per_IP : 351,Per_onHand: 115,eval:"Yes",Singal:3},   
 
 
 

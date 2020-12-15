@@ -14,6 +14,8 @@ import { SkuPerformaceComponent } from './sku-performace/sku-performace.componen
 import { PerformanceValidComponent } from './performance-valid/performance-valid.component';
 import { OverallComponent } from './overall/overall.component';
 import { DataTableComponent } from './data-table/data-table.component';
+import { ClaimDetailComponent } from './claim-detail/claim-detail.component';
+import {ClaimHistoryComponent } from './claim-history/claim-history.component';
 import { AuthGuard } from './auth.guard';
 
 
@@ -31,6 +33,8 @@ const routes: Routes = [
 { path: 'performance-validation', component: PerformanceValidComponent }, 
 { path: 'overall', component: OverallComponent }, 
 { path: 'data-table', component: DataTableComponent },
+{ path: 'claimhistory', component: ClaimHistoryComponent },
+{ path: 'claimdetail', component: ClaimDetailComponent },
 ];
 
 
